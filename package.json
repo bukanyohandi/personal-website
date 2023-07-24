@@ -14,8 +14,12 @@
   },
   "dependencies": {
     "gatsby": "^5.11.0",
+    "gatsby-plugin-react-helmet": "^6.11.0",
+    "gatsby-source-filesystem": "^5.11.0",
+    "gatsby-transformer-remark": "^6.11.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0"
   },
   "repository": {
     "type": "git",
