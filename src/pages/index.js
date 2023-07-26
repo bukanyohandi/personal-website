@@ -11,7 +11,7 @@ export default function HomePage() {
           name="description"
           content={`
             Yohandi. A passionate student with a strong interest in algorithms and data structures.
-        `}
+          `}
         />
       </Helmet>
     </Layout>
