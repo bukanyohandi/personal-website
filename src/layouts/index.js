@@ -11,13 +11,16 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 `;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 `;
 
 const Layout = ({ children }) => {

@@ -9,8 +9,8 @@ const Container = styled.div`
   justify-content: ${({ inHomePage }) =>
     inHomePage ? "center" : "flex-start"};
   align-items: center;
-  height: ${({ inHomePage }) => (inHomePage ? "100vh" : "17vh")};
-  background-color: #f4f4f4;
+  height: ${({ inHomePage }) => (inHomePage ? "95vh" : "17vh")};
+  background-color: #f9f9f9;
   transition: transform 0.3s ease-in-out;
   gap: 0px;
 `;
@@ -44,7 +44,7 @@ const Navigation = styled.nav`
   justify-content: center;
   width: 120px;
   gap: 30px;
-  margin-top: 0px;
+  margin-top: -10px;
   padding-top: 0px;
 `;
 
@@ -55,23 +55,10 @@ const NavLink = styled(Link)`
   font-size: 18px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
 
-  &:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #2c3e50;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
-  }
-
-  &:hover:before {
-    visibility: visible;
-    transform: scaleX(1);
+  &:hover {
+    color: #c0392b;
   }
 `;
 
@@ -93,7 +80,11 @@ const Header = () => {
         <NavLink to="/" activeStyle={activeLinkStyle}>
           Home
         </NavLink>
-        <NavLink to="/blog" activeStyle={activeLinkStyle}>
+        <NavLink
+          to="/blog"
+          activeStyle={activeLinkStyle}
+          partiallyActive={true}
+        >
           Blog
         </NavLink>
       </Navigation>

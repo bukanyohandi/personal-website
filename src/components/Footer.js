@@ -7,7 +7,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f4f4f4;
+  background-color: #f9f9f9;
+  height: 5vh;
 `;
 
 const MakeoverMessage = styled.div`
