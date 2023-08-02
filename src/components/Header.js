@@ -9,7 +9,7 @@ const Container = styled.div`
   justify-content: ${({ inHomePage }) =>
     inHomePage ? "center" : "flex-start"};
   align-items: center;
-  height: ${({ inHomePage }) => (inHomePage ? "95vh" : "17vh")};
+  height: ${({ inHomePage }) => (inHomePage ? "90vh" : "17vh")};
   background-color: #f9f9f9;
   transition: transform 0.3s ease-in-out;
   gap: 0px;
