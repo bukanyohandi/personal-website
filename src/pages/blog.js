@@ -69,6 +69,7 @@ const PostTitle = styled.h3`
   font-size: 1.6em;
   color: #2c3e50;
   margin-bottom: 0.5em;
+  font-weight: 100;
 `;
 
 const PostMeta = styled.small`
@@ -77,6 +78,7 @@ const PostMeta = styled.small`
   text-transform: uppercase;
   font-size: 1em;
   display: block;
+  margin-top: -0.5em;
   margin-bottom: 1em;
 `;
 
