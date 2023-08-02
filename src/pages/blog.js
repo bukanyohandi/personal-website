@@ -64,7 +64,7 @@ const PostLink = styled(Link)`
 `;
 
 const PostTitle = styled.h3`
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
   text-transform: uppercase;
   font-size: 1.6em;
   color: #2c3e50;
@@ -184,10 +184,6 @@ const BlogPage = ({ data }) => {
     <Layout>
       <Helmet>
         <title>Blog - Yohandi</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap"
-          rel="stylesheet"
-        />
       </Helmet>
       <Container>
         <Card>

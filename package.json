@@ -20,6 +20,7 @@
     "gatsby-plugin-react-helmet": "^6.11.0",
     "gatsby-plugin-remove-trailing-slashes": "^4.19.0",
     "gatsby-plugin-styled-components": "^6.11.0",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^5.11.0",
     "gatsby-transformer-remark": "^6.11.0",
     "katex": "^0.16.8",

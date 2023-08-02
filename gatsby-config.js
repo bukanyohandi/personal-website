@@ -18,6 +18,14 @@ module.exports = {
         path: `${__dirname}/static/posts`,
       },
     },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Merriweather"],
+        },
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
   ],

@@ -26,19 +26,19 @@ const PostContainer = styled.div`
 `;
 
 const PostTitle = styled.h1`
-  font-size: 2.6rem; /* Slightly bigger font */
+  font-size: 2.2rem; /* Slightly bigger font */
   font-weight: 700; /* Bold font weight */
   color: #2c3e50;
   margin-bottom: 0.6rem; /* A bit more space below the title */
   line-height: 1.2; /* Control the height of the line */
   letter-spacing: -0.5px; /* Slightly tighter letter spacing for better readability */
-  font-family: "Open Sans", sans-serif;
+  font-family: "Merriweather", serif;
   text-transform: uppercase;
 `;
 
 const PostInfo = styled.p`
   font-family: "Open Sans", sans-serif;
-  font-size: 1.1rem; /* Slightly larger font for better readability */
+  font-size: 1.3rem; /* Slightly larger font for better readability */
   text-transform: uppercase;
   color: #666; /* Darker color for better contrast */
   margin-bottom: 1.5rem; /* Keep the same bottom margin */
@@ -187,9 +187,7 @@ const BlogTemplate = ({ data }) => {
         <PostContainer>
           <div>
             <PostTitle>{post.frontmatter.title}</PostTitle>
-            <PostInfo>
-              Posted by {post.frontmatter.author} on {post.frontmatter.date}
-            </PostInfo>
+            <PostInfo>{post.frontmatter.date}</PostInfo>
             <PostContent>
               <ReactMarkdown
                 components={renderers}
