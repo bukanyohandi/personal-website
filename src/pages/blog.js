@@ -46,6 +46,9 @@ const Container = styled.div`
 
 const Card = styled.div`
   margin: 20px;
+  width: ${typeof window !== "undefined"
+    ? `${window.screen.width * 0.4}px`
+    : "40%"};
 `;
 
 const Post = styled.div`
@@ -187,7 +190,7 @@ const BlogPage = ({ data }) => {
         <title>Blog - Yohandi</title>
       </Helmet>
       <Container>
-        <Card style={{ width: window.screen.width * 0.4 }}>
+        <Card>
           {data.allMarkdownRemark.edges.map((post) => (
             <PostLink
               key={post.node.id}
@@ -201,7 +204,7 @@ const BlogPage = ({ data }) => {
             </PostLink>
           ))}
         </Card>
-        <Card style={{ width: window.screen.width * 0.4 }}>
+        <Card>
           <ContributionsCard ref={setReferenceElement}>
             {Object.entries(contributions).map(([year, contributionsForYear]) =>
               contributionsForYear.map((postCount, i) => (
