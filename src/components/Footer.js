@@ -22,9 +22,7 @@ const EmailWrapper = styled.a`
   text-decoration: none; // optional, if you want to remove the default link underline
 `;
 
-const EmailIcon = styled(AiOutlineMail)`
-  margin-right: 10px;
-`;
+const EmailIcon = styled(AiOutlineMail)``;
 
 const Footer = () => {
   return (
