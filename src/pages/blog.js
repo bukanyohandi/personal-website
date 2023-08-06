@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Link, graphql } from "gatsby";
 import Layout from "../layouts";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
-import { useState } from "react";
 import { usePopper } from "react-popper";
 
 const monthNames = [
@@ -33,10 +32,12 @@ function getMax(contributions) {
       max = yearMax;
     }
   });
+  if (max === 1) {
+    max += 0.25;
+  }
   return max;
 }
 
-// define styled components
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -51,6 +52,7 @@ const Card = styled.div`
     : "40%"};
 `;
 
+// Various styled components for posts
 const Post = styled.div`
   background-color: white;
   border-radius: 5px;
@@ -59,12 +61,10 @@ const Post = styled.div`
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   text-decoration: none;
 `;
-
 const PostLink = styled(Link)`
   text-decoration: none;
   color: inherit;
 `;
-
 const PostTitle = styled.h3`
   font-family: "Merriweather", serif;
   text-transform: uppercase;
@@ -73,7 +73,6 @@ const PostTitle = styled.h3`
   margin-bottom: 0.5em;
   font-weight: 100;
 `;
-
 const PostMeta = styled.small`
   font-family: "Open Sans", sans-serif;
   color: #666;
@@ -83,12 +82,12 @@ const PostMeta = styled.small`
   margin-top: -0.5em;
   margin-bottom: 1em;
 `;
-
 const PostExcerpt = styled.p`
   font-family: "Open Sans", sans-serif;
   color: #333;
 `;
 
+// Styled components for contributions card and tooltip
 const ContributionsCard = styled.div`
   position: relative;
   display: grid;
@@ -99,15 +98,12 @@ const ContributionsCard = styled.div`
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 `;
-
 const Month = styled.div`
   width: 100%;
   padding-bottom: 100%; // This keeps the month squares aspect ratio 1:1
   border-radius: 2px;
   background-color: #ebedf0; // The default color of day squares
 `;
-
-// Tooltip styled component
 const Tooltip = styled.div`
   position: fixed;
   background-color: #2c3e50;
@@ -116,7 +112,9 @@ const Tooltip = styled.div`
   border-radius: 5px;
   font-size: 12px;
   display: ${(props) => (props.show ? "block" : "none")};
-  transform: translate(-35%, -150%); // adjust the tooltip position
+  left: ${(props) => props.left || "0"}px;
+  top: ${(props) => props.top || "0"}px;
+  transform: translate(-50%, -150%); // Adjust the tooltip position
   transition: all 0.3s ease-in-out;
   white-space: nowrap;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -130,15 +128,6 @@ const Tooltip = styled.div`
     border-width: 5px;
     border-style: solid;
     border-color: #2c3e50 transparent transparent transparent;
-  }
-`;
-
-const TooltipTarget = styled.div`
-  position: relative;
-
-  &:hover ${Tooltip} {
-    opacity: 0.7;
-    visibility: visible;
   }
 `;
 
@@ -174,16 +163,6 @@ const BlogPage = ({ data }) => {
     text: "",
   });
 
-  const [referenceElement, setReferenceElement] = useState(null);
-  const [popperElement, setPopperElement] = useState(null);
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    placement: "top",
-    strategy: "absolute",
-  });
-
-  // Get the width/height of a grid item
-  const monthSize = referenceElement ? referenceElement.offsetWidth / 12 : 0; // We assume that all Months are square and have the same size
-
   return (
     <Layout>
       <Helmet>
@@ -205,11 +184,10 @@ const BlogPage = ({ data }) => {
           ))}
         </Card>
         <Card>
-          <ContributionsCard ref={setReferenceElement}>
+          <ContributionsCard>
             {Object.entries(contributions).map(([year, contributionsForYear]) =>
               contributionsForYear.map((postCount, i) => (
                 <Month
-                  ref={setReferenceElement}
                   key={i}
                   style={{
                     backgroundColor:
@@ -228,7 +206,7 @@ const BlogPage = ({ data }) => {
                         postCount === 0 || postCount === 1 ? "" : "s"
                       } in ${getMonthName(i)} ${year}`,
                       top: rect.top,
-                      left: rect.left,
+                      left: rect.left + rect.width / 2,
                     });
                   }}
                   onMouseLeave={() => {
@@ -238,12 +216,10 @@ const BlogPage = ({ data }) => {
               ))
             )}
             <Tooltip
-              ref={setPopperElement}
               style={{
                 top: tooltipInfo.top + "px",
                 left: tooltipInfo.left + "px",
               }}
-              {...attributes.popper}
               show={tooltipInfo.show}
             >
               {tooltipInfo.text}

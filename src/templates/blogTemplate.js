@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import Layout from "../layouts";
@@ -25,6 +25,10 @@ const PostContainer = styled.div`
   background-color: white;
 `;
 
+const Post = styled.div`
+  width: 850px;
+`;
+
 const PostTitle = styled.h1`
   font-size: 2.2rem; /* Slightly bigger font */
   font-weight: 100; /* Bold font weight */
@@ -48,33 +52,62 @@ const PostInfo = styled.p`
 `;
 
 const PostContent = styled.div`
-  font-family: "Roboto", sans-serif;
   font-size: 1.2em;
   line-height: 1.6em;
   color: #444;
 
   p {
+    font-family: "Open Sans", sans-serif; /* Similar to PostInfo */
+    font-size: 1.2rem; /* Slightly smaller than h2 */
     margin-bottom: 1em;
+    font-weight: 400; /* Normal font weight */
   }
 
   a {
     color: #007bff;
   }
 
-  h1,
+  h1 {
+    font-family: "Merriweather", serif;
+    font-size: 2.2rem;
+    font-weight: 100;
+    color: #2c3e50;
+    margin: 1.5rem 0 1rem;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: 1.8rem; /* Gradually decreasing sizes */
+  }
+
+  h3 {
+    font-size: 1.6rem;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+  }
+
+  h5 {
+    font-size: 1.2rem; /* Similar to PostInfo */
+  }
+
+  h6 {
+    font-size: 1.1rem;
+  }
+
   h2,
   h3,
   h4,
   h5,
   h6 {
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
     margin: 1.5rem 0 1rem;
-    color: #333;
-  }
-
-  .math {
-    display: block;
-    margin: 1em 0;
-    font-size: 1.2em;
+    font-weight: 400;
+    letter-spacing: 0.5px;
   }
 `;
 
@@ -84,26 +117,25 @@ const TOCContainer = styled.div`
   line-height: 1.6em;
   color: #666;
   border-left: 1px solid #ccc;
-  padding-left: 2rem;
 
   h4 {
     font-size: 1.2em;
     color: #333;
     margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  > ul > li {
+    padding-left: 0rem;
   }
 
   ul {
     list-style: none;
-    padding-left: 0;
+    padding-left: 1.5rem;
   }
 
   li {
-    margin-bottom: 0.5rem;
-  }
-
-  ul {
-    padding-left: 1rem;
-    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
   }
 
   a {
@@ -112,68 +144,97 @@ const TOCContainer = styled.div`
   }
 `;
 
-const renderers = {
-  // This custom renderer handles how headings are rendered
-  heading: (props) => {
-    const { level, children } = props;
-    const size = `h${level}`;
-    const id = children[0].props.value.toLowerCase().replace(/\s/g, "-");
-    return React.createElement(size, { id }, children);
-  },
+const createTOCTree = (headings) => {
+  const toc = [];
+  let stack = [];
 
-  // This custom renderer changes how images are rendered
-  image: (props) => {
-    return <img {...props} style={{ maxWidth: "100%" }} />;
-  },
+  headings.forEach((heading) => {
+    const { level, id, value } = heading;
+    const node = { value, id, level, children: [] };
 
-  // This custom renderer handles code blocks
-  code: ({ language, value }) => {
-    return (
-      <SyntaxHighlighter style={dark} language={language} children={value} />
-    );
-  },
+    if (stack.length === 0) {
+      toc.push(node);
+    } else if (level > stack[stack.length - 1].level) {
+      stack[stack.length - 1].children.push(node);
+    } else {
+      while (stack.length && stack[stack.length - 1].level >= level) {
+        stack.pop();
+      }
+      stack.length
+        ? stack[stack.length - 1].children.push(node)
+        : toc.push(node);
+    }
 
-  // This custom renderer handles inline math
-  inlineMath: ({ value }) => <InlineMath math={value} />,
+    stack.push(node);
+  });
 
-  // This custom renderer handles math blocks
-  math: ({ value }) => <BlockMath math={value} />,
+  return toc;
 };
+
+const renderTOC = (toc) => (
+  <ul>
+    {toc.map((item) => (
+      <li key={item.id}>
+        <a href={`#${item.id}`}>{item.value}</a>
+        {item.children.length > 0 && renderTOC(item.children)}
+      </li>
+    ))}
+  </ul>
+);
 
 const BlogTemplate = ({ data }) => {
   const post = data.markdownRemark;
-  const inlineMathRegex = /\$(.*?)\$/g;
-  const blockMathRegex = /\$\$(.*?)\$\$/gs;
+  const [toc, setToc] = useState([]);
+  const headingsRef = useRef([]);
 
-  let insideParagraph = false;
+  const textContent = (children) => {
+    return children.reduce((acc, child) => {
+      if (typeof child === "string") return acc + child;
+      if (child.props && child.props.children)
+        return acc + textContent(child.props.children);
+      return acc;
+    }, "");
+  };
+
+  const customHeadingRenderer = (props, level) => {
+    const { children } = props;
+    const size = `h${level}`;
+    const value = textContent(children);
+    const id = value.toLowerCase().replace(/\s/g, "-");
+    headingsRef.current.push({ level, id, value });
+    return React.createElement(size, { id }, children);
+  };
 
   const renderers = {
-    text: ({ value }) => {
-      if (insideParagraph) {
-        const inlineMath = value.split(inlineMathRegex).map((s, i, arr) => {
-          if (i % 2 === 1) return <InlineMath key={i}>{s}</InlineMath>;
-          return s;
-        });
-        return <>{inlineMath}</>;
-      } else {
-        return value;
-      }
-    },
-    paragraph: ({ children }) => {
-      insideParagraph = true;
-      const newChildren = React.Children.toArray(children);
-      insideParagraph = false;
+    h1: (props) => customHeadingRenderer(props, 1),
+    h2: (props) => customHeadingRenderer(props, 2),
+    h3: (props) => customHeadingRenderer(props, 3),
+    h3: (props) => customHeadingRenderer(props, 4),
+    h3: (props) => customHeadingRenderer(props, 5),
+    h3: (props) => customHeadingRenderer(props, 6),
 
-      if (newChildren.length === 1 && typeof newChildren[0] === "string") {
-        const match = newChildren[0].match(blockMathRegex);
-        if (match) {
-          const formula = match[0].slice(2, -2);
-          return <BlockMath>{formula}</BlockMath>;
-        }
-      }
-      return <p>{newChildren}</p>;
+    // This custom renderer changes how images are rendered
+    image: (props) => {
+      return <img {...props} style={{ maxWidth: "100%" }} />;
     },
+
+    // This custom renderer handles code blocks
+    code: ({ language, value }) => {
+      return (
+        <SyntaxHighlighter style={dark} language={language} children={value} />
+      );
+    },
+
+    // This custom renderer handles inline math
+    inlineMath: ({ value }) => <InlineMath math={value} />,
+
+    // This custom renderer handles math blocks
+    math: ({ value }) => <BlockMath math={value} />,
   };
+
+  useEffect(() => {
+    setToc(createTOCTree(headingsRef.current));
+  }, [headingsRef.current]);
 
   return (
     <GlobalStyle>
@@ -186,7 +247,7 @@ const BlogTemplate = ({ data }) => {
           />
         </Helmet>
         <PostContainer>
-          <div>
+          <Post>
             <PostTitle>{post.frontmatter.title}</PostTitle>
             <PostInfo>{post.frontmatter.date}</PostInfo>
             <PostContent>
@@ -197,13 +258,10 @@ const BlogTemplate = ({ data }) => {
                 children={post.rawMarkdownBody}
               />
             </PostContent>
-          </div>
+          </Post>
           <TOCContainer>
             <h4>Table of Contents</h4>
-            <div
-              className="table-of-contents"
-              dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
-            />
+            {renderTOC(toc)}
           </TOCContainer>
         </PostContainer>
       </Layout>
