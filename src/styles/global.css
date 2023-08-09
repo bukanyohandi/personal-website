@@ -1,6 +1,6 @@
 p, li, ul, table th, table td {
     font-family: "Open Sans", sans-serif;
-    font-size: 1.2rem;
+    font-size: 0.96rem;
 }
 
 table {
@@ -9,8 +9,18 @@ table {
 }
   
 th, td {
-    border: 1px solid black;
-    padding: 8px;
+    border: 0.8px solid black;
+    padding: 4px;
     text-align: left;
+}
+  
+.disqus-container {
+    margin: 0 auto;
+    width: 1000px;
+    padding: 50px;
+    background-color: inherit;
+    border-radius: 0px;
+    justify-content: center;
+    align-items: center;
 }
   

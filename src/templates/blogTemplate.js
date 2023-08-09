@@ -21,49 +21,49 @@ const PostContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 300px;
   gap: 2rem;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
   background-color: white;
 `;
 
 const Post = styled.div`
-  width: 850px;
+  width: 700px;
 `;
 
 const PostTitle = styled.h1`
-  font-size: 2.2rem; /* Slightly bigger font */
+  font-size: 1.8rem; /* Slightly bigger font */
   font-weight: 100; /* Bold font weight */
   color: #2c3e50;
-  margin-bottom: 1rem; /* A bit more space below the title */
-  line-height: 1.2; /* Control the height of the line */
-  letter-spacing: 0.5px; /* Slightly tighter letter spacing for better readability */
+  margin-bottom: 0.8rem; /* A bit more space below the title */
+  line-height: 1; /* Control the height of the line */
+  letter-spacing: 0.4px; /* Slightly tighter letter spacing for better readability */
   font-family: "Merriweather", serif;
   text-transform: uppercase;
 `;
 
 const PostInfo = styled.p`
   font-family: "Open Sans", sans-serif;
-  font-size: 1.3rem; /* Slightly larger font for better readability */
+  font-size: 1rem; /* Slightly larger font for better readability */
   text-transform: uppercase;
   color: #666; /* Darker color for better contrast */
-  margin-top: -0.5em;
-  margin-bottom: 1.5rem; /* Keep the same bottom margin */
+  margin-top: -0.4em;
+  margin-bottom: 1.2rem; /* Keep the same bottom margin */
   font-weight: 400; /* Normal font weight */
-  letter-spacing: 0.5px; /* Slightly wider letter spacing */
+  letter-spacing: 0.4px; /* Slightly wider letter spacing */
 `;
 
 const PostContent = styled.div`
-  font-size: 1.2em;
-  line-height: 1.6em;
+  font-size: 1em;
+  line-height: 1.3em;
   color: #444;
 
   ul,
   li,
   p {
     font-family: "Open Sans", sans-serif; /* Similar to PostInfo */
-    font-size: 1.2rem; /* Slightly smaller than h2 */
-    margin-bottom: 0.3em;
+    font-size: 1rem; /* Slightly smaller than h2 */
+    margin-bottom: 0.24em;
     font-weight: 400; /* Normal font weight */
   }
 
@@ -73,33 +73,33 @@ const PostContent = styled.div`
 
   h1 {
     font-family: "Merriweather", serif;
-    font-size: 2.2rem;
+    font-size: 1.76rem;
     font-weight: 100;
     color: #2c3e50;
-    margin: 1.5rem 0 1rem;
-    line-height: 1.2;
-    letter-spacing: 0.5px;
+    margin: 1.2rem 0 0.8rem;
+    line-height: 1;
+    letter-spacing: 0.4px;
     text-transform: uppercase;
   }
 
   h2 {
-    font-size: 1.8rem;
+    font-size: 1.44rem;
   }
 
   h3 {
-    font-size: 1.6rem;
+    font-size: 1.28rem;
   }
 
   h4 {
-    font-size: 1.4rem;
+    font-size: 1.12rem;
   }
 
   h5 {
-    font-size: 1.2rem;
+    font-size: 0.96rem;
   }
 
   h6 {
-    font-size: 1.1rem;
+    font-size: 0.88rem;
   }
 
   h2,
@@ -109,9 +109,9 @@ const PostContent = styled.div`
   h6 {
     font-family: "Open Sans", sans-serif;
     text-transform: uppercase;
-    margin: 1.5rem 0 1rem;
+    margin: 1.2rem 0 0.8rem;
     font-weight: 400;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
   }
 `;
 
@@ -125,7 +125,6 @@ const TOCContainer = styled.div`
   h4 {
     font-size: 1.2em;
     color: #333;
-    margin-bottom: 0.5rem;
     text-align: center;
   }
 
@@ -135,16 +134,18 @@ const TOCContainer = styled.div`
 
   ul {
     list-style: none;
-    padding-left: 1.5rem;
+    padding-left: 0.8rem;
   }
 
   li {
-    margin-bottom: 0.2rem;
+    margin-bottom: 1.2rem;
   }
 
   a {
     color: inherit;
+    font-size: 0.9em;
     text-decoration: none;
+    line-height: 1rem;
   }
 `;
 
@@ -274,13 +275,15 @@ const BlogTemplate = ({ data }) => {
             {renderTOC(toc)}
           </TOCContainer>
         </PostContainer>
-        <Disqus
-          config={{
-            url: `https://yohandi.me/${post.frontmatter.path}`,
-            identifier: post.id,
-            title: post.frontmatter.title,
-          }}
-        />
+        <div className="disqus-container">
+          <Disqus
+            config={{
+              url: `https://yohandi.me/${post.frontmatter.path}`,
+              identifier: post.id,
+              title: post.frontmatter.title,
+            }}
+          />
+        </div>
       </Layout>
     </GlobalStyle>
   );
