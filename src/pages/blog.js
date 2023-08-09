@@ -3,7 +3,6 @@ import { Link, graphql } from "gatsby";
 import Layout from "../layouts";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
-import { usePopper } from "react-popper";
 
 const monthNames = [
   "January",
@@ -235,7 +234,7 @@ export default BlogPage;
 
 export const pageQuery = graphql`
   query BlogIndexQuery {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           id

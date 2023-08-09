@@ -10,6 +10,8 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import gfm from "remark-gfm";
+import { Disqus } from "gatsby-plugin-disqus";
 
 const GlobalStyle = styled.div`
   background-color: #f9f9f9;
@@ -56,10 +58,12 @@ const PostContent = styled.div`
   line-height: 1.6em;
   color: #444;
 
+  ul,
+  li,
   p {
     font-family: "Open Sans", sans-serif; /* Similar to PostInfo */
     font-size: 1.2rem; /* Slightly smaller than h2 */
-    margin-bottom: 1em;
+    margin-bottom: 0.3em;
     font-weight: 400; /* Normal font weight */
   }
 
@@ -79,7 +83,7 @@ const PostContent = styled.div`
   }
 
   h2 {
-    font-size: 1.8rem; /* Gradually decreasing sizes */
+    font-size: 1.8rem;
   }
 
   h3 {
@@ -91,7 +95,7 @@ const PostContent = styled.div`
   }
 
   h5 {
-    font-size: 1.2rem; /* Similar to PostInfo */
+    font-size: 1.2rem;
   }
 
   h6 {
@@ -187,6 +191,12 @@ const BlogTemplate = ({ data }) => {
   const [toc, setToc] = useState([]);
   const headingsRef = useRef([]);
 
+  console.log(
+    post.rawMarkdownBody
+      .replace(/\|(.+?)\|/g, "<td>$1</td>")
+      .replace(/\n/g, "<tr></tr>")
+  );
+
   const textContent = (children) => {
     return children.reduce((acc, child) => {
       if (typeof child === "string") return acc + child;
@@ -209,9 +219,9 @@ const BlogTemplate = ({ data }) => {
     h1: (props) => customHeadingRenderer(props, 1),
     h2: (props) => customHeadingRenderer(props, 2),
     h3: (props) => customHeadingRenderer(props, 3),
-    h3: (props) => customHeadingRenderer(props, 4),
-    h3: (props) => customHeadingRenderer(props, 5),
-    h3: (props) => customHeadingRenderer(props, 6),
+    h4: (props) => customHeadingRenderer(props, 4),
+    h5: (props) => customHeadingRenderer(props, 5),
+    h6: (props) => customHeadingRenderer(props, 6),
 
     // This custom renderer changes how images are rendered
     image: (props) => {
@@ -253,7 +263,7 @@ const BlogTemplate = ({ data }) => {
             <PostContent>
               <ReactMarkdown
                 components={renderers}
-                remarkPlugins={[remarkMath]}
+                remarkPlugins={[remarkMath, gfm]}
                 rehypePlugins={[rehypeKatex]}
                 children={post.rawMarkdownBody}
               />
@@ -264,6 +274,13 @@ const BlogTemplate = ({ data }) => {
             {renderTOC(toc)}
           </TOCContainer>
         </PostContainer>
+        <Disqus
+          config={{
+            url: `https://yohandi.me/${post.frontmatter.path}`,
+            identifier: post.id,
+            title: post.frontmatter.title,
+          }}
+        />
       </Layout>
     </GlobalStyle>
   );

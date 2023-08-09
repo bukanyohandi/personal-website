@@ -1,0 +1,16 @@
+p, li, ul, table th, table td {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+  
