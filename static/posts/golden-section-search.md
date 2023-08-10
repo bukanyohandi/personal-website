@@ -9,7 +9,7 @@ You might have heard about the Golden Ratio. It is this special number that ofte
 
 ### Motivational Problem
 
-Suppose we have a unimodal function $f : [L, R] \rightarrow \mathbb{R}$, where the function increases on $[L, m]$ and decreases on $[m, R]$, with $m$ being the point where the function reaches its only local minimum/maximum (may phrase it as global minimum/maximum in that particular function). We aim to find $f(m \pm \delta)$, where $\delta$ represents an acceptable error ranging in the interval $[0, 0.5]$, serving as satisfaction threshold. We achieve this by only querying the value of the function at specific points, i.e., evaluating $f(x)$ for chosen values of $x$ in the interval $[L, R]$, as efficiently as possible.
+Suppose we have a unimodal function $f : [L, R] \rightarrow \mathbb{R}$, where the function increases on $[L, m]$ and decreases on $[m, R]$, with $m$ being the point where the function reaches its only local minimum/maximum (or it can be considered as global minimum/maximum in that particular function). We aim to find $f(m \pm \delta)$, where $\delta$ represents an acceptable error ranging in the interval $[0, 0.5]$, serving as satisfaction threshold. We achieve this by only querying the value of the function at specific points, i.e., evaluating $f(x)$ for chosen values of $x$ in the interval $[L, R]$, as efficiently as possible.
 
 ### Ternary Search Method
 
@@ -73,17 +73,17 @@ $$
 The approach of the Golden-section Search is quite similar to the Ternary Search as the idea of maintaining two pivots is inherited. For the sake of simplicity, we will once again assume that the unimodal function has a local maximum that we are seeking to find. Let's denote the two pivots as $p_1$ and $p_2$ which satisfy $L < p_1 < p_2 < R$, and be certain that the point $m$ is located in the interval $[L, R]$. Assume that by using the previous queries, we already have the value of $f(L)$, $f(R)$, and one of the $f(p_1)$ and $f(p_2)$ such that $\max(f(L), f(R)) \leq f(p_1)$ or $f(p_2)$. Consider that we have $f(p_1)$ (in a case where we have $f(p_2)$, we only need to mirror the domain toward $\frac{L + R}{2}$, i.e., the middle point), our next step is to query the value of $f(p_2)$, and we will handle it based on the following similar cases in Ternary Search Method:
 
 - Case $f(p_1) < f(p_2)$:
-    As explained previously, this case indicates that the point $m$ lies in $(p_1, R]$. Then, we can set $L := p_1$ and $R := R$, utilizing the value of $f(p_1)$ as the new value of $f(L)$ and the value of $f(p_2)$ as the new value of $f(p_1)$ or $f(p_2)$ in the new interval. The choice of pivot will depend on its position in the new interval, which will be discussed later.
+    As explained previously, this case indicates that the point $m$ lies in $(p_1, R]$. Then, we can set $L := p_1$, $p_1 := p_2$, and $R := R$, utilizing the value of $f(p_1)$ as the new value of $f(L)$ and the value of $f(p_2)$ as the new value of $f(p_1)$. The choice of pivot is made accordingly, the reason is shown later.
 
 - Case $f(p_1) > f(p_2)$:
-    Similarly, as explained previously, this case indicates that the point $m$ lies in $[L, p_2)$. Then, we can set $L := L$ and $R := p_2$, utilizing the value of $f(p_2)$ as the new value of $f(R)$ and the value of $f(p_1)$ as the new value of $f(p_1)$ or $f(p_2)$ in the new interval. The choice of pivot will depend on its position in the new interval, which will be discussed later.
+    Similarly, as explained previously, this case indicates that the point $m$ lies in $[L, p_2)$. Then, we can set $R := p_2$, $p_2 := p_1$, and $L := L$, utilizing the value of $f(p_2)$ as the new value of $f(R)$ and the value of $f(p_1)$ as the new value of $f(p_2)$ in the new interval. Again, the choice of pivot is made accordingly, the reason is shown later.
 
 - Case $f(p_1) = f(p_2)$:
     As we agreed that in this case the point $m$ lies in $(p_1, p_2)$, we may include this case to either $f(p_1) < f(p_2)$ or $f(p_1) > f(p_2)$ as $(p_1, p_2) \subset (p_1, R]$ and $(p_1, p_2) \subset [L, p_2)$
 
 Notice that after the transition, the assumptions we made are all still satisfied. With that we manage to remove either $[L, p_1]$ or $[p_2, R]$ from our search space with only $1$ additional query whereas the Ternary Search uses $2$ additional queries. However, it is still quite tricky to choose the value of $p_1$ and $p_2$ as we want the values to be optimal when we inherit them for the next interval query. 
 
-Suppose $p_1$ is located in $L + k(R - L)$ where $k \in [0, 0.5)$ and a constant, then, $p_2$ should also be located in $R - k(R - L)$. Assuming that we manage to remove the interval $[L, p_1]$ from our search space, then, we want $p_2$ to be located either in $p_1 + k(R - p_1)$ as the new $p_1$ or in $R - k(R - p_1)$ as the new $p_2$. Let's consider these two cases:
+Suppose $p_1$ is located in $L + k(R - L)$ where $k \in (0, 0.5)$ and a constant, then, $p_2$ should also be located in $R - k(R - L)$. Assuming that we manage to remove the interval $[L, p_1]$ from our search space, then, we want $p_2$ to be located either in $p_1 + k(R - p_1)$ as the new $p_1$ or in $R - k(R - p_1)$ as the new $p_2$. Let's consider these two cases:
 
 - Case $p_2$ is assigned as the new $p_1$:
 
@@ -98,23 +98,20 @@ k^2 - 3k + 1 &= 0 \\
 \end{align*}
 $$
 
-&emsp; Since $k \in [0, 0.5)$, we only consider $k = \frac{3 - \sqrt{5}}{2}$.
+&emsp; Since $k \in (0, 0.5)$, we only consider $k = \frac{3 - \sqrt{5}}{2}$.
 
 - Case $p_2$ is assigned as the new $p_2$:
 
 $$
 \begin{align*}
-\frac{R - p_1}{R - L} &= \frac{p_1 + R - p_2}{R - p_1} \\
-(R - p_1)^2 &= (R - L + p_1)(R - p_2) \\
-(R - L - k(R - L))^2 &= (R - L + L + k(R - L))(R - R + k(R - L)) \\
-(R - L)^2(1 - k)^2 &= k(R - L)(R + k(R - L)) \\
-(R - L)k^2 - 2(R - L)k + (R - L) &= k^2(R - L) + kR \\
-(-2R + 2L - R)k + (R - L) &= 0 \\
-\Rightarrow k &= \frac{R - L}{3R - 2L} \\
+\frac{R - p_2}{R - L} &= \frac{R - p_2}{R - p_1} \\
+R - L &= R - p_1 \\
+L &= p_1 \\
+\Rightarrow k &= 0 \\
 \end{align*}
 $$
 
-&emsp; Since $k$ fully depends on both $L$ and $R$, we find $k$ to be inconsistent; thus, unusable.
+&emsp; Since $k \notin (0, 0.5)$, this case is not considered. With this, we have shown the reason for the choice of the new pivot.
 
 The only $k$ that satisfies our needs is in the case where $p_2$ is assigned as the new $p_1$. With that, we can calculate the number of queries used to solve the motivational problem using the Golden-section Search Method. Denote $Q$ as the number of queries and $N$ as the length of the search space, i.e., $N = R - L$.
 
