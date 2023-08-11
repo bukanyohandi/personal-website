@@ -22,8 +22,8 @@ const PostContainer = styled.div`
   grid-template-columns: 1fr 300px;
   gap: 2rem;
   min-height: 150px;
-  max-width: 750px;
-  margin: 0 auto;
+  max-width: 650px;
+  margin: 25px auto 0 auto;
   padding: 2rem;
   background-color: white;
 `;
