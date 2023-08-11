@@ -16,29 +16,38 @@ Suppose we have a unimodal function $f : [L, R] \rightarrow \mathbb{R}$, where t
 One of the well-known algorithms, Ternary Search, uses a strategy of picking two pivot points $p_1$ and $p_2$ such that $L < p_1 < p_2 < R$, and then evaluating $f(p_1)$ and $f(p_2)$. This evaluation leads to one of three possible cases which are listed below. For the sake of simplicity, let's assume that the unimodal function has a local maximum that we are seeking to find (if we were looking for a local minimum, we would simply invert each comparison).
 
 - Case $f(p_1) < f(p_2)$:
+    
     Considering that the function is increasing before the maximum point, we are faced with one of the following scenarios:
 
     - $m \leq p_1 < p_2$, which is a contradiction under the current assumption that $f(p_1) < f(p_2)$, since the function would be increasing from $L$ until $p_1$; hence, it is impossible to have the maximum point on $p_1$ and before $p_1$.
     - $p_1 < m \leq p_2$, which implies that the maximum must lie in $(p_1, p_2]$.
     - $p_1 < p_2 < m$, which implies that the function is still increasing until $p_2$, meaning that the maximum must lie in $(p_2, R]$.
+
+    ![](/posts/figures/golden-section-search/ternary-search-case-1.png)
     
     This case describes the possibilities and illustrates why, in a case where $f(p_1) < f(p_2)$, we confidently narrow down our search space into $(p_1, p_2] \cup (p_2, R] = (p_1, R]$.
 
 - Case $f(p_1) > f(p_2)$:
+    
     We now deal with a similar situation with the previous case. We have either:
 
     - $m < p_1 < p_2$, which implies that the function is now in the state of decreasing after $p_1$, meaning that the maximum must lie in $[L, p_1)$.
     - $p_1 \leq m < p_2$, which implies that the maximum must lie in $[p_1, p_2)$.
     - $p_1 < p_2 \leq m$, which is a contradiction under the current assumption that $f(p_1) > f(p_2)$, since the function would be decreasing from $p_2$ onwards; hence, it is impossible to have the maximum point on $p_2$ and after $p_2$.
+
+    ![](/posts/figures/golden-section-search/ternary-search-case-2.png)
     
     This case describes the possibilities and illustrates why, in a case where $f(p_1) > f(p_2)$, we confidently narrow down our search space into $[L, p_1) \cup [p_1, p_2) = [L, p_2)$.
-    
+
 - Case $f(p_1) = f(p_2)$:
+    
     This case is quite simple as out of the possibilities below, only one is deemed valid:
     - $m \leq p_1 < p_2$, which is not a valid possibility, as this case implies that the function is now decreasing from $m$ onwards. Consequently, we have $f(p_1) > f(p_2)$, which is a contradiction under the current assumption that $f(p_1) = f(p_2)$.
     - $p_1 < m < p_2$, which is valid as the maximum lies in $(p_1, p_2)$.
     - $p_1 < p_2 \leq m$, which is not a valid possibility, as this case implies that the function must be increasing before $m$. Consequently, we have $f(p_1) < f(p_2)$, which is a contradiction under the current assumption that $f(p_1) = f(p_2)$.
 
+    ![](/posts/figures/golden-section-search/ternary-search-case-3.png)
+    
     This allows us to narrow down the search space into $(p_1, p_2)$.
 
 Ternary Search partitions the current search space into three equal-sized intervals. Denote $N$ as the length of the search space, i.e., $N = R - L$, then the size of the partitioned interval is $\frac{N}{3}$. This means that we want to choose $p_1 = L + \frac{N}{3}$ and $p_2 = R - \frac{N}{3}$. Denote $Q$ as the number of queries used to solve the motivational problem using the Ternary Search method.
@@ -72,14 +81,21 @@ $$
 
 The approach of the Golden-section Search is quite similar to the Ternary Search as the idea of maintaining two pivots is inherited. For the sake of simplicity, we will once again assume that the unimodal function has a local maximum that we are seeking to find. Let's denote the two pivots as $p_1$ and $p_2$ which satisfy $L < p_1 < p_2 < R$, and be certain that the point $m$ is located in the interval $[L, R]$. Assume that by using the previous queries, we already have the value of $f(L)$, $f(R)$, and one of the $f(p_1)$ and $f(p_2)$ such that $\max(f(L), f(R)) \leq f(p_1)$ or $f(p_2)$. Consider that we have $f(p_1)$ (in a case where we have $f(p_2)$, we only need to mirror the domain toward $\frac{L + R}{2}$, i.e., the middle point), our next step is to query the value of $f(p_2)$, and we will handle it based on the following similar cases in Ternary Search Method:
 
+- Case $f(p_1) = f(p_2)$:
+    
+    As we agreed that in this case the point $m$ lies in $(p_1, p_2)$, we may include this case to either $f(p_1) < f(p_2)$ or $f(p_1) > f(p_2)$ as $(p_1, p_2) \subset (p_1, R]$ and $(p_1, p_2) \subset [L, p_2)$.
+
 - Case $f(p_1) < f(p_2)$:
-    As explained previously, this case indicates that the point $m$ lies in $(p_1, R]$. Then, we can set $L := p_1$, $p_1 := p_2$, and $R := R$, utilizing the value of $f(p_1)$ as the new value of $f(L)$ and the value of $f(p_2)$ as the new value of $f(p_1)$. The choice of pivot is made accordingly, the reason is shown later.
+    
+    As explained, this case indicates that the point $m$ lies in $(p_1, R]$. Then, we can set $L := p_1$, $p_1 := p_2$, and $R := R$, utilizing the value of $f(p_1)$ as the new value of $f(L)$ and the value of $f(p_2)$ as the new value of $f(p_1)$. The choice of pivot is made accordingly, the reason is shown later.
+
+    ![](/posts/figures/golden-section-search/golden-section-search-case-1.png)
 
 - Case $f(p_1) > f(p_2)$:
-    Similarly, as explained previously, this case indicates that the point $m$ lies in $[L, p_2)$. Then, we can set $R := p_2$, $p_2 := p_1$, and $L := L$, utilizing the value of $f(p_2)$ as the new value of $f(R)$ and the value of $f(p_1)$ as the new value of $f(p_2)$ in the new interval. Again, the choice of pivot is made accordingly, the reason is shown later.
+    
+    Similarly, as explained, this case indicates that the point $m$ lies in $[L, p_2)$. Then, we can set $R := p_2$, $p_2 := p_1$, and $L := L$, utilizing the value of $f(p_2)$ as the new value of $f(R)$ and the value of $f(p_1)$ as the new value of $f(p_2)$ in the new interval. Again, the choice of pivot is made accordingly, the reason is shown later.
 
-- Case $f(p_1) = f(p_2)$:
-    As we agreed that in this case the point $m$ lies in $(p_1, p_2)$, we may include this case to either $f(p_1) < f(p_2)$ or $f(p_1) > f(p_2)$ as $(p_1, p_2) \subset (p_1, R]$ and $(p_1, p_2) \subset [L, p_2)$
+    ![](/posts/figures/golden-section-search/golden-section-search-case-2.png)
 
 Notice that after the transition, the assumptions we made are all still satisfied. With that we manage to remove either $[L, p_1]$ or $[p_2, R]$ from our search space with only $1$ additional query whereas the Ternary Search uses $2$ additional queries. However, it is still quite tricky to choose the value of $p_1$ and $p_2$ as we want the values to be optimal when we inherit them for the next interval query. 
 

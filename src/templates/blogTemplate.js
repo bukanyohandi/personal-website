@@ -18,17 +18,18 @@ const GlobalStyle = styled.div`
 `;
 
 const PostContainer = styled.div`
-  display: grid;
+  display: column;
   grid-template-columns: 1fr 300px;
   gap: 2rem;
-  max-width: 1000px;
+  min-height: 150px;
+  max-width: 750px;
   margin: 0 auto;
   padding: 2rem;
   background-color: white;
 `;
 
 const Post = styled.div`
-  width: 700px;
+  width: 100%;
 `;
 
 const PostTitle = styled.h1`
@@ -192,12 +193,6 @@ const BlogTemplate = ({ data }) => {
   const [toc, setToc] = useState([]);
   const headingsRef = useRef([]);
 
-  console.log(
-    post.rawMarkdownBody
-      .replace(/\|(.+?)\|/g, "<td>$1</td>")
-      .replace(/\n/g, "<tr></tr>")
-  );
-
   const textContent = (children) => {
     return children.reduce((acc, child) => {
       if (typeof child === "string") return acc + child;
@@ -225,8 +220,12 @@ const BlogTemplate = ({ data }) => {
     h6: (props) => customHeadingRenderer(props, 6),
 
     // This custom renderer changes how images are rendered
-    image: (props) => {
-      return <img {...props} style={{ maxWidth: "100%" }} />;
+    img: (props) => {
+      return (
+        <div style={{ textAlign: "center" }}>
+          <img {...props} style={{ maxWidth: "100%" }} />
+        </div>
+      );
     },
 
     // This custom renderer handles code blocks
@@ -270,20 +269,21 @@ const BlogTemplate = ({ data }) => {
               />
             </PostContent>
           </Post>
-          <TOCContainer>
+          {/* <TOCContainer>
             <h4>Table of Contents</h4>
             {renderTOC(toc)}
-          </TOCContainer>
+          </TOCContainer> */}
+
+          <div className="disqus-container">
+            <Disqus
+              config={{
+                url: `https://yohandi.me/${post.frontmatter.path}`,
+                identifier: post.id,
+                title: post.frontmatter.title,
+              }}
+            />
+          </div>
         </PostContainer>
-        <div className="disqus-container">
-          <Disqus
-            config={{
-              url: `https://yohandi.me/${post.frontmatter.path}`,
-              identifier: post.id,
-              title: post.frontmatter.title,
-            }}
-          />
-        </div>
       </Layout>
     </GlobalStyle>
   );

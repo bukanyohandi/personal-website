@@ -38,18 +38,41 @@ function getMax(contributions) {
 }
 
 const Container = styled.div`
+  width: 80%;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   background-color: #f9f9f9;
-  padding: 20px 0;
+  padding: 0 0;
+  margin: auto;
 `;
 
-const Card = styled.div`
-  margin: 20px;
-  width: ${typeof window !== "undefined"
-    ? `${window.screen.width * 0.4}px`
-    : "40%"};
+const LeftContainer = styled.div`
+  display: inline-block;
+  float: left;
+  width: 60%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: 52em) {
+    width: 100%;
+  }
 `;
+
+const RightContainer = styled.div`
+  display: inline-block;
+  float: right;
+  width: 40%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: 52em) {
+    width: 100%;
+  }
+`;
+
+const Card = styled.div``;
 
 // Various styled components for posts
 const Post = styled.div`
@@ -89,6 +112,7 @@ const PostExcerpt = styled.p`
 // Styled components for contributions card and tooltip
 const ContributionsCard = styled.div`
   position: relative;
+  max-width: 52em;
   display: grid;
   grid-template-columns: repeat(12, 1fr); // Grid of 12 columns for each month
   grid-gap: 4px;
@@ -168,63 +192,68 @@ const BlogPage = ({ data }) => {
         <title>Blog - Yohandi</title>
       </Helmet>
       <Container>
-        <Card>
-          {data.allMarkdownRemark.edges.map((post) => (
-            <PostLink
-              key={post.node.id}
-              to={post.node.fields.slug.replace(/\/$/, "")}
-            >
-              <Post>
-                <PostTitle>{post.node.frontmatter.title}</PostTitle>
-                <PostMeta>{post.node.frontmatter.date}</PostMeta>
-                <PostExcerpt>{post.node.excerpt}</PostExcerpt>
-              </Post>
-            </PostLink>
-          ))}
-        </Card>
-        <Card>
-          <ContributionsCard>
-            {Object.entries(contributions).map(([year, contributionsForYear]) =>
-              contributionsForYear.map((postCount, i) => (
-                <Month
-                  key={i}
-                  style={{
-                    backgroundColor:
-                      postCount > 0
-                        ? `rgba(25, 97, 39, ${
-                            (1 + Math.log(postCount)) /
-                            (1 + Math.log(maxContributions))
-                          })`
-                        : "#ebedf0",
-                  }}
-                  onMouseEnter={(e) => {
-                    const rect = e.target.getBoundingClientRect();
-                    setTooltipInfo({
-                      show: true,
-                      text: `${postCount} post${
-                        postCount === 0 || postCount === 1 ? "" : "s"
-                      } in ${getMonthName(i)} ${year}`,
-                      top: rect.top,
-                      left: rect.left + rect.width / 2,
-                    });
-                  }}
-                  onMouseLeave={() => {
-                    setTooltipInfo({ ...tooltipInfo, show: false });
-                  }}
-                />
-              ))
-            )}
-            <Tooltip
-              style={{
-                top: tooltipInfo.top + "px",
-                left: tooltipInfo.left + "px",
-              }}
-              show={tooltipInfo.show}
-            >
-              {tooltipInfo.text}
-            </Tooltip>
-          </ContributionsCard>
-        </Card>
+        <LeftContainer>
+          <Card>
+            {data.allMarkdownRemark.edges.map((post) => (
+              <PostLink
+                key={post.node.id}
+                to={post.node.fields.slug.replace(/\/$/, "")}
+              >
+                <Post>
+                  <PostTitle>{post.node.frontmatter.title}</PostTitle>
+                  <PostMeta>{post.node.frontmatter.date}</PostMeta>
+                  <PostExcerpt>{post.node.excerpt}</PostExcerpt>
+                </Post>
+              </PostLink>
+            ))}
+          </Card>
+        </LeftContainer>
+        <RightContainer>
+          <Card>
+            <ContributionsCard>
+              {Object.entries(contributions).map(
+                ([year, contributionsForYear]) =>
+                  contributionsForYear.map((postCount, i) => (
+                    <Month
+                      key={i}
+                      style={{
+                        backgroundColor:
+                          postCount > 0
+                            ? `rgba(25, 97, 39, ${
+                                (1 + Math.log(postCount)) /
+                                (1 + Math.log(maxContributions))
+                              })`
+                            : "#ebedf0",
+                      }}
+                      onMouseEnter={(e) => {
+                        const rect = e.target.getBoundingClientRect();
+                        setTooltipInfo({
+                          show: true,
+                          text: `${postCount} post${
+                            postCount === 0 || postCount === 1 ? "" : "s"
+                          } in ${getMonthName(i)} ${year}`,
+                          top: rect.top,
+                          left: rect.left + rect.width / 2,
+                        });
+                      }}
+                      onMouseLeave={() => {
+                        setTooltipInfo({ ...tooltipInfo, show: false });
+                      }}
+                    />
+                  ))
+              )}
+              <Tooltip
+                style={{
+                  top: tooltipInfo.top + "px",
+                  left: tooltipInfo.left + "px",
+                }}
+                show={tooltipInfo.show}
+              >
+                {tooltipInfo.text}
+              </Tooltip>
+            </ContributionsCard>
+          </Card>
+        </RightContainer>
       </Container>
     </Layout>
   );
