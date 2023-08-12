@@ -17,15 +17,22 @@ const GlobalStyle = styled.div`
   background-color: #f9f9f9;
 `;
 
+const MOBILE_CONST = 0.9;
+
 const PostContainer = styled.div`
   display: column;
   grid-template-columns: 1fr 300px;
   gap: 2rem;
   min-height: 150px;
   max-width: 650px;
-  margin: 25px auto 0 auto;
+  margin: 0 auto 0 auto;
   padding: 2rem;
   background-color: white;
+
+  @media only screen and (max-width: 52em) {
+    max-width: 550px;
+    margin: 25px auto 0 auto;
+  }
 `;
 
 const Post = styled.div`
@@ -41,6 +48,10 @@ const PostTitle = styled.h1`
   letter-spacing: 0.4px; /* Slightly tighter letter spacing for better readability */
   font-family: "Merriweather", serif;
   text-transform: uppercase;
+
+  @media only screen and (max-width: 52em) {
+    font-size: ${1.8 * MOBILE_CONST}rem; /* Adjusted for mobile */
+  }
 `;
 
 const PostInfo = styled.p`
@@ -114,6 +125,32 @@ const PostContent = styled.div`
     font-weight: 400;
     letter-spacing: 0.4px;
   }
+
+  @media only screen and (max-width: 52em) {
+    h1 {
+      font-size: ${1.76 * MOBILE_CONST}rem;
+    }
+
+    h2 {
+      font-size: ${1.44 * MOBILE_CONST}rem;
+    }
+
+    h3 {
+      font-size: ${1.28 * MOBILE_CONST}rem;
+    }
+
+    h4 {
+      font-size: ${1.12 * MOBILE_CONST}rem;
+    }
+
+    h5 {
+      font-size: ${0.96 * MOBILE_CONST}rem;
+    }
+
+    h6 {
+      font-size: ${0.88 * MOBILE_CONST}rem;
+    }
+  }
 `;
 
 const TOCContainer = styled.div`
@@ -147,6 +184,18 @@ const TOCContainer = styled.div`
     font-size: 0.9em;
     text-decoration: none;
     line-height: 1rem;
+  }
+
+  @media only screen and (max-width: 52em) {
+    font-size: ${1.1 * MOBILE_CONST}em;
+
+    h4 {
+      font-size: ${1.2 * MOBILE_CONST}em;
+    }
+
+    a {
+      font-size: ${0.9 * MOBILE_CONST}em;
+    }
   }
 `;
 

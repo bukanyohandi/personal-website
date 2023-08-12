@@ -37,6 +37,8 @@ function getMax(contributions) {
   return max;
 }
 
+const MOBILE_CONST = 0.9;
+
 const Container = styled.div`
   width: 80%;
   display: flex;
@@ -94,6 +96,10 @@ const PostTitle = styled.h3`
   color: #2c3e50;
   margin-bottom: 0.5em;
   font-weight: 100;
+
+  @media only screen and (max-width: 52em) {
+    font-size: ${1.6 * MOBILE_CONST}em;
+  }
 `;
 const PostMeta = styled.small`
   font-family: "Open Sans", sans-serif;
@@ -103,6 +109,10 @@ const PostMeta = styled.small`
   display: block;
   margin-top: -0.5em;
   margin-bottom: 1em;
+
+  @media only screen and (max-width: 52em) {
+    font-size: ${1 * MOBILE_CONST}em;
+  }
 `;
 const PostExcerpt = styled.p`
   font-family: "Open Sans", sans-serif;
