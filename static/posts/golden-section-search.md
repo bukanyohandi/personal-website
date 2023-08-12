@@ -24,6 +24,7 @@ One of the well-known algorithms, Ternary Search, uses a strategy of picking two
     - $p_1 < p_2 < m$, which implies that the function is still increasing until $p_2$, meaning that the maximum must lie in $(p_2, R]$.
 
     ![](/posts/figures/golden-section-search/ternary-search-case-1.png)
+    ![Figure 1 & 2](/posts/figures/golden-section-search/ternary-search-case-2.png)
     
     This case describes the possibilities and illustrates why, in a case where $f(p_1) < f(p_2)$, we confidently narrow down our search space into $(p_1, p_2] \cup (p_2, R] = (p_1, R]$.
 
@@ -35,7 +36,8 @@ One of the well-known algorithms, Ternary Search, uses a strategy of picking two
     - $p_1 \leq m < p_2$, which implies that the maximum must lie in $[p_1, p_2)$.
     - $p_1 < p_2 \leq m$, which is a contradiction under the current assumption that $f(p_1) > f(p_2)$, since the function would be decreasing from $p_2$ onwards; hence, it is impossible to have a maximum point on $p_2$ and after $p_2$.
 
-    ![](/posts/figures/golden-section-search/ternary-search-case-2.png)
+    ![](/posts/figures/golden-section-search/ternary-search-case-3.png)
+    ![Figure 3 & 4](/posts/figures/golden-section-search/ternary-search-case-4.png)
     
     This case describes the possibilities and illustrates why, in a case where $f(p_1) > f(p_2)$, we confidently narrow down our search space into $[L, p_1) \cup [p_1, p_2) = [L, p_2)$.
 
@@ -46,7 +48,7 @@ One of the well-known algorithms, Ternary Search, uses a strategy of picking two
     - $p_1 < m < p_2$, which is valid as the maximum lies in $(p_1, p_2)$.
     - $p_1 < p_2 \leq m$, which is not a valid possibility, as this case implies that the function must be increasing before $m$. Consequently, we have $f(p_1) < f(p_2)$, which is a contradiction under the current assumption that $f(p_1) = f(p_2)$.
 
-    ![](/posts/figures/golden-section-search/ternary-search-case-3.png)
+    ![Figure 5](/posts/figures/golden-section-search/ternary-search-case-5.png)
     
     This allows us to narrow down the search space into $(p_1, p_2)$.
 
@@ -89,13 +91,13 @@ The approach of the Golden-section Search is quite similar to the Ternary Search
     
     As explained, this case indicates that the point $m$ lies in $(p_1, R]$. Then, we can set $L := p_1$, $p_1 := p_2$, and $R := R$, utilizing the value of $f(p_1)$ as the new value of $f(L)$ and the value of $f(p_2)$ as the new value of $f(p_1)$. The choice of pivot is made accordingly; the reason is shown later.
 
-    ![](/posts/figures/golden-section-search/golden-section-search-case-1.png)
+    ![Figure 6](/posts/figures/golden-section-search/golden-section-search-case-1.png)
 
 - Case $f(p_1) > f(p_2)$:
     
     Similarly, as explained, this case indicates that the point $m$ lies in $[L, p_2)$. Then, we can set $R := p_2$, $p_2 := p_1$, and $L := L$, utilizing the value of $f(p_2)$ as the new value of $f(R)$ and the value of $f(p_1)$ as the new value of $f(p_2)$ in the new interval. Again, the choice of pivot is made accordingly; the reason is shown later.
 
-    ![](/posts/figures/golden-section-search/golden-section-search-case-2.png)
+    ![Figure 7](/posts/figures/golden-section-search/golden-section-search-case-2.png)
 
 Notice that after the transition, the assumptions we made are all still satisfied. With that, we manage to remove either $[L, p_1]$ or $[p_2, R]$ from our search space with only $1$ additional query, whereas the Ternary Search uses $2$ additional queries. However, it is still quite tricky to choose the value of $p_1$ and $p_2$ as we want the values to be optimal when we inherit them for the next interval query. 
 

@@ -32,9 +32,7 @@ const PostContainer = styled.div`
   @media only screen and (max-width: 800px) {
     max-width: 500px;
     margin: 20px auto 0 auto;
-    padding-top: 0.5rem;
-    padding-left: 0.5rem;
-    padding-right: 0.2rem;
+    padding: 0.75rem;
   }
 `;
 
@@ -154,6 +152,12 @@ const PostContent = styled.div`
       font-size: ${0.88 * MOBILE_CONST}rem;
     }
   }
+`;
+
+const FigureCaption = styled.div`
+  font-family: "Open Sans", sans-serif; /* Similar to PostInfo */
+  font-size: 1rem; /* Slightly smaller than h2 */
+  font-weight: 600; /* Normal font weight */
 `;
 
 const TOCContainer = styled.div`
@@ -276,6 +280,7 @@ const BlogTemplate = ({ data }) => {
       return (
         <div style={{ textAlign: "center" }}>
           <img {...props} style={{ maxWidth: "100%" }} />
+          <FigureCaption>{props.alt}</FigureCaption>
         </div>
       );
     },

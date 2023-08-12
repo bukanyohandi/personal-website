@@ -34,6 +34,7 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^4.10.1",
     "react-katex": "^3.0.1",
+    "react-latex": "^2.0.0",
     "react-markdown": "^8.0.7",
     "react-mathjax": "^1.0.1",
     "react-popper": "^2.3.0",
