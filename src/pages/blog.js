@@ -37,7 +37,7 @@ function getMax(contributions) {
   return max;
 }
 
-const MOBILE_CONST = 0.9;
+const MOBILE_CONST = 0.85;
 
 const Container = styled.div`
   width: 80%;
@@ -48,6 +48,10 @@ const Container = styled.div`
   background-color: #f9f9f9;
   padding: 0 0;
   margin: auto;
+
+  @media only screen and (max-width: 52em) {
+    width: 95%;
+  }
 `;
 
 const LeftContainer = styled.div`
