@@ -48,6 +48,7 @@ const Container = styled.div`
   background-color: #f9f9f9;
   padding: 0 0;
   margin: auto;
+  max-width: 900px;
 
   @media only screen and (max-width: 52em) {
     width: 95%;
@@ -120,7 +121,12 @@ const PostMeta = styled.small`
 `;
 const PostExcerpt = styled.p`
   font-family: "Open Sans", sans-serif;
+  font-size: 1.05em;
   color: #333;
+
+  @media only screen and (max-width: 52em) {
+    font-size: ${1.05 * MOBILE_CONST}em;
+  }
 `;
 
 // Styled components for contributions card and tooltip
