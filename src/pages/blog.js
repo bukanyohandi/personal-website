@@ -40,7 +40,7 @@ function getMax(contributions) {
 const MOBILE_CONST = 0.85;
 
 const Container = styled.div`
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -48,10 +48,11 @@ const Container = styled.div`
   background-color: #f9f9f9;
   padding: 0 0;
   margin: auto;
-  max-width: 900px;
+  max-width: 950px;
 
-  @media only screen and (max-width: 52em) {
-    width: 95%;
+  @media only screen and (max-width: 800px) {
+    width: 100%;
+    max-width: 500px;
   }
 `;
 
@@ -62,8 +63,9 @@ const LeftContainer = styled.div`
   padding: 20px;
   box-sizing: border-box;
 
-  @media only screen and (max-width: 52em) {
+  @media only screen and (max-width: 800px) {
     width: 100%;
+    padding: 10px;
   }
 `;
 
@@ -74,8 +76,9 @@ const RightContainer = styled.div`
   padding: 20px;
   box-sizing: border-box;
 
-  @media only screen and (max-width: 52em) {
+  @media only screen and (max-width: 800px) {
     width: 100%;
+    padding: 10px;
   }
 `;
 
@@ -97,13 +100,15 @@ const PostLink = styled(Link)`
 const PostTitle = styled.h3`
   font-family: "Merriweather", serif;
   text-transform: uppercase;
-  font-size: 1.6em;
+  font-size: 1.52em;
   color: #2c3e50;
   margin-bottom: 0.5em;
+  margin-top: 0.3em;
   font-weight: 100;
 
-  @media only screen and (max-width: 52em) {
-    font-size: ${1.6 * MOBILE_CONST}em;
+  @media only screen and (max-width: 800px) {
+    font-size: ${1.52 * MOBILE_CONST}em;
+    margin-top: 0.3em;
   }
 `;
 const PostMeta = styled.small`
@@ -115,7 +120,7 @@ const PostMeta = styled.small`
   margin-top: -0.5em;
   margin-bottom: 1em;
 
-  @media only screen and (max-width: 52em) {
+  @media only screen and (max-width: 800px) {
     font-size: ${1 * MOBILE_CONST}em;
   }
 `;
@@ -123,16 +128,18 @@ const PostExcerpt = styled.p`
   font-family: "Open Sans", sans-serif;
   font-size: 1.05em;
   color: #333;
+  margin-bottom: 0.3em;
 
-  @media only screen and (max-width: 52em) {
+  @media only screen and (max-width: 800px) {
     font-size: ${1.05 * MOBILE_CONST}em;
+    margin-bottom: 0.3em;
   }
 `;
 
 // Styled components for contributions card and tooltip
 const ContributionsCard = styled.div`
   position: relative;
-  max-width: 52em;
+  max-width: 800px;
   display: grid;
   grid-template-columns: repeat(12, 1fr); // Grid of 12 columns for each month
   grid-gap: 4px;

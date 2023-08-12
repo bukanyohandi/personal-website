@@ -17,7 +17,7 @@ const GlobalStyle = styled.div`
   background-color: #f9f9f9;
 `;
 
-const MOBILE_CONST = 0.9;
+const MOBILE_CONST = 0.85;
 
 const PostContainer = styled.div`
   display: column;
@@ -29,9 +29,12 @@ const PostContainer = styled.div`
   padding: 2rem;
   background-color: white;
 
-  @media only screen and (max-width: 52em) {
-    max-width: 550px;
-    margin: 25px auto 0 auto;
+  @media only screen and (max-width: 800px) {
+    max-width: 500px;
+    margin: 20px auto 0 auto;
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.2rem;
   }
 `;
 
@@ -49,7 +52,7 @@ const PostTitle = styled.h1`
   font-family: "Merriweather", serif;
   text-transform: uppercase;
 
-  @media only screen and (max-width: 52em) {
+  @media only screen and (max-width: 800px) {
     font-size: ${1.8 * MOBILE_CONST}rem; /* Adjusted for mobile */
   }
 `;
@@ -126,7 +129,7 @@ const PostContent = styled.div`
     letter-spacing: 0.4px;
   }
 
-  @media only screen and (max-width: 52em) {
+  @media only screen and (max-width: 800px) {
     h1 {
       font-size: ${1.76 * MOBILE_CONST}rem;
     }
@@ -186,7 +189,7 @@ const TOCContainer = styled.div`
     line-height: 1rem;
   }
 
-  @media only screen and (max-width: 52em) {
+  @media only screen and (max-width: 800px) {
     font-size: ${1.1 * MOBILE_CONST}em;
 
     h4 {
