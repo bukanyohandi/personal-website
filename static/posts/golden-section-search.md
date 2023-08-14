@@ -156,6 +156,6 @@ You may compare the number of queries used for all the explained methods side-by
 | Adapted Ternary Search | $2 \times \lceil \log_2 (N)\rceil$             |
 | Golden-section Search  | $3 + \lceil \log_\phi (N) \rceil$              |
 
-In the upcoming post, I am planning to write about the Variation of the Golden-Section Method on a Density Function. Stay tuned!
+In the upcoming post, I am planning to write about the Variation of the Golden-section Search on a Density Function. Stay tuned!
 
 &copy; 2023 Yohandi. All rights reserved.
