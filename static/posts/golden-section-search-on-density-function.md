@@ -1,5 +1,5 @@
 ---
-title: "Golden-section Search's Variation on a Density Function"
+title: "Variations of Golden-Section Search on a Density Function"
 date: "2023-08-14"
 author: "Yohandi"
 tags: []
