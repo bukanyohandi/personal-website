@@ -87,7 +87,7 @@ $$
 
 ### Additional Variation: Density Function
 
-When encountering a similar function, say $f$, that also represents the spread of the peak point in a unimodal function, we can make a transformation to accommodate this scenario. We will transform the function $f$ into $f^\prime$ and $\epsilon$ into $\epsilon^\prime$, where: 
+When encountering a similar function, say $f$, that does not satisfy the $\int_{-\infty}^{\infty} f(x) \:dx = 1$ condition, but still represents the spread of the peak point in a unimodal function, we can make a transformation to accommodate this scenario. We will transform the function $f(x)$ into $f^\prime(x)$ and $\epsilon$ into $\epsilon^\prime$, where: 
 
 $$
 \begin{align*}
