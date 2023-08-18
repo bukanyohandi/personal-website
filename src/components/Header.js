@@ -6,18 +6,16 @@ import { useLocation } from "@reach/router";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: ${({ inHomePage }) =>
-    inHomePage ? "center" : "flex-start"};
+  justify-content: center;
   align-items: center;
   height: ${({ inHomePage }) => (inHomePage ? "90vh" : "17vh")};
   background-color: #f9f9f9;
-  transition: transform 0.3s ease-in-out;
-  gap: 0px;
+  transition: height 1s ease-in-out;
 `;
 
 const Title = styled.div`
   text-align: center;
-  font-size: ${({ inHomePage }) => (inHomePage ? "70px" : "60px")};
+  font-size: ${({ inHomePage }) => (inHomePage ? "70px" : "70px")};
   color: #2c3e50;
   margin: ${({ inHomePage }) => (inHomePage ? "0px" : "20px 0")};
   font-weight: 300;
@@ -51,19 +49,20 @@ const Navigation = styled.nav`
 const NavLink = styled(Link)`
   position: relative;
   text-decoration: none;
-  color: #2c3e50;
+  color: #2b3d4f;
   font-size: 18px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  font-weight: 400;
 
   &:hover {
-    color: #c0392b;
   }
 `;
 
 const activeLinkStyle = {
   color: "#c0392b",
+  fontWeight: 400,
 };
 
 const Header = () => {
