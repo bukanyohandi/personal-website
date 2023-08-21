@@ -54,11 +54,11 @@ This dynamic programming solution works in $O(n^2)$; however, it is still not su
 
 ### Convex Hull Trick
 
-This is where our main optimization technique, the Convex Hull Trick, comes in handy. The Convex Hull Trick is a computational geometry used to manage a set of linear functions, constructing a lower/upper convex hull. To illustrate, suppose we are going to insert the following linear functions: $-x + 4$, $-2x + 5$, $-5x + 8$, and $-6x + 10$, into our lower convex hull.
+This is where our main optimization technique, the Convex Hull Trick, comes in handy. The Convex Hull Trick is a computational geometry used to manage a set of affine functions, constructing a lower / upper hull. To illustrate, suppose we are going to insert the following affine functions: $-x + 4$, $-2x + 5$, $-5x + 8$, and $-6x + 10$, into our lower hull.
 
 ![](/posts/figures/convex-hull-trick/convex-hull-sample-case.gif)
 
-Notice that in our lower convex hull, we always want to have the intersection points of every two lines that are side by side sorted. Formally, if we have a set of linear functions in our lower convex hull, say $f_0(x)$, $f_1(x)$, $\ldots$, and $f_{n - 1}(x)$, with $p_i$ representing the intersection point of $f_i(x)$ and $f_{i +1}(x)$ for $0 \leq i < n - 2$; then, it is essential that $p_0 > p_1 > \ldots > p_{n - 2}$ (or sorted in the other way).
+Notice that in our lower hull, we always want to have the intersection points of every two lines that are side by side sorted. Formally, if we have a set of affine functions in our lower hull, say $f_0(x)$, $f_1(x)$, $\ldots$, and $f_{n - 1}(x)$, with $p_i$ representing the x-coordinate of the intersection point of $f_i(x)$ and $f_{i + 1}(x)$, i.e., $f_i(p_i) = f_{i + 1}(p_i)$, for $0 \leq i < n - 2$; then, it is essential that $p_0 > p_1 > \ldots > p_{n - 2}$ (or sorted in the other way).
 
 If there is a scenario where $p_i = p_{i + 1}$, we can discard either $f_i(x)$ or $f_{i + 1}(x)$. The choice depends on the gradient, considering whether it is lower / higher and negative / positive.
 
@@ -92,7 +92,7 @@ void addLine(Line line) {
 
 The implementation above operates efficiently when the inserted gradient is in descending order. The reason will be explained later.
 
-In our set of linear functions, it can be observed that:
+In our set of affine functions, it can be observed that:
 - $f_0(x)$ maximizes the value of $x$ for $x \in [p_0, \infty)$;
 - $f_1(x)$ maximizes the value of $x$ for $x \in [p_1, p_0]$;
 - $\ldots$
@@ -122,7 +122,7 @@ $$
 \end{align*}
 $$
 
-Regardless of the value of $j$, we consistently add $x_i \cdot y_i - A_i$ to $\texttt{dp}_i$; thus, this can be omitted from our optimization process. A linear function $f_i(x) = m_i \cdot x + c_i$ is formed by assigning $m_i$ as $-x_i$ and $c_i$ as $\texttt{dp}_i$. If $C$ represents a constant in $\texttt{dp}_i$, then $C = x_i \cdot y_i - A_i$. Our $\texttt{dp}$ equation can then be expressed as:
+Regardless of the value of $j$, we consistently add $x_i \cdot y_i - A_i$ to $\texttt{dp}_i$; thus, this can be omitted from our optimization process. An affine function $f_i(x) = m_i \cdot x + c_i$ is formed by assigning $m_i$ as $-x_i$ and $c_i$ as $\texttt{dp}_i$. If $C$ represents a constant in $\texttt{dp}_i$, then $C = x_i \cdot y_i - A_i$. Our $\texttt{dp}$ equation can then be expressed as:
 
 $$
 \begin{align*}
@@ -182,14 +182,14 @@ The gradient of the inserted line is guaranteed to be in descending order as the
 
 ### Variation
 
-#### Upper Convex Hull
+#### Upper Hull
 
-In a case where we have a minimization problem, we want to look up for the upper convex hull. Some comparisons in the code, especially in $\texttt{comp}$ within $\texttt{addLine}$ and the binary search in $\texttt{optimalLine}$, need to be inverted.
+In a case where we have a minimization problem, we want to look up for the upper hull. Some comparisons in the code, especially in $\texttt{comp}$ within $\texttt{addLine}$ and the binary search in $\texttt{optimalLine}$, need to be inverted.
 
 #### Dynamic Convex Hull Trick
 
 In this particular case, we do not have the guarantee of having the gradient insertion sorted, whether it is in ascending order or in descending order; consequently, we no longer can use $\texttt{stl::vector}$ for our data structure. We may use $\texttt{stl::set}$ to maintain the dynamic gradients. Or... we may use Li Chao Tree, which I will discuss in the upcoming post.
 
-And there we have it! I have always found the Convex Hull Trick fascinating, especially when it comes to refine a naive $O(n^2)$ dynamic programming approach down to $O(n \log n)$. Of course, it still requires an additional property, which is to have the dynamic programming rewritable as a linear function. Some other DP optimizations, such as Divide and Conquer, Knuth, and more will probably discussed in the future posts as well! Stay tuned! 
+And there we have it! I have always found the Convex Hull Trick fascinating, especially when it comes to refine a naive $O(n^2)$ dynamic programming approach down to $O(n \log n)$. Of course, it still requires an additional property, which is to have the dynamic programming rewritable as an affine function. Some other DP optimizations, such as Divide and Conquer, Knuth, and more will probably discussed in the future posts as well! Stay tuned! 
 
 &copy; 2023 Yohandi. All rights reserved.
