@@ -14,12 +14,33 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [
-          `gatsby-remark-relative-images`,
+        extensions: [".mdx", ".md"],
+        gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-highlight-code`,
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
             options: {
-              maxWidth: 800, // You can set your desired maximum width
+              // Class prefix for <pre> tags containing syntax highlighting;
+              // defaults to 'language-' (e.g. <pre class="language-js">).
+              // If your site loads Prism into the browser at runtime,
+              // (e.g. for use with libraries like react-live),
+              // you may use this to prevent Prism from re-processing syntax.
+              // This is an uncommon use-case though;
+              // If you're unsure, it's best to use the default value.
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
             },
           },
         ],
@@ -32,6 +53,7 @@ module.exports = {
         path: `${__dirname}/static/posts`,
       },
     },
+    "gatsby-plugin-web-font-loader",
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {

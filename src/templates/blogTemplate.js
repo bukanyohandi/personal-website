@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 import { InlineMath, BlockMath } from "react-katex";
 import "katex/dist/katex.min.css"; // Import KaTeX CSS
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import gfm from "remark-gfm";
@@ -81,7 +81,12 @@ const PostContent = styled.div`
   }
 
   a {
-    color: #007bff;
+    color: #157a94;
+    text-decoration: none;
+
+    &:hover {
+      color: #106272;
+    }
   }
 
   h1 {
@@ -286,10 +291,36 @@ const BlogTemplate = ({ data }) => {
     },
 
     // This custom renderer handles code blocks
-    code: ({ language, value }) => {
-      return (
-        <SyntaxHighlighter style={dark} language={language} children={value} />
-      );
+    code: ({ node, inline, className, children, ...props }) => {
+      const match = /language-(\w+)/.exec(className || "");
+
+      // Check for window object (may not be available during SSR or in certain environments)
+      const windowWidth =
+        typeof window !== "undefined" ? window.innerWidth : 1000; // 1000 as default width
+
+      // Set maxWidth based on window width
+      const maxWidthValue = windowWidth <= 800 ? "480px" : "630px";
+
+      const codeBlockContainerStyle = {
+        maxWidth: maxWidthValue,
+        overflowX: "auto",
+      };
+
+      if (!inline && match) {
+        return (
+          <div style={codeBlockContainerStyle}>
+            <SyntaxHighlighter style={prism} language={match[1]} {...props}>
+              {String(children).replace(/\n$/, "")}
+            </SyntaxHighlighter>
+          </div>
+        );
+      } else {
+        return (
+          <code className={className} {...props}>
+            {children}
+          </code>
+        );
+      }
     },
 
     // This custom renderer handles inline math
