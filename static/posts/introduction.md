@@ -2,7 +2,7 @@
 title: "My First Blog"
 date: "2023-07-31"
 author: "Yohandi"
-tags: []
+tags: [miscellaneous]
 ---
 
 Hey there!

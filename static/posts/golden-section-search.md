@@ -2,7 +2,7 @@
 title: "Golden-section Search"
 date: "2023-08-09"
 author: "Yohandi"
-tags: []
+tags: [algorithm, optimization, search, tutorial]
 ---
 
 You might have heard about the Golden Ratio. It is this special number that often shows up in mathematics. The Golden Section Search uses this very ratio to solve a particular kind of problem, such as finding the minimum or maximum of a unimodal function.

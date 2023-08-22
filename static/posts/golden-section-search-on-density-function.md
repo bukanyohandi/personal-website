@@ -2,7 +2,7 @@
 title: "Variations of Golden-section Search on a Density Function"
 date: "2023-08-14"
 author: "Yohandi"
-tags: []
+tags: [algorithm, optimization, search, tutorial]
 ---
 
 Taking a further step from my previous post, in this one, we are going to see the application of the Golden-section Search to a density function. If you are not quite familiar with the method yet, you might want to refer first [here](https://www.yohandi.me/blog/golden-section-search/).

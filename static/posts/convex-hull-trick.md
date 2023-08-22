@@ -2,7 +2,7 @@
 title: "DP Optimization: Convex Hull Trick"
 date: "2023-08-21"
 author: "Yohandi"
-tags: []
+tags: [algorithm, dynamic-programming, optimization, tutorial]
 ---
 
 "Geometry being useful", I copied that down from [this blog](https://codeforces.com/blog/entry/63823). And yes, in any subject, geometry often steps in to offer a fresh perspective. The Convex Hull Trick is a testament to this, seamlessly blending algorithmic efficiency with geometric intuition. In this post, I will discuss pretty much about this method.
