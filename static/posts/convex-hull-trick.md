@@ -99,7 +99,7 @@ In our set of affine functions, it can be observed that:
 - $f_{n - 2}(x)$ maximizes the value of $x$ for $x \in [p_{n - 2}, p_{n - 3}]$;
 - $f_{n - 1}(x)$ maximizes the value of $x$ for $x \in (-\infty, p_{n - 2}]$.
 
-Using this observation, whenever we want to look up for $f_i(x)$ that maximizes an $x$, we can perform a binary search on the intersection points to determine the domain in which $x$ lies.
+Using this observation, whenever we want to look up for $i$ that maximizes $f_i(x)for an $x$, we can perform a binary search on the intersection points to determine the domain where $x$ lies.
 
 ```c++
 int optimalLine(long long x) {
