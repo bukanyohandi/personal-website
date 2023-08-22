@@ -4,6 +4,8 @@ import Layout from "../layouts";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
+const EDIT_MODE = false;
+
 const monthNames = [
   "January",
   "February",
@@ -45,14 +47,15 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: #f9f9f9;
+  background-color: #eef2f7;
   padding: 0 0;
-  margin: auto;
+  margin: 20px auto;
   max-width: 950px;
+  border: ${EDIT_MODE ? "1px solid" : "none"};
 
   @media only screen and (max-width: 800px) {
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
   }
 `;
 
@@ -62,6 +65,7 @@ const LeftContainer = styled.div`
   width: 60%;
   padding: 20px;
   box-sizing: border-box;
+  border: ${EDIT_MODE ? "1px solid" : "none"};
 
   @media only screen and (max-width: 800px) {
     width: 100%;
@@ -75,6 +79,7 @@ const RightContainer = styled.div`
   width: 40%;
   padding: 20px;
   box-sizing: border-box;
+  border: ${EDIT_MODE ? "1px solid" : "none"};
 
   @media only screen and (max-width: 800px) {
     width: 100%;
@@ -82,7 +87,9 @@ const RightContainer = styled.div`
   }
 `;
 
-const Card = styled.div``;
+const Card = styled.div`
+  border: ${EDIT_MODE ? "1px solid" : "none"};
+`;
 
 // Various styled components for posts
 const Post = styled.div`
@@ -92,6 +99,7 @@ const Post = styled.div`
   margin-bottom: 2em;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   text-decoration: none;
+  border: ${EDIT_MODE ? "1px solid" : "none"};
 `;
 const PostLink = styled(Link)`
   text-decoration: none;
@@ -133,6 +141,46 @@ const PostExcerpt = styled.p`
   @media only screen and (max-width: 800px) {
     font-size: ${1.05 * MOBILE_CONST}em;
     margin-bottom: 0.3em;
+  }
+`;
+const PostTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 1em;
+
+  span {
+    margin-right: 10px;
+    background-color: #ebedf0;
+    padding: 5px 10px;
+    border-radius: 15px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    font-size: ${0.9 * MOBILE_CONST}em;
+    margin-top: 0.8em;
+  }
+`;
+const PostTagLink = styled(Link)`
+  margin-top: 5px;
+  margin-right: 10px;
+  background-color: #ebedf0;
+  padding: 5px 10px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #333;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #d0d3d4;
+  }
+
+  @media only screen and (max-width: 800px) {
+    margin-top: 0.8em;
   }
 `;
 
@@ -181,6 +229,51 @@ const Tooltip = styled.div`
   }
 `;
 
+const TagsContainer = styled.div`
+  border: ${EDIT_MODE ? "1px solid" : "none"};
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+`;
+const TagsCard = styled.div`
+  border: ${EDIT_MODE ? "1px solid" : "none"};
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  margin-top: 20px;
+`;
+const TagsTitle = styled.h3`
+  font-family: "Merriweather", serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.8em;
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+`;
+const TagLink = styled(Link)`
+  margin-right: 10px;
+  background-color: #ebedf0;
+  padding: 5px 10px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s;
+  display: inline;
+
+  &:hover {
+    background-color: #d0d3d4;
+  }
+
+  @media only screen and (max-width: 800px) {
+    margin-top: 0.8em;
+  }
+`;
+
 const BlogPage = ({ data }) => {
   // Initialize a structure to store post counts per month per year
   const contributions = {
@@ -208,6 +301,13 @@ const BlogPage = ({ data }) => {
   // Calculate the max number of contributions for scaling
   const maxContributions = getMax(contributions);
 
+  // Extract all tags and create a unique set
+  const allTags = data.allMarkdownRemark.edges
+    .map((edge) => edge.node.frontmatter.tags)
+    .flat();
+  const uniqueTagsSet = new Set(allTags);
+  const uniqueTags = [...uniqueTagsSet].sort(); // Convert Set to Array and sort alphabetically
+
   const [tooltipInfo, setTooltipInfo] = useState({
     show: false,
     text: "",
@@ -230,6 +330,16 @@ const BlogPage = ({ data }) => {
                   <PostTitle>{post.node.frontmatter.title}</PostTitle>
                   <PostMeta>{post.node.frontmatter.date}</PostMeta>
                   <PostExcerpt>{post.node.excerpt}</PostExcerpt>
+                  <PostTags>
+                    {post.node.frontmatter.tags.map((tag) => (
+                      <PostTagLink
+                        key={tag}
+                        to={`tags/${tag.toLowerCase().replace(/ /g, "_")}`}
+                      >
+                        {tag}
+                      </PostTagLink>
+                    ))}
+                  </PostTags>
                 </Post>
               </PostLink>
             ))}
@@ -280,6 +390,19 @@ const BlogPage = ({ data }) => {
               </Tooltip>
             </ContributionsCard>
           </Card>
+          <TagsCard>
+            <TagsTitle>Tags</TagsTitle>
+            <TagsContainer>
+              {uniqueTags.map((tag) => (
+                <TagLink
+                  key={tag}
+                  to={`tags/${tag.toLowerCase().replace(/ /g, "_")}`}
+                >
+                  {tag}
+                </TagLink>
+              ))}
+            </TagsContainer>
+          </TagsCard>
         </RightContainer>
       </Container>
     </Layout>
@@ -298,6 +421,7 @@ export const pageQuery = graphql`
             title
             date(formatString: "MMMM DD, YYYY")
             author
+            tags
           }
           fields {
             slug

@@ -25,7 +25,7 @@ const PostContainer = styled.div`
   gap: 2rem;
   min-height: 150px;
   max-width: 650px;
-  margin: 0 auto 0 auto;
+  margin: 20px auto;
   padding: 2rem;
   background-color: white;
 
@@ -44,6 +44,7 @@ const PostTitle = styled.h1`
   font-size: 1.8rem; /* Slightly bigger font */
   font-weight: 100; /* Bold font weight */
   color: #2c3e50;
+  margin-top: 0rem;
   margin-bottom: 0.8rem; /* A bit more space below the title */
   line-height: 1; /* Control the height of the line */
   letter-spacing: 0.4px; /* Slightly tighter letter spacing for better readability */
@@ -211,6 +212,28 @@ const TOCContainer = styled.div`
   }
 `;
 
+const TagLink = styled.a`
+  margin-right: 10px;
+  background-color: #ebedf0;
+  padding: 5px 10px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #333;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #d0d3d4;
+  }
+`;
+const TagsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; // space between tags
+  margin-top: 1em; // space above the tag group
+`;
+
 const createTOCTree = (headings) => {
   const toc = [];
   let stack = [];
@@ -348,6 +371,13 @@ const BlogTemplate = ({ data }) => {
           <Post>
             <PostTitle>{post.frontmatter.title}</PostTitle>
             <PostInfo>{post.frontmatter.date}</PostInfo>
+            <TagsWrapper>
+              {post.frontmatter.tags.map((tag) => (
+                <TagLink href={`/tags/${tag}`} key={tag}>
+                  {tag}
+                </TagLink>
+              ))}
+            </TagsWrapper>
             <PostContent>
               <ReactMarkdown
                 components={renderers}
@@ -388,6 +418,7 @@ export const postQuery = graphql`
         title
         author
         date(formatString: "MMMM DD, YYYY")
+        tags
       }
     }
   }
