@@ -2,7 +2,7 @@
 title: "DP Optimization: Convex Hull Trick"
 date: "2023-08-21"
 author: "Yohandi"
-tags: [algorithm, dynamic-programming, optimization, tutorial]
+tags: [algorithm, dynamic-programming, geometry, optimization, tutorial]
 ---
 
 "Geometry being useful", I copied that down from [this blog](https://codeforces.com/blog/entry/63823). And yes, in any subject, geometry often steps in to offer a fresh perspective. The Convex Hull Trick is a testament to this, seamlessly blending algorithmic efficiency with geometric intuition. In this post, I will discuss pretty much about this method.
@@ -188,7 +188,7 @@ In a case where we have a minimization problem, we want to look up for the upper
 
 #### Dynamic Convex Hull Trick
 
-In this particular case, we do not have the guarantee of having the gradient insertion sorted, whether it is in ascending order or in descending order; consequently, we no longer can use $\texttt{stl::vector}$ for our data structure. We may use $\texttt{stl::set}$ to maintain the dynamic gradients. Or... we may use Li Chao Tree, which I will discuss in the upcoming post.
+In this particular case, we do not have the guarantee of having the gradient insertion sorted, whether it is in ascending order or in descending order; consequently, we no longer can use $\texttt{std::vector}$ for our data structure. We may use $\texttt{std::set}$ to maintain the dynamic gradients. Or... we may use Li Chao Tree, which I will discuss in the upcoming post.
 
 And there we have it! I have always found the Convex Hull Trick fascinating, especially when it comes to refine a naive $O(n^2)$ dynamic programming approach down to $O(n \log n)$. Of course, it still requires an additional property, which is to have the dynamic programming rewritable as an affine function. Some other DP optimizations, such as Divide and Conquer, Knuth, and more will probably discussed in the future posts as well! Stay tuned! 
 
