@@ -10,7 +10,8 @@ Li Chao Tree is a data structure that offers a method to insert specific functio
 For any pair of inserted functions, $f_i(x)$ and $f_j(x)$ (where $1 \leq i < j \leq n$), there exists a point $p$ such that:
 -  $f_i(x) \leq f_j(x)$ when $x \leq p$, and
 -  $f_i(x) \geq f_j(x)$ when $x \geq p$
-(or the conditions could be in reverse order) for all $x$ in the possible queryn range. The concept behind the Li Chao Tree bears some resemblance to the Segment Tree, but what distinguishes it is the unique way it stores function information in each node.
+
+(or the conditions could be in reverse order) for all $x$ in the possible query range. The concept behind the Li Chao Tree bears some resemblance to the Segment Tree, but what distinguishes it is the unique way it stores function information in each node.
 
 ### Motivational Problem
 
