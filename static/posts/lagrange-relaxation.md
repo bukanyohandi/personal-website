@@ -92,7 +92,7 @@ This Convex Hull Trick approach runs about an $\mathcal{O}(kn)$ armortized time.
 
 Denote $f(i, j)$ to be a function that represents our dynamic programming solution, i.e. $f(i, j) = \texttt{dp}_{i, j}$. We want to relax the constraints on the number of photos taken. Let's assume we don't have the $k$ constraint and we want to apply a cost on each photo taken to make up for it. Define $\mathcal{L}(i, j, \lambda)$ to be $f(i, j) + \lambda j$, implying an additional cost of $\lambda$ for each photo taken.
 
-For a $\lambda$, we may define $g(i)$ to represent as another optimization problem that satisfies the following:
+For a $\lambda$, we may define $g(i)$ to represent another optimization problem that satisfies the following:
 $$
 \begin{align*}
 g(i) &= \min_{k = 1}^n \mathcal{L}(i, k, \lambda) \\
@@ -100,7 +100,7 @@ g(i) &= \min_{k = 1}^n \mathcal{L}(i, k, \lambda) \\
 &= \min_{t < i} g(t) + (r_i - l_{t + 1} + 1)^2 - \max(r_t - l_{t + 1} + 1, 0)^2 + \lambda\\
 \end{align*}
 $$
-By solving $g(n)$ for a given $\lambda$ allows us to obtain the minimum number of photos required to capture all $n$ points and achieve the minimum cost when each photo is charged $\lambda$ cost, let's define it as $p(\lambda)$. 
+Solving $g(n)$ for a given $\lambda$ allows us to obtain the minimum number of photos required to capture all $n$ points and achieve the minimum cost when each photo is charged $\lambda$ cost, let's define it as $p(\lambda)$. 
 
 A function $f(i, j)$ is said to be convex if it satisfies: $f(i, j - 1) - f(i, j) \geq f(i, j) - f(i, j + 1)$. Given that $f(i, j)$ is convex, so is $\mathcal{L}(i, j, \lambda)$. This implies:
 
