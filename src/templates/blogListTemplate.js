@@ -18,13 +18,46 @@ const Container = styled.div`
   justify-content: center;
   background-color: #eef2f7;
   padding: 0 0;
-  margin: 25px auto;
+  margin: 25px auto 0 auto;
   max-width: 950px;
   border: ${EDIT_MODE ? "1px solid" : "none"};
 
   @media only screen and (max-width: 800px) {
     width: 100%;
     max-width: 450px;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between; // This will push children to the opposite sides
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin: -35px 0 0 0;
+  padding: 0 10px; // adding horizontal padding
+  border: ${EDIT_MODE ? "1px solid" : "none"};
+`;
+
+const PaginationLink = styled(Link)`
+  margin: 25px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #f6f6f6;
+  }
+
+  &[rel="prev"] {
+    float: left;
+  }
+
+  &[rel="next"] {
+    float: right;
   }
 `;
 
@@ -153,20 +186,6 @@ const PostTagLink = styled(Link)`
   }
 `;
 
-const PaginationLink = styled(Link)`
-  margin: 15px;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: #333;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #f6f6f6;
-  }
-`;
-
 const BlogPage = ({ data, pageContext }) => {
   // Initialize a structure to store post counts per month per year
   const contributions = {
@@ -197,26 +216,11 @@ const BlogPage = ({ data, pageContext }) => {
   const prevPage = currentPage - 1 === 1 ? "/blog" : `/blog/${currentPage - 1}`;
   const nextPage = `/blog/${currentPage + 1}`;
 
-  console.log("Current Page:", currentPage);
-  console.log("Total Pages:", numPages);
-
   return (
     <Layout>
       <Helmet>
         <title>Blog - Yohandi</title>
       </Helmet>
-      <div>
-        {!isFirst && (
-          <PaginationLink to={prevPage} rel="prev">
-            ← Previous Page
-          </PaginationLink>
-        )}
-        {!isLast && (
-          <PaginationLink to={nextPage} rel="next">
-            Next Page →
-          </PaginationLink>
-        )}
-      </div>
       <Container>
         <LeftContainer>
           <Card>
@@ -250,6 +254,18 @@ const BlogPage = ({ data, pageContext }) => {
           </Card>
           <TagsComponent />
         </RightContainer>
+        <ButtonContainer>
+          {!isFirst && (
+            <PaginationLink to={prevPage} rel="prev">
+              ← Previous Page
+            </PaginationLink>
+          )}
+          {!isLast && (
+            <PaginationLink to={nextPage} rel="next">
+              Next Page →
+            </PaginationLink>
+          )}
+        </ButtonContainer>
       </Container>
     </Layout>
   );
