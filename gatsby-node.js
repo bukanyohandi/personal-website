@@ -1,36 +1,30 @@
 const path = require("path");
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const { createFilePath } = require("gatsby-source-filesystem");
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-  if (node.internal.type === `MarkdownRemark`) {
+
+  if (node.internal.type === "MarkdownRemark") {
     let value = createFilePath({ node, getNode });
-    value = `/blog${value}`;
+    value = `/blog${value}`; // This ensures the slug starts with /blog
     createNodeField({
-      name: `slug`,
+      name: "slug",
       node,
       value,
     });
   }
 };
 
-exports.createPages = async ({ actions, graphql, reporter }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const blogPostTemplate = path.resolve("src/templates/blogTemplate.js");
 
   const result = await graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 100
-      ) {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             fields {
               slug
-            }
-            frontmatter {
-              title
             }
           }
         }
@@ -39,16 +33,33 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   `);
 
   if (result.errors) {
-    reporter.panicOnBuild("Error while running GraphQL query.");
-    return;
+    throw result.errors;
   }
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  // Create blog post pages.
+  const posts = result.data.allMarkdownRemark.edges;
+  const postsPerPage = 4;
+  const numPages = Math.ceil(posts.length / postsPerPage);
+
+  Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: node.fields.slug,
-      component: blogPostTemplate,
+      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+      component: path.resolve("./src/pages/blog.js"),
       context: {
-        slug: node.fields.slug,
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    });
+  });
+
+  posts.forEach((post, index) => {
+    createPage({
+      path: post.node.fields.slug,
+      component: path.resolve("./src/templates/blogTemplate.js"),
+      context: {
+        slug: post.node.fields.slug,
       },
     });
   });
