@@ -13,7 +13,6 @@ const GlobalStyle = createGlobalStyle`
     overflow: auto;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     background-color: #f9f9f9;
   }
 `;
