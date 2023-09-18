@@ -30,36 +30,53 @@ const Container = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between; // This will push children to the opposite sides
+  justify-content: center;
   align-items: center;
   height: 50px;
   width: 100%;
-  margin: -35px 0 0 0;
-  padding: 0 10px; // adding horizontal padding
   border: ${EDIT_MODE ? "1px solid" : "none"};
 `;
 
-const PaginationLink = styled(Link)`
-  margin: 25px 0;
-  padding: 10px 20px;
+const PageButton = styled(Link)`
+  margin: 0 5px;
+  padding: 10px 16px;
+  font-family: "Merriweather", serif;
+  font-size: 1.2em;
   text-decoration: none;
   color: #333;
-  border: 1px solid #ddd;
+  background-color: #fff;
+  border: 2px solid #ddd;
   border-radius: 5px;
+  font-weight: bold; /* Make text bold for better visibility */
   transition: background-color 0.3s;
+  cursor: pointer;
 
   &:hover {
     background-color: #f6f6f6;
   }
 
-  &[rel="prev"] {
-    float: left;
-  }
-
-  &[rel="next"] {
-    float: right;
+  &.disabled {
+    pointer-events: none;
+    background-color: #ccc;
+    color: #666;
   }
 `;
+
+const renderPageButtons = (currentPage, numPages) => {
+  const buttons = [];
+  for (let i = 1; i <= numPages; i++) {
+    buttons.push(
+      <PageButton
+        key={i}
+        to={i === 1 ? "/blog" : `/blog/${i}`}
+        className={i === currentPage ? "disabled" : ""} // Add the "disabled" class conditionally
+      >
+        {i}
+      </PageButton>
+    );
+  }
+  return buttons;
+};
 
 const LeftContainer = styled.div`
   display: inline-block;
@@ -86,6 +103,7 @@ const RightContainer = styled.div`
   @media only screen and (max-width: 800px) {
     width: 100%;
     padding: 10px;
+    margin: 0 0 25px 0;
   }
 `;
 
@@ -255,16 +273,7 @@ const BlogPage = ({ data, pageContext }) => {
           <TagsComponent />
         </RightContainer>
         <ButtonContainer>
-          {!isFirst && (
-            <PaginationLink to={prevPage} rel="prev">
-              ← Previous Page
-            </PaginationLink>
-          )}
-          {!isLast && (
-            <PaginationLink to={nextPage} rel="next">
-              Next Page →
-            </PaginationLink>
-          )}
+          {renderPageButtons(currentPage, numPages)}
         </ButtonContainer>
       </Container>
     </Layout>
