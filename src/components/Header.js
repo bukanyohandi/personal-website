@@ -24,7 +24,7 @@ const Title = styled.div`
   margin-top: 0px;
 
   @media only screen and (max-width: 800px) {
-    font-size: 65px;
+    font-size: 60px;
   }
 `;
 
@@ -41,7 +41,7 @@ const Description = styled.div`
   color: #333;
 
   @media only screen and (max-width: 800px) {
-    font-size: 20px;
+    font-size: 18px;
   }
 `;
 
