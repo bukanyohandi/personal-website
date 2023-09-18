@@ -22,6 +22,10 @@ const Title = styled.div`
   font-family: "Satisfy", cursive;
   letter-spacing: 2px;
   margin-top: 0px;
+
+  @media only screen and (max-width: 800px) {
+    font-size: 65px;
+  }
 `;
 
 const Description = styled.div`
@@ -35,6 +39,10 @@ const Description = styled.div`
   font-weight: lighter;
   text-align: center;
   color: #333;
+
+  @media only screen and (max-width: 800px) {
+    font-size: 20px;
+  }
 `;
 
 const Navigation = styled.nav`
