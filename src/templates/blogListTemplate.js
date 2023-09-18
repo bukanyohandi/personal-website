@@ -99,6 +99,7 @@ const RightContainer = styled.div`
   padding: 20px;
   box-sizing: border-box;
   border: ${EDIT_MODE ? "1px solid" : "none"};
+  // background-color: #f9f9f9;
 
   @media only screen and (max-width: 800px) {
     width: 100%;
@@ -265,6 +266,9 @@ const BlogPage = ({ data, pageContext }) => {
               </PostLink>
             ))}
           </Card>
+          <ButtonContainer>
+            {renderPageButtons(currentPage, numPages)}
+          </ButtonContainer>
         </LeftContainer>
         <RightContainer>
           <Card>
@@ -272,9 +276,6 @@ const BlogPage = ({ data, pageContext }) => {
           </Card>
           <TagsComponent />
         </RightContainer>
-        <ButtonContainer>
-          {renderPageButtons(currentPage, numPages)}
-        </ButtonContainer>
       </Container>
     </Layout>
   );
