@@ -115,7 +115,8 @@ Based on the previous observations, we have $r_i < r_j$ and $c_i < c_j$ for poin
    $$
    \begin{align*}
    & (l_{x + 1} - l_x) (r_{y + 1} - r_y) \geq 0 \\
-   & \Rightarrow r_y (l_x - 1) + r_{y + 1} (l_{x + 1} - 1) - r_y (l_{x + 1} - 1) - r_{y + 1} (l_x - 1) \geq 0 \\
+   & \Rightarrow r_y (l_x - 1) + r_{y + 1} (l_{x + 1} - 1) - r_y (l_{x + 1} - 1) - r_{y + 1} (l_x - 1) \\
+   & \ \ \ \ \ \geq 0 \\
    & \Rightarrow (r_y - l_x + 1)^2 + (r_{y + 1} - l_{x + 1} + 1)^2 - (r_y - l_{x + 1} + 1)^2 \\
    & \ \ \ \ \ - (r_{y + 1} - l_x + 1)^2 \leq 0\\
    & \Rightarrow C(x, y) + C(x + 1, y + 1) - C(x + 1, y) - C(x, y + 1) \leq 0 \\
