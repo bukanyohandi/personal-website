@@ -215,6 +215,7 @@ const ResultsHeading = styled.div`
   padding: 10px;
   background-color: #eef2f7;
   margin: 5px;
+  user-select: none;
 `;
 
 const BlogPage = ({ data, pageContext }) => {
