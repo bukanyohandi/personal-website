@@ -373,7 +373,7 @@ const BlogTemplate = ({ data }) => {
             <PostInfo>{post.frontmatter.date}</PostInfo>
             <TagsWrapper>
               {post.frontmatter.tags.map((tag) => (
-                <TagLink href={`/tags/${tag}`} key={tag}>
+                <TagLink href={`/blog/tags/${tag}`} key={tag}>
                   {tag}
                 </TagLink>
               ))}
