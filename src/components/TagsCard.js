@@ -81,7 +81,7 @@ const TagsComponent = () => {
         {uniqueTags.map((tag) => (
           <TagLink
             key={tag}
-            to={`/tags/${tag.toLowerCase().replace(/ /g, "_")}`}
+            to={`/blog/tags/${tag.toLowerCase().replace(/ /g, "_")}`}
           >
             {tag}
           </TagLink>

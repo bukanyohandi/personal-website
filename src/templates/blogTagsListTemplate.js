@@ -62,13 +62,13 @@ const PageButton = styled(Link)`
   }
 `;
 
-const renderPageButtons = (currentPage, numPages) => {
+const renderPageButtons = (currentPage, numPages, tag) => {
   const buttons = [];
   for (let i = 1; i <= numPages; i++) {
     buttons.push(
       <PageButton
         key={i}
-        to={i === 1 ? "/blog" : `/blog/${i}`}
+        to={i === 1 ? `/blog/tags/${tag}` : `/blog/tags/${tag}/${i}`}
         className={i === currentPage ? "disabled" : ""} // Add the "disabled" class conditionally
       >
         {i}
@@ -205,6 +205,18 @@ const PostTagLink = styled(Link)`
   }
 `;
 
+const ResultsHeading = styled.div`
+  font-family: "Merriweather", serif;
+  text-align: center;
+  font-size: 1em;
+  color: #2c3e50;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: #eef2f7;
+  margin: 5px;
+`;
+
 const BlogPage = ({ data, pageContext }) => {
   // Initialize a structure to store post counts per month per year
   const contributions = {
@@ -229,11 +241,7 @@ const BlogPage = ({ data, pageContext }) => {
     }
   });
 
-  const { currentPage, numPages } = pageContext;
-  const isFirst = currentPage === 1;
-  const isLast = currentPage === numPages;
-  const prevPage = currentPage - 1 === 1 ? "/blog" : `/blog/${currentPage - 1}`;
-  const nextPage = `/blog/${currentPage + 1}`;
+  const { currentPage, numPages, tag } = pageContext;
 
   return (
     <Layout>
@@ -241,6 +249,7 @@ const BlogPage = ({ data, pageContext }) => {
         <title>Blog - Yohandi</title>
       </Helmet>
       <Container>
+        <ResultsHeading>Showing all posts with a tag: {tag}</ResultsHeading>
         <LeftContainer>
           <Card>
             {data.allMarkdownRemark.edges.map((post) => (
@@ -269,7 +278,7 @@ const BlogPage = ({ data, pageContext }) => {
             ))}
           </Card>
           <ButtonContainer>
-            {renderPageButtons(currentPage, numPages)}
+            {renderPageButtons(currentPage, numPages, tag)}
           </ButtonContainer>
         </LeftContainer>
         <RightContainer>
@@ -286,11 +295,12 @@ const BlogPage = ({ data, pageContext }) => {
 export default BlogPage;
 
 export const pageQuery = graphql`
-  query blogPageQuery($skip: Int, $limit: Int) {
+  query blogPageQuery($skip: Int, $limit: Int, $tag: String) {
     allMarkdownRemark(
       sort: [{ frontmatter: { date: DESC } }]
       limit: $limit
       skip: $skip
+      filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       edges {
         node {

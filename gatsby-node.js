@@ -26,6 +26,23 @@ exports.createPages = async ({ graphql, actions }) => {
             fields {
               slug
             }
+            frontmatter {
+              tags
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const data = await graphql(`
+    query tagsQuery {
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter {
+              tags
+            }
           }
         }
       }
@@ -40,6 +57,53 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = result.data.allMarkdownRemark.edges;
   const postsPerPage = 4;
   const numPages = Math.ceil(posts.length / postsPerPage);
+
+  const tags = data.data.allMarkdownRemark.edges.reduce((allTags, edge) => {
+    const tagsFromNode = edge.node.frontmatter.tags;
+    if (tagsFromNode) {
+      allTags = [...allTags, ...tagsFromNode];
+    }
+    return allTags;
+  }, []);
+  const uniqueTags = new Set(tags);
+
+  for (const tag of uniqueTags) {
+    console.log(tag);
+
+    const filteredPosts = posts.filter((edge) => {
+      return edge.node.frontmatter.tags.includes(tag);
+    });
+    const filteredNumPages = Math.ceil(filteredPosts.length / postsPerPage);
+    console.log(tag, filteredNumPages);
+
+    // First page for each tag
+    createPage({
+      path: `/blog/tags/${tag}`,
+      component: path.resolve("./src/templates/blogTagsListTemplate.js"),
+      context: {
+        limit: postsPerPage,
+        skip: 0,
+        numPages: filteredNumPages,
+        currentPage: 1,
+        tag: tag,
+      },
+    });
+
+    // Create remaining paginated pages for each tag
+    Array.from({ length: filteredNumPages - 1 }).forEach((_, i) => {
+      createPage({
+        path: `/blog/tags/${tag}/${i + 2}`,
+        component: path.resolve("./src/templates/blogTagsListTemplate.js"),
+        context: {
+          limit: postsPerPage,
+          skip: (i + 1) * postsPerPage,
+          numPages,
+          currentPage: i + 2,
+          tag: tag,
+        },
+      });
+    });
+  }
 
   // Explicitly create the first page
   createPage({
