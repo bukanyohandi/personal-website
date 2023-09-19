@@ -171,3 +171,5 @@ The overall solution operates in $\mathcal{O}(n \log n + n \log m)$.
 1. **Chethiya Abeysinghe**, "IOI 2016 - Solutions," International Olympiad in Informatics.
 
 2. **Mamnoon Siam**, "Attack on Aliens," Siam's Blog. https://mamnoonsiam.github.io/posts/attack-on-aliens.html.
+
+3. **upobir**, "Quadrangle Inequality Properties," Codeforces. https://codeforces.com/blog/entry/86306.
