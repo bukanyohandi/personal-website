@@ -102,7 +102,30 @@ g(i) &= \min_{k = 1}^n \mathcal{L}(i, k, \lambda) \\
 $$
 Solving $g(n)$ for a given $\lambda$ allows us to obtain the minimum number of photos required to capture all $n$ points and achieve the minimum cost when each photo is charged $\lambda$ cost, let's define it as $p(\lambda)$. 
 
-A function $f(i, j)$ is said to be convex if it satisfies: $f(i, j - 1) - f(i, j) \geq f(i, j) - f(i, j + 1)$. Given that $f(i, j)$ is convex, so is $\mathcal{L}(i, j, \lambda)$. This implies:
+A function $f(i, j)$ is said to be convex if it satisfies: $f(i, j - 1) - f(i, j) \geq f(i, j) - f(i, j + 1)$. Alternatively, we may conclude a function $f(i, j)$ to be convex if it is in the form:
+   $$
+   f(i, j) = \min_{t < i} f(t, j - 1) + C(t + 1, i)
+   $$
+
+and $C(x, y)$ is a Monge Array, i.e. $\forall x, y$, it holds $C(x, y) + C(x + 1, y + 1) \leq C(x, y + 1) + C(x + 1, y)$. Claim that $f(i, j)$ is convex; then, we want to prove that $C(x, y) = (r_y - l_x + 1)^2 - \max(r_{x - 1} - l_x + 1, 0)^2$ is a Monge Array.
+
+#### Convexity of f(i, j)
+
+Based on the previous observations, we have $r_i < r_j$ and $c_i < c_j$ for points $i$ and $j$ when $i < j$ holds.
+   $$
+   \begin{align*}
+   & (l_{x + 1} - l_x) (r_{y + 1} - r_y) \geq 0 \\
+   & \Rightarrow r_y (l_x - 1) + r_{y + 1} (l_{x + 1} - 1) - r_y (l_{x + 1} - 1) - r_{y + 1} (l_x - 1) \geq 0 \\
+   & \Rightarrow (r_y - l_x + 1)^2 + (r_{y + 1} - l_{x + 1} + 1)^2 - (r_y - l_{x + 1} + 1)^2 \\
+   & \ \ \ \ \ - (r_{y + 1} - l_x + 1)^2 \leq 0\\
+   & \Rightarrow C(x, y) + C(x + 1, y + 1) - C(x + 1, y) - C(x, y + 1) \leq 0 \\
+   & \Rightarrow C(x, y) + C(x + 1, y + 1) \leq C(x + 1, y) + C(x, y + 1) \\
+   \end{align*}
+   $$
+
+It is shown that $C(x, y)$ is a Monge Array; hence, $f(i, j)$ is convex.
+
+Given that $f(i, j)$ is convex, so is $\mathcal{L}(i, j, \lambda)$. This implies:
 
 $$
 \begin{align*}
