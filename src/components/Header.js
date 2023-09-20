@@ -94,6 +94,12 @@ const Header = () => {
         >
           Blog
         </NavLink>
+        <NavLink to="/projects" activeStyle={activeLinkStyle}>
+          Projects
+        </NavLink>
+        {/* <NavLink to="/resume" activeStyle={activeLinkStyle}>
+          Resume
+        </NavLink> */}
       </Navigation>
     </Container>
   );

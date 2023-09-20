@@ -1,0 +1,41 @@
+[
+    {
+        "title": "Personal Website",
+        "img": "/projects/personal-website.png",
+        "url": "http://yohandi.me/",
+        "desc": "My personalized website that stores my thought-provoking blogs in a wide array of topics. A place where I proudly showcase a portfolio of exciting projects.",
+        "year": "2023"
+    },
+    
+    {
+        "title": "Comprehensive Banking Database",
+        "img": "/projects/banking-database.png",
+        "url": "http://yohandi.me/projects",
+        "desc": "A design and implementation of comprehensive banking database. Built using SQL, Python, HTML, CSS, and JavaScript.",
+        "year": "2023"
+    },
+    
+    {
+        "title": "LDAPS Model Forecast Prediction",
+        "img": "/projects/ldaps-model-forecast-prediction.png",
+        "url": "http://yohandi.me/projects",
+        "desc": "A simple application of linear regression on predicting next-day temperature. Built using Python.",
+        "year": "2022"
+    },
+    
+    {
+        "title": "K-means Clustering",
+        "img": "/projects/k-means-clustering.png",
+        "url": "http://yohandi.me/projects",
+        "desc": "An implementation of unsupervised learning algorithm: K-means Clustering. Built using HTML, CSS, and JavaScript.",
+        "year": "2022"
+    },
+    
+    {
+        "title": "Color Snake",
+        "img": "/projects/color-snake.png",
+        "url": "https://github.com/bukanyohandi/CSC1002/tree/main/Assignment%202%20-%20Snake",
+        "desc": "A custom Snake game but an AI Monster chasing around. Built using Python.",
+        "year": "2021"
+    }
+]
