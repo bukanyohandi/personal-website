@@ -16,6 +16,14 @@
     },
     
     {
+        "title": "Handwritten Digit Recognition",
+        "img": "/projects/handwritten-digit-recognition.png",
+        "url": "http://yohandi.me/projects",
+        "desc": "An application of Multilayer Perceptron on recognizing ten thousands of handwritten digits. Built using Python.",
+        "year": "2022"
+    },
+    
+    {
         "title": "LDAPS Model Forecast Prediction",
         "img": "/projects/ldaps-model-forecast-prediction.png",
         "url": "http://yohandi.me/projects",
