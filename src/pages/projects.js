@@ -2,9 +2,19 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../layouts";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const EDIT_MODE = false;
+
+const GlobalStyle = createGlobalStyle`
+::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+`;
 
 const Container = styled.div`
   width: 90%;
@@ -103,29 +113,32 @@ export default function ProjectPage({ data }) {
   const projects = data.allProjectsJson.edges;
 
   return (
-    <Layout>
-      <Helmet>
-        <title>Yohandi</title>
-        <meta
-          name="description"
-          content={`
+    <>
+      <GlobalStyle />
+      <Layout>
+        <Helmet>
+          <title>Yohandi</title>
+          <meta
+            name="description"
+            content={`
             Yohandi. A passionate student with a strong interest in algorithms and data structures.
           `}
-        />
-      </Helmet>
-      <Container>
-        {projects.map(({ node }) => (
-          <Project key={node.title} href={node.url}>
-            <ProjectImage src={node.img} />
-            <ProjectContent>
-              <ProjectTitle>{node.title}</ProjectTitle>
-              <ProjectDescription>{node.desc}</ProjectDescription>
-            </ProjectContent>
-            <ProjectYear>{node.year}</ProjectYear>
-          </Project>
-        ))}
-      </Container>
-    </Layout>
+          />
+        </Helmet>
+        <Container>
+          {projects.map(({ node }) => (
+            <Project key={node.title} href={node.url}>
+              <ProjectImage src={node.img} />
+              <ProjectContent>
+                <ProjectTitle>{node.title}</ProjectTitle>
+                <ProjectDescription>{node.desc}</ProjectDescription>
+              </ProjectContent>
+              <ProjectYear>{node.year}</ProjectYear>
+            </Project>
+          ))}
+        </Container>
+      </Layout>
+    </>
   );
 }
 

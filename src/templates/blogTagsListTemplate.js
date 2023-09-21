@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link, graphql } from "gatsby";
 import Layout from "../layouts";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { Helmet } from "react-helmet";
 import { ContributionsComponent } from "../components/ContributionsCard.js";
 import TagsComponent from "../components/TagsCard.js";
@@ -9,6 +9,16 @@ import TagsComponent from "../components/TagsCard.js";
 const EDIT_MODE = false;
 
 const MOBILE_CONST = 0.85;
+
+const GlobalStyle = createGlobalStyle`
+::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+`;
 
 const Container = styled.div`
   width: 90%;
@@ -245,51 +255,54 @@ const BlogPage = ({ data, pageContext }) => {
   const { currentPage, numPages, tag } = pageContext;
 
   return (
-    <Layout>
-      <Helmet>
-        <title>Blog - Yohandi</title>
-      </Helmet>
-      <Container>
-        <ResultsHeading>Showing all posts with a tag: {tag}</ResultsHeading>
-        <LeftContainer>
-          <Card>
-            {data.allMarkdownRemark.edges.map((post) => (
-              <PostLink
-                key={post.node.id}
-                to={post.node.fields.slug.replace(/\/$/, "")}
-              >
-                <Post>
-                  <PostTitle>{post.node.frontmatter.title}</PostTitle>
-                  <PostMeta>{post.node.frontmatter.date}</PostMeta>
-                  <PostExcerpt>{post.node.excerpt}</PostExcerpt>
-                  <PostTags>
-                    {post.node.frontmatter.tags.map((tag) => (
-                      <PostTagLink
-                        key={tag}
-                        to={`/blog/tags/${tag
-                          .toLowerCase()
-                          .replace(/ /g, "_")}`}
-                      >
-                        {tag}
-                      </PostTagLink>
-                    ))}
-                  </PostTags>
-                </Post>
-              </PostLink>
-            ))}
-          </Card>
-          <ButtonContainer>
-            {renderPageButtons(currentPage, numPages, tag)}
-          </ButtonContainer>
-        </LeftContainer>
-        <RightContainer>
-          <Card>
-            <ContributionsComponent />
-          </Card>
-          <TagsComponent />
-        </RightContainer>
-      </Container>
-    </Layout>
+    <>
+      <GlobalStyle />
+      <Layout>
+        <Helmet>
+          <title>Blog - Yohandi</title>
+        </Helmet>
+        <Container>
+          <ResultsHeading>Showing all posts with a tag: {tag}</ResultsHeading>
+          <LeftContainer>
+            <Card>
+              {data.allMarkdownRemark.edges.map((post) => (
+                <PostLink
+                  key={post.node.id}
+                  to={post.node.fields.slug.replace(/\/$/, "")}
+                >
+                  <Post>
+                    <PostTitle>{post.node.frontmatter.title}</PostTitle>
+                    <PostMeta>{post.node.frontmatter.date}</PostMeta>
+                    <PostExcerpt>{post.node.excerpt}</PostExcerpt>
+                    <PostTags>
+                      {post.node.frontmatter.tags.map((tag) => (
+                        <PostTagLink
+                          key={tag}
+                          to={`/blog/tags/${tag
+                            .toLowerCase()
+                            .replace(/ /g, "_")}`}
+                        >
+                          {tag}
+                        </PostTagLink>
+                      ))}
+                    </PostTags>
+                  </Post>
+                </PostLink>
+              ))}
+            </Card>
+            <ButtonContainer>
+              {renderPageButtons(currentPage, numPages, tag)}
+            </ButtonContainer>
+          </LeftContainer>
+          <RightContainer>
+            <Card>
+              <ContributionsComponent />
+            </Card>
+            <TagsComponent />
+          </RightContainer>
+        </Container>
+      </Layout>
+    </>
   );
 };
 
