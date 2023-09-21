@@ -68,6 +68,11 @@ const ProjectTitle = styled.div`
   border: ${EDIT_MODE ? "1px solid" : "none"};
 `;
 
+const ProjectImage = styled.img`
+  width: 100%;
+  aspect-ratio: 3/2;
+`;
+
 const ProjectContent = styled.div`
   flex-grow: 1; /* Content takes up remaining space */
 `;
@@ -111,11 +116,7 @@ export default function ProjectPage({ data }) {
       <Container>
         {projects.map(({ node }) => (
           <Project key={node.title} href={node.url}>
-            <img
-              src={node.img}
-              alt={node.title}
-              style={{ maxWidth: "100%" }} // Set the maximum width to 100% of its container
-            />
+            <ProjectImage src={node.img} />
             <ProjectContent>
               <ProjectTitle>{node.title}</ProjectTitle>
               <ProjectDescription>{node.desc}</ProjectDescription>
