@@ -34,7 +34,7 @@ const Title = styled.div`
   transform: translateY(
     ${({ Location }) =>
       Location.inProjectsPage || Location.inBlogPage
-        ? "8vh"
+        ? "4vh"
         : Location.inHomePage
         ? "-8vh"
         : "0"}
@@ -94,7 +94,7 @@ const Navigation = styled.nav`
   transform: translateY(
     ${({ Location }) =>
       Location.inProjectsPage || Location.inBlogPage
-        ? "15vh"
+        ? "6vh"
         : Location.inHomePage
         ? "-15vh"
         : "0"}
