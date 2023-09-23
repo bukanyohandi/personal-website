@@ -8,16 +8,30 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: ${({ inHomePage }) => (inHomePage ? "90vh" : "17vh")};
+  height: ${({ Location }) => (Location.inHomePage ? "90vh" : "17vh")};
   background-color: #f9f9f9;
-  transition: height 1s ease-in-out;
+
+  opacity: ${({ Location }) =>
+    Location.inProjectsPage || Location.inBlogPage ? "0" : "1"};
+  transform: translateY(
+    ${({ Location }) =>
+      Location.inProjectsPage || Location.inBlogPage ? "10vh" : "0"}
+  );
+  animation: fadeInMoveUp 0.8s forwards 0s; // starts after 0.5s, lasts 1s
+
+  @keyframes fadeInMoveUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 const Title = styled.div`
   text-align: center;
-  font-size: ${({ inHomePage }) => (inHomePage ? "70px" : "70px")};
+  font-size: ${({ Location }) => (Location.inHomePage ? "70px" : "70px")};
   color: #2c3e50;
-  margin: ${({ inHomePage }) => (inHomePage ? "0px" : "20px 0")};
+  margin: ${({ Location }) => (Location.inHomePage ? "0px" : "20px 0")};
   font-weight: 300;
   font-family: "Satisfy", cursive;
   letter-spacing: 2px;
@@ -30,7 +44,7 @@ const Title = styled.div`
 `;
 
 const Description = styled.div`
-  display: ${({ inHomePage }) => (inHomePage ? "block" : "none")};
+  display: ${({ Location }) => (Location.inHomePage ? "block" : "none")};
   margin: 10px 0 25px 0;
   max-width: 450px;
   width: 95%;
@@ -77,11 +91,15 @@ const activeLinkStyle = {
 
 const Header = () => {
   const inHomePage = useLocation().pathname === "/";
+  const inBlogPage = useLocation().pathname === "/blog/";
+  const inProjectsPage = useLocation().pathname === "/projects/";
 
   return (
-    <Container inHomePage={inHomePage}>
-      <Title inHomePage={inHomePage}>yohandi</Title>
-      <Description inHomePage={inHomePage}>
+    <Container Location={{ inHomePage, inBlogPage, inProjectsPage }}>
+      <Title Location={{ inHomePage, inBlogPage, inProjectsPage }}>
+        yohandi
+      </Title>
+      <Description Location={{ inHomePage, inBlogPage, inProjectsPage }}>
         A passionate student with a strong interest in algorithms and data
         structures.
       </Description>
