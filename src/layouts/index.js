@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import { Helmet } from "react-helmet";
+import { THEME } from "../constants.js";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -13,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     overflow: auto;
     display: flex;
     flex-direction: column;
-    background-color: #f9f9f9;
+    background-color: ${THEME.PRIMARY};
   }
 `;
 

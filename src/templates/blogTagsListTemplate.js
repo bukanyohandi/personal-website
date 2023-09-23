@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import { Helmet } from "react-helmet";
 import { ContributionsComponent } from "../components/ContributionsCard.js";
 import TagsComponent from "../components/TagsCard.js";
+import { THEME } from "../constants.js";
 
 const EDIT_MODE = false;
 
@@ -26,7 +27,7 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: #eef2f7;
+  background-color: ${THEME.SECONDARY};
   padding: 0 0;
   margin: 25px auto 0 auto;
   max-width: 950px;
@@ -109,7 +110,6 @@ const RightContainer = styled.div`
   padding: 20px;
   box-sizing: border-box;
   border: ${EDIT_MODE ? "1px solid" : "none"};
-  // background-color: #f9f9f9;
 
   @media only screen and (max-width: 800px) {
     width: 100%;
@@ -223,7 +223,7 @@ const ResultsHeading = styled.div`
   width: 100%;
   text-align: center;
   padding: 10px;
-  background-color: #eef2f7;
+  background-color: ${THEME.SECONDARY}
   margin: 5px;
   user-select: none;
 `;

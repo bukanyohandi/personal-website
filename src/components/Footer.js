@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { THEME } from "../constants.js";
 
 const Container = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ const Container = styled.div`
   gap: 30px;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: ${THEME.PRIMARY};
   height: 10vh;
 `;
 

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { useLocation } from "@reach/router";
+import { THEME } from "../constants.js";
 
 const Container = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: ${({ Location }) => (Location.inHomePage ? "90vh" : "17vh")};
-  background-color: #f9f9f9;
+  background-color: ${THEME.PRIMARY};
 `;
 
 const Title = styled.div`
@@ -133,7 +134,10 @@ const Header = () => {
   const inProjectsPage = useLocation().pathname === "/projects/";
 
   return (
-    <Container Location={{ inHomePage, inBlogPage, inProjectsPage }}>
+    <Container
+      THEME={THEME}
+      Location={{ inHomePage, inBlogPage, inProjectsPage }}
+    >
       <Title Location={{ inHomePage, inBlogPage, inProjectsPage }}>
         yohandi
       </Title>

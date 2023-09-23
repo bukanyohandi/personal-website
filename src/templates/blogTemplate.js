@@ -12,9 +12,10 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import gfm from "remark-gfm";
 import { Disqus } from "gatsby-plugin-disqus";
+import { THEME } from "../constants.js";
 
 const GlobalStyle = styled.div`
-  background-color: #f9f9f9;
+  background-color: ${THEME.PRIMARY};
 `;
 
 const MOBILE_CONST = 0.85;

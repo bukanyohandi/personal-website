@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../layouts";
 import styled, { createGlobalStyle } from "styled-components";
+import { THEME } from "../constants.js";
 
 const EDIT_MODE = false;
 
@@ -23,7 +24,7 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: #eef2f7;
+  background-color: ${THEME.SECONDARY};
   padding: 0 0;
   margin: 25px auto 0 auto;
   max-width: 950px;
@@ -117,7 +118,7 @@ const TemporaryInformation = styled.div`
   width: 100%;
   text-align: center;
   padding: 10px;
-  background-color: #eef2f7;
+  background-color: ${THEME.SECONDARY};
   margin: 5px;
   user-select: none;
 `;
