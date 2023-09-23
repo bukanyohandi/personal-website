@@ -25,6 +25,7 @@ const Container = styled.div`
 const Layout = ({ children }) => {
   return (
     <>
+      <link rel="icon" href="/static/favicon.ico"></link>
       <GlobalStyle />
       <Container>
         <Helmet>
