@@ -109,6 +109,19 @@ const ProjectYear = styled.div`
   right: 9px;
 `;
 
+const TemporaryInformation = styled.div`
+  font-family: "Merriweather", serif;
+  text-align: center;
+  font-size: 1em;
+  color: #2c3e50;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: #eef2f7;
+  margin: 5px;
+  user-select: none;
+`;
+
 export default function ProjectPage({ data }) {
   const projects = data.allProjectsJson.edges;
 
@@ -126,6 +139,11 @@ export default function ProjectPage({ data }) {
           />
         </Helmet>
         <Container>
+          <TemporaryInformation>
+            {" "}
+            More will be added soon! I'm still searching through all my local
+            repositories.
+          </TemporaryInformation>
           {projects.map(({ node }) => (
             <Project key={node.title} href={node.url}>
               <ProjectImage src={node.img} />

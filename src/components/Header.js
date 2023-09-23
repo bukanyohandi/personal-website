@@ -22,6 +22,7 @@ const Title = styled.div`
   font-family: "Satisfy", cursive;
   letter-spacing: 2px;
   margin-top: 0px;
+  user-select: none;
 
   @media only screen and (max-width: 800px) {
     font-size: 60px;
@@ -64,6 +65,7 @@ const NavLink = styled(Link)`
   transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   font-weight: 400;
 
+  user-select: none;
   &:hover {
   }
 `;

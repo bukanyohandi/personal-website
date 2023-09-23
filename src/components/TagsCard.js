@@ -24,6 +24,7 @@ const TagsTitle = styled.h3`
   margin-bottom: 15px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
+  user-select: none;
 `;
 
 const TagLink = styled(Link)`

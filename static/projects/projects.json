@@ -16,6 +16,14 @@
     },
     
     {
+        "title": "K-means Clustering",
+        "img": "/projects/k-means-clustering.png",
+        "url": "http://yohandi.me/projects",
+        "desc": "An implementation of unsupervised learning algorithm: K-means Clustering. Built using HTML, CSS, and JavaScript.",
+        "year": "2022"
+    },
+    
+    {
         "title": "Handwritten Digit Recognition",
         "img": "/projects/handwritten-digit-recognition.png",
         "url": "http://yohandi.me/projects",
@@ -28,14 +36,6 @@
         "img": "/projects/ldaps-model-forecast-prediction.png",
         "url": "http://yohandi.me/projects",
         "desc": "A simple application of linear regression on predicting next-day temperature. Built using Python.",
-        "year": "2022"
-    },
-    
-    {
-        "title": "K-means Clustering",
-        "img": "/projects/k-means-clustering.png",
-        "url": "http://yohandi.me/projects",
-        "desc": "An implementation of unsupervised learning algorithm: K-means Clustering. Built using HTML, CSS, and JavaScript.",
         "year": "2022"
     },
     
