@@ -10,21 +10,6 @@ const Container = styled.div`
   align-items: center;
   height: ${({ Location }) => (Location.inHomePage ? "90vh" : "17vh")};
   background-color: #f9f9f9;
-
-  opacity: ${({ Location }) =>
-    Location.inProjectsPage || Location.inBlogPage ? "0" : "1"};
-  transform: translateY(
-    ${({ Location }) =>
-      Location.inProjectsPage || Location.inBlogPage ? "10vh" : "0"}
-  );
-  animation: fadeInMoveUp 0.8s forwards 0s; // starts after 0.5s, lasts 1s
-
-  @keyframes fadeInMoveUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 `;
 
 const Title = styled.div`
@@ -40,6 +25,27 @@ const Title = styled.div`
 
   @media only screen and (max-width: 800px) {
     font-size: 60px;
+  }
+
+  opacity: ${({ Location }) =>
+    Location.inProjectsPage || Location.inBlogPage || Location.inHomePage
+      ? "0"
+      : "1"};
+  transform: translateY(
+    ${({ Location }) =>
+      Location.inProjectsPage || Location.inBlogPage
+        ? "8vh"
+        : Location.inHomePage
+        ? "-8vh"
+        : "0"}
+  );
+  animation: fadeInMoveUp 0.8s forwards 0s; // starts after 0.5s, lasts 1s
+
+  @keyframes fadeInMoveUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 `;
 
@@ -58,6 +64,19 @@ const Description = styled.div`
   @media only screen and (max-width: 800px) {
     font-size: 18px;
   }
+
+  opacity: ${({ Location }) => (Location.inHomePage ? "0" : "1")};
+  transform: translateY(
+    ${({ Location }) => (Location.inHomePage ? "-12vh" : "0")}
+  );
+  animation: fadeInMoveUp 0.8s forwards 0s; // starts after 0.5s, lasts 1s
+
+  @keyframes fadeInMoveUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 const Navigation = styled.nav`
@@ -67,6 +86,27 @@ const Navigation = styled.nav`
   gap: 30px;
   margin-top: -10px;
   padding-top: 0px;
+
+  opacity: ${({ Location }) =>
+    Location.inProjectsPage || Location.inBlogPage || Location.inHomePage
+      ? "0"
+      : "1"};
+  transform: translateY(
+    ${({ Location }) =>
+      Location.inProjectsPage || Location.inBlogPage
+        ? "15vh"
+        : Location.inHomePage
+        ? "-15vh"
+        : "0"}
+  );
+  animation: fadeInMoveUp 0.8s forwards 0s; // starts after 0.5s, lasts 1s
+
+  @keyframes fadeInMoveUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -80,8 +120,6 @@ const NavLink = styled(Link)`
   font-weight: 400;
 
   user-select: none;
-  &:hover {
-  }
 `;
 
 const activeLinkStyle = {
@@ -103,7 +141,7 @@ const Header = () => {
         A passionate student with a strong interest in algorithms and data
         structures.
       </Description>
-      <Navigation>
+      <Navigation Location={{ inHomePage, inBlogPage, inProjectsPage }}>
         <NavLink to="/" activeStyle={activeLinkStyle}>
           Home
         </NavLink>
