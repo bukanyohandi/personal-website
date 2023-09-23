@@ -77,9 +77,5 @@ module.exports = {
         shortname: `yohandi`,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {},
-    },
   ],
 };
