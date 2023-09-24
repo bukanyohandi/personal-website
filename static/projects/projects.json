@@ -3,7 +3,7 @@
         "title": "Personal Website",
         "img": "/projects/personal-website.png",
         "url": "http://yohandi.me/",
-        "desc": "My <span>personalized website</span> that stores my thought-provoking <span>blogs</span> in a wide array of topics. A place where I proudly showcase a portfolio of exciting <span>projects</span>.",
+        "desc": "My <span>website</span> featuring insightful <span>blogs</span> and a portfolio of my <span>projects</span>.",
         "year": "2023"
     },
     
@@ -38,12 +38,20 @@
         "desc": "A simple application of <span>linear regression</span> on <span>predicting</span> next-day temperature. Built using Python.",
         "year": "2022"
     },
+
+    {
+        "title": "Email Spam Classification",
+        "img": "/projects/email-spam-classification.jpg",
+        "url": "http://yohandi.me/projects",
+        "desc": "A machine learning model designed to <span>classify</span> emails as either <span>spam</span> or legitimate. Built using Python.",
+        "year": "2021"
+    },
     
     {
         "title": "Color Snake",
         "img": "/projects/color-snake.png",
         "url": "https://github.com/bukanyohandi/CSC1002/tree/main/Assignment%202%20-%20Snake",
-        "desc": "A <span>custom Snake game</span> but an <span>AI Monster</span> chasing around. Built using Python.",
+        "desc": "A <span>Snake game</span> with an <span>AI Monster</span> feature. Built using Python.",
         "year": "2021"
     }
 ]
