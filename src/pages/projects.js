@@ -27,7 +27,7 @@ const Container = styled.div`
   background-color: ${THEME.SECONDARY};
   padding: 0 0;
   margin: 25px auto 0 auto;
-  max-width: 950px;
+  max-width: 1100px;
   border: ${EDIT_MODE ? "1px solid" : "none"};
 
   @media only screen and (max-width: 950px) {
@@ -46,7 +46,7 @@ const Project = styled.a`
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   text-decoration: none;
   border: ${EDIT_MODE ? "1px solid" : "none"};
-  border: 0.5px solid;
+  // border: 0.5px solid;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
@@ -85,12 +85,11 @@ const ProjectTitle = styled.div`
 const ProjectImage = styled.img`
   width: 100%;
   aspect-ratio: 3/2;
-  border: 0.5px solid;
-  transition: transform 0.3s ease; /* Add a smooth transition effect for the transform property */
+  border: 0.1px solid;
+  transition: transform 0.3s ease;
 
-  /* When the parent (Project) is hovered, the image will be scaled up */
   ${Project}:hover & {
-    transform: scale(1.1); /* Increase the size by 10% */
+    transform: scale(1.05);
   }
 `;
 

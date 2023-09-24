@@ -30,7 +30,7 @@ const Container = styled.div`
   background-color: ${THEME.SECONDARY};
   padding: 0 0;
   margin: 25px auto 0 auto;
-  max-width: 950px;
+  max-width: 1100px;
   border: ${EDIT_MODE ? "1px solid" : "none"};
 
   @media only screen and (max-width: 800px) {
@@ -262,8 +262,8 @@ const BlogPage = ({ data, pageContext }) => {
           <title>Blog - Yohandi</title>
         </Helmet>
         <Container>
-          <ResultsHeading>Showing all posts with a tag: {tag}</ResultsHeading>
           <LeftContainer>
+            <ResultsHeading>Showing all posts with a tag: {tag}</ResultsHeading>
             <Card>
               {data.allMarkdownRemark.edges.map((post) => (
                 <PostLink
