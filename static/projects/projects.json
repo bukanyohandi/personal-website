@@ -43,9 +43,9 @@
         "title": "Email Spam Classification",
         "img": "/projects/email-spam-classification.jpg",
         "url": "http://yohandi.me/projects",
-        "desc": "A machine learning model designed to <span>classify</span> emails as either <span>spam</span> or legitimate. Built using Python.",
+        "desc": "A machine learning model designed to <span>classify</span> emails as either <span>spam</span> or legitimate. Achieved an accuracy of 85.7%. Built using Python.",
         "year": "2021"
-    },
+    },    
     
     {
         "title": "Color Snake",
