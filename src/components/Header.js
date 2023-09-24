@@ -35,12 +35,12 @@ const Title = styled.div`
   transform: translateY(
     ${({ Location }) =>
       Location.inProjectsPage || Location.inBlogPage
-        ? "4vh"
+        ? "1vh"
         : Location.inHomePage
         ? "-8vh"
         : "0"}
   );
-  animation: fadeInMoveUp 0.8s forwards 0s; // starts after 0.5s, lasts 1s
+  animation: fadeInMoveUp 0.4s forwards 0s; // starts after 0.5s, lasts 1s
 
   @keyframes fadeInMoveUp {
     to {
@@ -70,7 +70,7 @@ const Description = styled.div`
   transform: translateY(
     ${({ Location }) => (Location.inHomePage ? "-12vh" : "0")}
   );
-  animation: fadeInMoveUp 0.8s forwards 0s; // starts after 0.5s, lasts 1s
+  animation: fadeInMoveUp 0.4s forwards 0s; // starts after 0.5s, lasts 1s
 
   @keyframes fadeInMoveUp {
     to {
@@ -95,12 +95,12 @@ const Navigation = styled.nav`
   transform: translateY(
     ${({ Location }) =>
       Location.inProjectsPage || Location.inBlogPage
-        ? "6vh"
+        ? "1vh"
         : Location.inHomePage
         ? "-15vh"
         : "0"}
   );
-  animation: fadeInMoveUp 0.8s forwards 0s; // starts after 0.5s, lasts 1s
+  animation: fadeInMoveUp 0.1s forwards 0s; // starts after 0.5s, lasts 1s
 
   @keyframes fadeInMoveUp {
     to {

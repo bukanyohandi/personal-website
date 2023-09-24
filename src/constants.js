@@ -1,8 +1,8 @@
 // Default Light
-// export const THEME = {
-//   PRIMARY: "#f9f9f9",
-//   SECONDARY: "#eef2f7",
-// };
+export const THEME = {
+  PRIMARY: "#f9f9f9",
+  SECONDARY: "#eef2f7",
+};
 
 // Minty Coral
 // export const THEME = {
@@ -12,10 +12,10 @@
 // };
 
 // Golden Sand
-export const THEME = {
-  PRIMARY: "#f8e6cb",
-  SECONDARY: "#f8d49a",
-};
+// export const THEME = {
+//   PRIMARY: "#f8e6cb",
+//   SECONDARY: "#f8d49a",
+// };
 
 // Tangerine Sunset
 // export const THEME = {

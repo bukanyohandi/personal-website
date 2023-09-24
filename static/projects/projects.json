@@ -3,15 +3,15 @@
         "title": "Personal Website",
         "img": "/projects/personal-website.png",
         "url": "http://yohandi.me/",
-        "desc": "My personalized website that stores my thought-provoking blogs in a wide array of topics. A place where I proudly showcase a portfolio of exciting projects.",
+        "desc": "My <span>personalized website</span> that stores my thought-provoking <span>blogs</span> in a wide array of topics. A place where I proudly showcase a portfolio of exciting <span>projects</span>.",
         "year": "2023"
     },
     
     {
-        "title": "Comprehensive Banking Database",
+        "title": "Banking Database",
         "img": "/projects/banking-database.png",
         "url": "http://yohandi.me/projects",
-        "desc": "A design and implementation of comprehensive banking database. Built using SQL, Python, HTML, CSS, and JavaScript.",
+        "desc": "A design and implementation of comprehensive <span>banking database</span>. Built using <span>SQL</span>, <span>Python</span>, HTML, CSS, and JavaScript.",
         "year": "2023"
     },
     
@@ -19,7 +19,7 @@
         "title": "K-means Clustering",
         "img": "/projects/k-means-clustering.png",
         "url": "http://yohandi.me/projects",
-        "desc": "An implementation of unsupervised learning algorithm: K-means Clustering. Built using HTML, CSS, and JavaScript.",
+        "desc": "An implementation of unsupervised learning algorithm: <span>K-means Clustering</span>. Built using HTML, CSS, and <span>JavaScript</span>.",
         "year": "2022"
     },
     
@@ -27,7 +27,7 @@
         "title": "Handwritten Digit Recognition",
         "img": "/projects/handwritten-digit-recognition.png",
         "url": "http://yohandi.me/projects",
-        "desc": "An application of Multilayer Perceptron on recognizing ten thousands of handwritten digits. Built using Python.",
+        "desc": "An application of <span>Multilayer Perceptron</span> on recognizing ten thousands of <span>handwritten digits</span>. Built using Python.",
         "year": "2022"
     },
     
@@ -35,7 +35,7 @@
         "title": "LDAPS Model Forecast Prediction",
         "img": "/projects/ldaps-model-forecast-prediction.png",
         "url": "http://yohandi.me/projects",
-        "desc": "A simple application of linear regression on predicting next-day temperature. Built using Python.",
+        "desc": "A simple application of <span>linear regression</span> on <span>predicting</span> next-day temperature. Built using Python.",
         "year": "2022"
     },
     
@@ -43,7 +43,7 @@
         "title": "Color Snake",
         "img": "/projects/color-snake.png",
         "url": "https://github.com/bukanyohandi/CSC1002/tree/main/Assignment%202%20-%20Snake",
-        "desc": "A custom Snake game but an AI Monster chasing around. Built using Python.",
+        "desc": "A <span>custom Snake game</span> but an <span>AI Monster</span> chasing around. Built using Python.",
         "year": "2021"
     }
 ]

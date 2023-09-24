@@ -46,9 +46,12 @@ const Project = styled.a`
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   text-decoration: none;
   border: ${EDIT_MODE ? "1px solid" : "none"};
+  border: 0.5px solid;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+
+  overflow: hidden;
 
   cursor: pointer; // Add a pointer cursor to indicate it's clickable
   text-decoration: none; // Remove the default underline
@@ -82,6 +85,13 @@ const ProjectTitle = styled.div`
 const ProjectImage = styled.img`
   width: 100%;
   aspect-ratio: 3/2;
+  border: 0.5px solid;
+  transition: transform 0.3s ease; /* Add a smooth transition effect for the transform property */
+
+  /* When the parent (Project) is hovered, the image will be scaled up */
+  ${Project}:hover & {
+    transform: scale(1.1); /* Increase the size by 10% */
+  }
 `;
 
 const ProjectContent = styled.div`
@@ -96,6 +106,25 @@ const ProjectDescription = styled.div`
   margin-bottom: 0.3em;
   border: ${EDIT_MODE ? "1px solid" : "none"};
 `;
+const HighlightedText = styled.span`
+  background-color: transparent;
+  border-radius: 1px;
+  transition: background-color 0.8s ease;
+
+  ${Project}:hover & {
+    background-color: #fac4b3;
+  }
+`;
+function parseDescriptionWithHighlights(description) {
+  const parts = description.split(/<span>|<\/span>/);
+
+  return parts.map((part, index) => {
+    if (index % 2 === 1) {
+      return <HighlightedText key={index}>{part}</HighlightedText>;
+    }
+    return part;
+  });
+}
 
 const ProjectYear = styled.div`
   font-family: "Open Sans", sans-serif;
@@ -150,7 +179,9 @@ export default function ProjectPage({ data }) {
               <ProjectImage src={node.img} />
               <ProjectContent>
                 <ProjectTitle>{node.title}</ProjectTitle>
-                <ProjectDescription>{node.desc}</ProjectDescription>
+                <ProjectDescription>
+                  {parseDescriptionWithHighlights(node.desc)}
+                </ProjectDescription>
               </ProjectContent>
               <ProjectYear>{node.year}</ProjectYear>
             </Project>
