@@ -96,6 +96,7 @@ const LeftContainer = styled.div`
   padding: 20px;
   box-sizing: border-box;
   border: ${EDIT_MODE ? "1px solid" : "none"};
+  background-color: ${THEME.TERTIARY};
 
   @media only screen and (max-width: 800px) {
     width: 100%;

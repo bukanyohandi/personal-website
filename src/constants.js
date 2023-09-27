@@ -3,6 +3,7 @@ export const THEME = {
   PRIMARY: "#f9f9f9",
   SECONDARY: "#f9f9f9",
   // SECONDARY: "#eef2f7",
+  TERTIARY: "#eef2f7",
 };
 
 // Minty Coral
