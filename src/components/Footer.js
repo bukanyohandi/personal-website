@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { THEME } from "../constants.js";
 
 const Container = styled.div`
@@ -13,7 +13,7 @@ const Container = styled.div`
   height: 10vh;
 `;
 
-const EmailWrapper = styled.a`
+const Wrapper = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,44 +23,27 @@ const EmailWrapper = styled.a`
   color: inherit;
   text-decoration: none;
 `;
+
+const InstagramIcon = styled(FaInstagram)``;
 const EmailIcon = styled(FaEnvelope)``;
-
-const LinkedInWrapper = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-family: "Open Sans", sans-serif;
-  padding-bottom: 10px;
-  color: inherit;
-  text-decoration: none;
-`;
 const LinkedInIcon = styled(FaLinkedin)``;
-
-const GitHubWrapper = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-family: "Open Sans", sans-serif;
-  padding-bottom: 10px;
-  color: inherit;
-  text-decoration: none;
-`;
 const GitHubIcon = styled(FaGithub)``;
 
 const Footer = () => {
   return (
     <Container>
-      <EmailWrapper href="mailto:yohandi.0903@gmail.com">
+      <Wrapper href="mailto:yohandi.0903@gmail.com">
         <EmailIcon size={25} />
-      </EmailWrapper>
-      {/* <LinkedInWrapper href="https://linkedin.com/in/yohandi">
+      </Wrapper>
+      {/* <Wrapper href="https://linkedin.com/in/yohandi">
         <FaLinkedin size={25} />
-      </LinkedInWrapper> */}
-      <GitHubWrapper href="https://github.com/bukanyohandi">
-        <FaGithub size={25} />
-      </GitHubWrapper>
+      </Wrapper> */}
+      <Wrapper href="https://github.com/bukanyohandi">
+        <GitHubIcon size={25} />
+      </Wrapper>
+      <Wrapper href="https://www.instagram.com/yohandii/">
+        <InstagramIcon size={28} />
+      </Wrapper>
     </Container>
   );
 };
