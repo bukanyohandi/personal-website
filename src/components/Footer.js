@@ -22,6 +22,17 @@ const Wrapper = styled.a`
   padding-bottom: 10px;
   color: inherit;
   text-decoration: none;
+
+  opacity: 0;
+  transform: translateY(5vh);
+  animation: fadeInMoveUp 1s forwards 0.5s; // starts after 0.5s, lasts 1s
+
+  @keyframes fadeInMoveUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 const InstagramIcon = styled(FaInstagram)``;

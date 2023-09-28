@@ -1,7 +1,17 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import Layout from "../layouts";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+`;
 
 const HeightLimiter = styled.div`
   height: 100vh;
@@ -9,18 +19,21 @@ const HeightLimiter = styled.div`
 
 export default function HomePage() {
   return (
-    <HeightLimiter>
-      <Layout>
-        <Helmet>
-          <title>Yohandi</title>
-          <meta
-            name="description"
-            content={`
+    <>
+      <GlobalStyle />
+      <HeightLimiter>
+        <Layout>
+          <Helmet>
+            <title>Yohandi</title>
+            <meta
+              name="description"
+              content={`
             Yohandi. A passionate student with a strong interest in algorithms and data structures.
           `}
-          />
-        </Helmet>
-      </Layout>
-    </HeightLimiter>
+            />
+          </Helmet>
+        </Layout>
+      </HeightLimiter>
+    </>
   );
 }
