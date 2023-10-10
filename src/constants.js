@@ -1,10 +1,11 @@
 // Default Light
-export const THEME = {
-  PRIMARY: "#f9f9f9",
-  SECONDARY: "#f9f9f9",
-  // SECONDARY: "#eef2f7",
-  TERTIARY: "#eef2f7",
-};
+// export const THEME = {
+//   PRIMARY: "#f9f9f9",
+//   SECONDARY: "#f9f9f9",
+//   // SECONDARY: "#eef2f7",
+//   TERTIARY: "#f9f9f9",
+//   // TERTIARY: "#eef2f7",
+// };
 
 // Minty Coral
 // export const THEME = {
@@ -24,3 +25,9 @@ export const THEME = {
 //   PRIMARY: "#ffdaa6",
 //   SECONDARY: "#ff7351",
 // };
+
+// Custom Sunset
+export const THEME = {
+  PRIMARY: "#ffdaa6",
+  SECONDARY: "#ffdaa6",
+};
