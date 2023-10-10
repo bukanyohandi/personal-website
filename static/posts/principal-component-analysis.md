@@ -129,7 +129,7 @@ The previous suggests that the optimal solution $u_i$ must be one of the eigenve
 
 $$
 \begin{align*}
-\max\ \ \texttt{Trace}(U^T \Sigma U) &= \max\ \ \sum_{i = 1}^K u_i^T \Sigma u^i \\
+\max\ \ \texttt{Trace}(U^T \Sigma U) &= \max\ \ \sum_{i = 1}^K u_i^T \Sigma u_i \\
 &= \max\ \ \sum_{i = 1}^K \sum_{j = 1}^n u_i^T \lambda_j v_j v_j^T u_i \\
 &= \max\ \ \sum_{i = 1}^K \sum_{j = 1}^n \lambda_j (u_i^T v_j) (u_i^T v_j)^T \\
 &= \sum_{i = 1}^K \lambda_{(i)} \\
