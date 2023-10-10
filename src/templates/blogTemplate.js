@@ -13,6 +13,8 @@ import rehypeKatex from "rehype-katex";
 import gfm from "remark-gfm";
 import { Disqus } from "gatsby-plugin-disqus";
 import { THEME } from "../constants.js";
+import PDFEmbed from "../components/PDFEmbed";
+import "../styles/fonts.css";
 
 const GlobalStyle = styled.div`
   background-color: ${THEME.PRIMARY};
@@ -94,7 +96,7 @@ const PostContent = styled.div`
   h1 {
     font-family: "Merriweather", serif;
     font-size: 1.76rem;
-    font-weight: 100;
+    // font-weight: 100;
     color: #2c3e50;
     margin: 1.2rem 0 0.8rem;
     line-height: 1;
@@ -303,6 +305,13 @@ const BlogTemplate = ({ data }) => {
     h4: (props) => customHeadingRenderer(props, 4),
     h5: (props) => customHeadingRenderer(props, 5),
     h6: (props) => customHeadingRenderer(props, 6),
+
+    a: (props) => {
+      if (props.href && props.href.endsWith(".pdf")) {
+        return <PDFEmbed src={props.href} />;
+      }
+      return <a {...props} />;
+    },
 
     // This custom renderer changes how images are rendered
     img: (props) => {

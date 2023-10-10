@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { useLocation } from "@reach/router";
 import { THEME } from "../constants.js";
+import "../styles/fonts.css";
 
 const Container = styled.div`
   display: flex;
@@ -15,11 +16,11 @@ const Container = styled.div`
 
 const Title = styled.div`
   text-align: center;
-  font-size: ${({ Location }) => (Location.inHomePage ? "70px" : "70px")};
+  font-size: ${({ Location }) => (Location.inHomePage ? "55px" : "55px")};
   color: #2c3e50;
   margin: ${({ Location }) => (Location.inHomePage ? "0px" : "20px 0")};
   font-weight: 300;
-  font-family: "Satisfy", cursive;
+  font-family: "Pixelify Sans", sans-serif;
   letter-spacing: 2px;
   margin-top: 0px;
   user-select: none;
@@ -28,14 +29,11 @@ const Title = styled.div`
     font-size: 60px;
   }
 
-  opacity: ${({ Location }) =>
-    Location.inProjectsPage || Location.inBlogPage || Location.inHomePage
-      ? "0"
-      : "1"};
+  opacity: ${({ Location }) => (Location.inHomePage ? "0" : "1")};
   transform: translateY(
     ${({ Location }) =>
       Location.inProjectsPage || Location.inBlogPage
-        ? "1vh"
+        ? "0vh"
         : Location.inHomePage
         ? "-8vh"
         : "0"}
@@ -149,15 +147,15 @@ const Header = () => {
         <NavLink to="/" activeStyle={activeLinkStyle}>
           Home
         </NavLink>
+        <NavLink to="/projects" activeStyle={activeLinkStyle}>
+          Projects
+        </NavLink>
         <NavLink
           to="/blog"
           activeStyle={activeLinkStyle}
           partiallyActive={true}
         >
           Blog
-        </NavLink>
-        <NavLink to="/projects" activeStyle={activeLinkStyle}>
-          Projects
         </NavLink>
         {/* <NavLink to="/resume" activeStyle={activeLinkStyle}>
           Resume
