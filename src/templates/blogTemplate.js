@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Layout from "../layouts";
 import { Helmet } from "react-helmet";
 import ReactMarkdown from "react-markdown";
@@ -16,8 +16,18 @@ import { THEME } from "../constants.js";
 import PDFEmbed from "../components/PDFEmbed";
 import "../styles/fonts.css";
 
-const GlobalStyle = styled.div`
+const Style = styled.div`
   background-color: ${THEME.PRIMARY};
+`;
+
+const GlobalStyle = createGlobalStyle`
+  ::-webkit-scrollbar {
+    width: 0 !important;
+  }
+  
+  body {
+    -ms-overflow-style: none;
+  }
 `;
 
 const MOBILE_CONST = 0.85;
@@ -368,7 +378,9 @@ const BlogTemplate = ({ data }) => {
   }, [headingsRef.current]);
 
   return (
-    <GlobalStyle>
+    <>
+      <Style />
+      <GlobalStyle />
       <Layout>
         <Helmet>
           <title>{post.frontmatter.title}</title>
@@ -413,7 +425,7 @@ const BlogTemplate = ({ data }) => {
           </div>
         </PostContainer>
       </Layout>
-    </GlobalStyle>
+    </>
   );
 };
 
