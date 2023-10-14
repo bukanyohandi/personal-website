@@ -1,5 +1,13 @@
 [
     {
+        "title": "Image Processing by Natural Parallelism",
+        "img": "/projects/natural-parallelism.png",
+        "url": "https://github.com/bukanyohandi/natural-parallelism-disclosing-efficient-techniques-for-image-processing",
+        "desc": "An advanced exploration of <span>image processing</span> utilizing the power of <span>natural parallelism</span>. Designed to enhance computational efficiency, showcasing the potential of parallel techniques in real-world applications.",
+        "year": "2023"
+    },
+
+    {
         "title": "Personal Website",
         "img": "/projects/personal-website.png",
         "url": "http://yohandi.me/",
