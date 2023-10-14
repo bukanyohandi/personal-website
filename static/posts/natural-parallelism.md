@@ -1,6 +1,6 @@
 ---
 title: "Natural Parallelism: Disclosing Efficient Techniques for Image Processing"
-date: "2023-10-13"
+date: "2023-10-14"
 author: "Yohandi"
 tags: [image-filtering, parallel-programming, project]
 ---
