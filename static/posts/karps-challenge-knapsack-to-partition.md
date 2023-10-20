@@ -11,7 +11,7 @@ In 1972, Richard Karp published a paper titled "Reducibility Among Combinatorial
 
 ### Challenge Progress
 
-![](/posts/figures/karps-challenge-Knapsack-to-Partition/progress.png)
+![](/posts/figures/karps-challenge-knapsack-to-partition/progress.png)
 
 ### Knapsack (simplified)
 
