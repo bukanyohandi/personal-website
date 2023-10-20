@@ -24,6 +24,9 @@ const Title = styled.div`
   letter-spacing: 2px;
   margin-top: 0px;
   user-select: none;
+  display: flex;
+  align-items: center; // Vertically centers the items
+  justify-content: center; // Horizontally centers the items
 
   @media only screen and (max-width: 800px) {
     font-size: 60px;
@@ -132,36 +135,41 @@ const Header = () => {
   const inProjectsPage = useLocation().pathname === "/projects/";
 
   return (
-    <Container
-      THEME={THEME}
-      Location={{ inHomePage, inBlogPage, inProjectsPage }}
-    >
-      <Title Location={{ inHomePage, inBlogPage, inProjectsPage }}>
-        yohandi
-      </Title>
-      <Description Location={{ inHomePage, inBlogPage, inProjectsPage }}>
-        A passionate student with a strong interest in algorithms and data
-        structures.
-      </Description>
-      <Navigation Location={{ inHomePage, inBlogPage, inProjectsPage }}>
-        <NavLink to="/" activeStyle={activeLinkStyle}>
-          Home
-        </NavLink>
-        <NavLink to="/projects" activeStyle={activeLinkStyle}>
-          Projects
-        </NavLink>
-        <NavLink
-          to="/blog"
-          activeStyle={activeLinkStyle}
-          partiallyActive={true}
-        >
-          Blog
-        </NavLink>
-        {/* <NavLink to="/resume" activeStyle={activeLinkStyle}>
+    <>
+      <Container
+        THEME={THEME}
+        Location={{ inHomePage, inBlogPage, inProjectsPage }}
+      >
+        <Title Location={{ inHomePage, inBlogPage, inProjectsPage }}>
+          yohandi
+        </Title>
+        <Description Location={{ inHomePage, inBlogPage, inProjectsPage }}>
+          A passionate student with a strong interest in algorithms and data
+          structures.
+        </Description>
+        <Navigation Location={{ inHomePage, inBlogPage, inProjectsPage }}>
+          <NavLink to="/" activeStyle={activeLinkStyle}>
+            Home
+          </NavLink>
+          <NavLink to="/projects" activeStyle={activeLinkStyle}>
+            Projects
+          </NavLink>
+          <NavLink
+            to="/blog"
+            activeStyle={activeLinkStyle}
+            partiallyActive={true}
+          >
+            Blog
+          </NavLink>
+          {/* <NavLink to="/resume" activeStyle={activeLinkStyle}>
           Resume
         </NavLink> */}
-      </Navigation>
-    </Container>
+        </Navigation>
+      </Container>
+      <div className="cactus-bottom">
+        <span className="cactus-text">hi, I'm a cactus</span>
+      </div>
+    </>
   );
 };
 
