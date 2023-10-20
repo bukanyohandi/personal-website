@@ -1,6 +1,6 @@
 ---
 title: "Karp's Classics Challenge 1: Knapsack to Partition"
-date: "2023-10-21"
+date: "2023-10-20"
 author: "Yohandi"
 tags: [algorithm, challenge]
 ---
