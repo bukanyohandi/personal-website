@@ -1,7 +1,23 @@
 [
     {
+        "title": "AI Assistant with GPT-NLP Integration",
+        "img": "/projects/ai-assistant-gpt-nlp.png",
+        "url": "http://yohandi.me/projects",
+        "desc": "An <span>AI assistant</span> project that leverages the analytical power of <span>GPT</span> models within the realm of <span>Natural Language Processing</span>. Aimed at creating seamless human-computer interactions, this platform showcases the integration of conversational AI with NLP for enhanced user experiences.",
+        "year": "2023"
+    },
+
+    {
+        "title": "Refining Matrix Multiplication by Natural Parallelism",
+        "img": "/projects/natural-parallelism-the-paradigm-of-refined-matrix-multiplication.png",
+        "url": "https://github.com/bukanyohandi/natural-parallelism-the-paradigm-of-refined-matrix-multiplication",
+        "desc": "Optimizing <span>matrix multiplication</span> efficiency through <span>natural parallelism</span> by leveraging advanced memory management, data-level parallelism with SIMD, and multi-threading with OpenMP and MPI to enhance computational speed and scalability.",
+        "year": "2023"
+    },
+
+    {
         "title": "Image Processing by Natural Parallelism",
-        "img": "/projects/natural-parallelism.png",
+        "img": "/projects/natural-parallelism-disclosing-efficient-techniques-for-image-processing.png",
         "url": "https://github.com/bukanyohandi/natural-parallelism-disclosing-efficient-techniques-for-image-processing",
         "desc": "An advanced exploration of <span>image processing</span> utilizing the power of <span>natural parallelism</span>. Designed to enhance computational efficiency, showcasing the potential of parallel techniques in real-world applications.",
         "year": "2023"

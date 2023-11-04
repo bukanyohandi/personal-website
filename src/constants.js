@@ -8,11 +8,12 @@
 // };
 
 // Minty Coral
-// export const THEME = {
-//   PRIMARY: "#a5d2c0",
-//   SECONDARY: "#71ac9a",
-//   TERTIARY: "#df585a",
-// };
+export const THEME = {
+  PRIMARY: "#a5d2c0",
+  SECONDARY: "#a5d2c0",
+  // SECONDARY: "#71ac9a",
+  TERTIARY: "#df585a",
+};
 
 // Golden Sand
 // export const THEME = {
@@ -27,7 +28,7 @@
 // };
 
 // Custom Sunset
-export const THEME = {
-  PRIMARY: "#ffdaa6",
-  SECONDARY: "#ffdaa6",
-};
+// export const THEME = {
+//   PRIMARY: "#ffdaa6",
+//   SECONDARY: "#ffdaa6",
+// };

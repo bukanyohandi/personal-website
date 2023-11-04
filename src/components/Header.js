@@ -166,9 +166,6 @@ const Header = () => {
         </NavLink> */}
         </Navigation>
       </Container>
-      <div className="cactus-bottom">
-        <span className="cactus-text">hi, I'm a cactus</span>
-      </div>
     </>
   );
 };
