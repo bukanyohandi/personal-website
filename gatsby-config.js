@@ -7,6 +7,7 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
 module.exports = {
   plugins: [
     `gatsby-plugin-remove-trailing-slashes`,
@@ -75,6 +76,45 @@ module.exports = {
       resolve: `gatsby-plugin-disqus`,
       options: {
         shortname: `yohandi`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-local-search",
+      options: {
+        name: "pages",
+        engine: "flexsearch",
+        engineOptions: {
+          profile: "speed",
+          tokenize: "forward",
+        },
+        query: `
+      {
+        allMarkdownRemark {
+          nodes {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+            rawMarkdownBody
+          }
+        }
+      }
+    `,
+        ref: "id",
+        index: ["titleSearch", "bodySearch"],
+        store: ["id", "path", "title", "body"],
+        normalizer: ({ data }) =>
+          data.allMarkdownRemark.nodes.map((node) => ({
+            id: node.id,
+            path: node.frontmatter.path,
+            title: node.frontmatter.title,
+            body: node.rawMarkdownBody,
+            titleSearch: node.frontmatter.title.toLowerCase(),
+            bodySearch: node.rawMarkdownBody.toLowerCase(),
+          })),
       },
     },
   ],

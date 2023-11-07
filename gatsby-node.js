@@ -1,6 +1,17 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      fallback: {
+        path: require.resolve("path-browserify"),
+        fs: false, // Since 'fs' module is not needed in the browser, it can be set to false.
+      },
+    },
+  });
+};
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 

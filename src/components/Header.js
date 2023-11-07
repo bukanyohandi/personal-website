@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useLocation } from "@reach/router";
 import { THEME } from "../constants.js";
 import "../styles/fonts.css";
+import SearchBar from "./SearchBar.js";
 
 const Container = styled.div`
   display: flex;
@@ -147,6 +148,7 @@ const Header = () => {
           A passionate student with a strong interest in algorithms and data
           structures.
         </Description>
+        <SearchBar inHomePage={inHomePage} />
         <Navigation Location={{ inHomePage, inBlogPage, inProjectsPage }}>
           <NavLink to="/" activeStyle={activeLinkStyle}>
             Home
