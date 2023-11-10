@@ -109,7 +109,7 @@ module.exports = {
         normalizer: ({ data }) =>
           data.allMarkdownRemark.nodes.map((node) => ({
             id: node.id,
-            path: node.frontmatter.path,
+            path: node.fields.slug,
             title: node.frontmatter.title,
             body: node.rawMarkdownBody,
             titleSearch: node.frontmatter.title.toLowerCase(),

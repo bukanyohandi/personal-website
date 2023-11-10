@@ -63,6 +63,7 @@ const ResultsContainer = styled.div`
   top: 50px; // Adjusted to fit the new input height
   z-index: 1000;
   display: ${({ show }) => (show ? "block" : "none")};
+  user-select: none;
 
   @media only screen and (max-width: 800px) {
     width: 80%;
@@ -89,12 +90,25 @@ const ContentSnippet = styled.p`
   }
 `;
 
+const BlogLabel = styled.span`
+  position: absolute;
+  bottom: 5px; // Adjust as needed
+  right: 5px; // Adjust as needed
+  background: #3498db; // Use your blog's theme color
+  color: white;
+  padding: 2px 6px;
+  font-size: 0.7em;
+  border-radius: 3px;
+  text-transform: uppercase;
+`;
+
 const ResultItem = styled(Link)`
   display: block;
   padding: 10px;
   border-bottom: 1px solid #eee;
   color: #333;
   text-decoration: none;
+  position: relative; // Position relative to allow absolute positioning of BlogLabel
 
   &:last-child {
     border-bottom: none;
@@ -102,6 +116,11 @@ const ResultItem = styled(Link)`
 
   &:hover {
     background-color: #f8f8f8;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit; // This ensures that the link has the same color as the ResultItem
   }
 `;
 
@@ -153,51 +172,68 @@ const SearchBar = () => {
     };
   }, []);
 
-  // Custom sorting function to sort results by relevance
-  const sortResults = (results) => {
-    return results;
+  const sortResults = (results, query) => {
+    // Convert the query to lowercase for case-insensitive comparison
+    const queryLower = query.toLowerCase();
+
+    // Sort the results array
+    return results.sort((a, b) => {
+      // Check if title contains the query for both results
+      const titleMatchA = a.title.toLowerCase().includes(queryLower);
+      const titleMatchB = b.title.toLowerCase().includes(queryLower);
+
+      // If both have a match in the title or neither have, sort by the index of the match in the title
+      if (titleMatchA && titleMatchB) {
+        return (
+          a.title.toLowerCase().indexOf(queryLower) -
+          b.title.toLowerCase().indexOf(queryLower)
+        );
+      } else if (titleMatchA) {
+        return -1; // Prioritize result A with title match
+      } else if (titleMatchB) {
+        return 1; // Prioritize result B with title match
+      }
+
+      // If neither result has a title match, sort by the index of the match in the body
+      return (
+        a.body.toLowerCase().indexOf(queryLower) -
+        b.body.toLowerCase().indexOf(queryLower)
+      );
+    });
   };
 
   const getRelevantSnippet = (content, query) => {
     content = content.replace(/###/g, "");
 
-    // Check if content is not undefined or null and query is not empty
     if (content && query) {
-      // Find the index of the first occurrence of the query
-      const index = content.indexOf(query);
+      const contentLower = content.toLowerCase();
+      const queryLower = query.toLowerCase();
 
-      // If the query is found in the content
+      const index = contentLower.indexOf(queryLower);
+
       if (index !== -1) {
-        // Find the start of the sentence containing the query
         let start = content.lastIndexOf(".", index) + 1;
-        if (start < 0) start = 0; // In case the sentence is at the beginning of the content
+        if (start < 0) start = 0;
 
-        // Find the end of the sentence containing the query
         let end = content.indexOf(".", index);
-        if (end === -1) end = content.length; // In case the sentence is at the end of the content
+        if (end === -1) end = content.length;
 
-        // Extract the sentence containing the query
         const snippet = content.slice(start, end + 1).trim();
 
-        // Now you would highlight the search term within the snippet
         return "..." + highlightQuery(snippet, query) + "...";
       }
     }
-    // If content is not available or the query is not found, return a default message
     return "No relevant snippet available...";
   };
 
-  // Function to highlight the query term in the snippet
   const highlightQuery = (snippet, query) => {
-    const highlighted = snippet.replace(
-      new RegExp(query, "gi"),
-      `<mark>${query}</mark>`
-    );
+    const regex = new RegExp(`\\b${query}`, "gi");
+    const highlighted = snippet.replace(regex, `<mark>${query}</mark>`);
+
     return highlighted;
   };
 
-  // Use the custom sort function
-  const sortedResults = sortResults(results);
+  const sortedResults = sortResults(results, query);
 
   return location.pathname === "/" ? (
     <SearchBarContainer ref={searchBarRef}>
@@ -218,6 +254,7 @@ const SearchBar = () => {
       <ResultsContainer show={showResults}>
         {sortedResults.map((result) => (
           <ResultItem key={result.id} to={result.path}>
+            <BlogLabel>BLOG</BlogLabel> {/* This is the new label */}
             <ResultTitle>{result.title}</ResultTitle>
             <ContentSnippet
               dangerouslySetInnerHTML={{
