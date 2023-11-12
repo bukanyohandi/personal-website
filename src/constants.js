@@ -12,7 +12,7 @@ export const THEME = {
   PRIMARY: "#a5d2c0",
   SECONDARY: "#a5d2c0",
   // SECONDARY: "#71ac9a",
-  TERTIARY: "#df585a",
+  TERTIARY: "#E68686",
 };
 
 // Golden Sand

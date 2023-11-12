@@ -56,11 +56,11 @@ const ResultsContainer = styled.div`
   max-height: 30vh;
   overflow-y: scroll;
   background-color: #fff;
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
   position: absolute;
-  top: 50px; // Adjusted to fit the new input height
+  top: 50px;
   z-index: 1000;
   display: ${({ show }) => (show ? "block" : "none")};
   user-select: none;

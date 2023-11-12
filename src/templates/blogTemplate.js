@@ -15,6 +15,8 @@ import { Disqus } from "gatsby-plugin-disqus";
 import { THEME } from "../constants.js";
 import PDFEmbed from "../components/PDFEmbed";
 import "../styles/fonts.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClipboard, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Style = styled.div`
   background-color: ${THEME.PRIMARY};
@@ -285,6 +287,67 @@ const renderTOC = (toc) => (
   </ul>
 );
 
+const copyToClipboard = (text) => {
+  navigator.clipboard.writeText(text).then(() => {});
+};
+
+const CollapsibleCodeBlock = ({ language, children, ...props }) => {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const fullCode = String(children).replace(/\n$/, "");
+  const snippet = fullCode.split("\n").slice(0, 5).join("\n") + "\n...";
+
+  const [icon, setIcon] = useState(faClipboard);
+
+  const handleCopyClick = () => {
+    copyToClipboard(fullCode);
+    setIcon(faCheckCircle);
+
+    setTimeout(() => {
+      setIcon(faClipboard);
+    }, 2000);
+  };
+
+  return (
+    <div style={{ position: "relative" }}>
+      <button
+        onClick={handleCopyClick}
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          zIndex: 10,
+          backgroundColor: "transparent",
+          border: "none",
+          cursor: "pointer",
+          padding: "5px 10px",
+        }}
+      >
+        <FontAwesomeIcon
+          icon={icon}
+          style={{ fontSize: "18px", color: "#EB8686" }}
+        />
+      </button>
+      <SyntaxHighlighter style={prism} language={language} {...props}>
+        {isCollapsed ? snippet : fullCode}
+      </SyntaxHighlighter>
+      <div
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "15px",
+          background:
+            "repeating-linear-gradient(-45deg, #E66868, #E66868 2%, #EB8686 2%, #EB8686 4%)",
+          opacity: 0.2,
+          cursor: "pointer",
+        }}
+      />
+    </div>
+  );
+};
+
 const BlogTemplate = ({ data }) => {
   const post = data.markdownRemark;
   const [toc, setToc] = useState([]);
@@ -333,31 +396,25 @@ const BlogTemplate = ({ data }) => {
       );
     },
 
-    // This custom renderer handles code blocks
     code: ({ node, inline, className, children, ...props }) => {
       const match = /language-(\w+)/.exec(className || "");
-
-      // Check for window object (may not be available during SSR or in certain environments)
-      const windowWidth =
-        typeof window !== "undefined" ? window.innerWidth : 1000; // 1000 as default width
-
-      // Set maxWidth based on window width
-      const maxWidthValue = windowWidth <= 800 ? "480px" : "630px";
-
-      const codeBlockContainerStyle = {
-        maxWidth: maxWidthValue,
-        overflowX: "auto",
-      };
+      const isCollapsible = className?.includes("[collapsible]");
 
       if (!inline && match) {
-        return (
-          <div style={codeBlockContainerStyle}>
+        if (isCollapsible) {
+          return (
+            <CollapsibleCodeBlock language={match[1]} {...props}>
+              {String(children).replace(/\n$/, "")}
+            </CollapsibleCodeBlock>
+          );
+        } else {
+          return (
             <SyntaxHighlighter style={prism} language={match[1]} {...props}>
               {String(children).replace(/\n$/, "")}
             </SyntaxHighlighter>
-          </div>
-        );
-      } else {
+          );
+        }
+      } else if (inline) {
         return (
           <code className={className} {...props}>
             {children}
