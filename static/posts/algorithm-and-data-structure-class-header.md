@@ -5,7 +5,7 @@ author: "Yohandi"
 tags: [algorithm, data-structure, notes, project]
 ---
 
-Unlike the previous blogs, this space is dedicated purely to my algorithm amd data structure class headers. This ongoing project is an extension of my old archive, which can be found [here](https://github.com/bukanyohandi/Algorithm-Class-Header). Pretty much I will keep updating both the old archive and this showcase every time I make a new class header.
+Unlike the previous blogs, this space is dedicated purely to my algorithm and data structure class headers. This ongoing project is an extension of my old archive, which can be found [here](https://github.com/bukanyohandi/Algorithm-Class-Header). Pretty much I will keep updating both the old archive and this showcase every time I make a new class header.
 
 ## Dijkstra
 
