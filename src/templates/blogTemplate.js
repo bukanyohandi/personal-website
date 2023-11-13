@@ -249,6 +249,26 @@ const TagsWrapper = styled.div`
   margin-top: 1em; // space above the tag group
 `;
 
+const NavigationLink = styled.a`
+  display: block;
+  padding: 10px 15px;
+  margin: 10px 0;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #157a94;
+  font-family: "Open Sans", sans-serif;
+  &:hover {
+    color: #106272;
+    text-decoration: underline;
+  }
+  &.previous {
+    text-align: left;
+  }
+  &.next {
+    text-align: right;
+  }
+`;
+
 const createTOCTree = (headings) => {
   const toc = [];
   let stack = [];
@@ -348,7 +368,9 @@ const CollapsibleCodeBlock = ({ language, children, ...props }) => {
   );
 };
 
-const BlogTemplate = ({ data }) => {
+const BlogTemplate = ({ data, pageContext }) => {
+  const { previous, next } = pageContext;
+
   const post = data.markdownRemark;
   const [toc, setToc] = useState([]);
   const headingsRef = useRef([]);
@@ -480,6 +502,17 @@ const BlogTemplate = ({ data }) => {
               }}
             />
           </div>
+
+          {previous && (
+            <NavigationLink href={previous.fields.slug} className="previous">
+              ← {previous.frontmatter.title}
+            </NavigationLink>
+          )}
+          {next && (
+            <NavigationLink href={next.fields.slug} className="next">
+              {next.frontmatter.title} →
+            </NavigationLink>
+          )}
         </PostContainer>
       </Layout>
     </>
@@ -489,7 +522,11 @@ const BlogTemplate = ({ data }) => {
 export default BlogTemplate;
 
 export const postQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug(
+    $slug: String!
+    $previousPostId: String
+    $nextPostId: String
+  ) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       rawMarkdownBody
       tableOfContents(absolute: false)
@@ -498,6 +535,22 @@ export const postQuery = graphql`
         author
         date(formatString: "MMMM DD, YYYY")
         tags
+      }
+    }
+    previous: markdownRemark(id: { eq: $previousPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+      }
+    }
+    next: markdownRemark(id: { eq: $nextPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
       }
     }
   }

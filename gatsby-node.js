@@ -39,6 +39,24 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               tags
+              title
+              date
+            }
+          }
+          next {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+          previous {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
             }
           }
         }
@@ -68,6 +86,21 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = result.data.allMarkdownRemark.edges;
   const postsPerPage = 4;
   const numPages = Math.ceil(posts.length / postsPerPage);
+
+  posts.forEach((post, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node;
+    const next = index === 0 ? null : posts[index - 1].node;
+
+    createPage({
+      path: post.node.fields.slug,
+      component: path.resolve("./src/templates/blogTemplate.js"),
+      context: {
+        slug: post.node.fields.slug,
+        previous,
+        next,
+      },
+    });
+  });
 
   const tags = data.data.allMarkdownRemark.edges.reduce((allTags, edge) => {
     const tagsFromNode = edge.node.frontmatter.tags;
@@ -138,16 +171,6 @@ exports.createPages = async ({ graphql, actions }) => {
         skip: (i + 1) * postsPerPage,
         numPages,
         currentPage: i + 2,
-      },
-    });
-  });
-
-  posts.forEach((post, index) => {
-    createPage({
-      path: post.node.fields.slug,
-      component: path.resolve("./src/templates/blogTemplate.js"),
-      context: {
-        slug: post.node.fields.slug,
       },
     });
   });
