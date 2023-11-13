@@ -72,6 +72,10 @@ const TagsComponent = () => {
   const allTags = data.allMarkdownRemark.edges
     .map((edge) => edge.node.frontmatter.tags)
     .flat();
+  const tagCounts = allTags.reduce((acc, tag) => {
+    acc[tag] = (acc[tag] || 0) + 1;
+    return acc;
+  }, {});
   const uniqueTagsSet = new Set(allTags);
   const uniqueTags = [...uniqueTagsSet].sort();
 
@@ -84,7 +88,7 @@ const TagsComponent = () => {
             key={tag}
             to={`/blog/tags/${tag.toLowerCase().replace(/ /g, "_")}`}
           >
-            {tag}
+            {`${tag} (${tagCounts[tag]})`}
           </TagLink>
         ))}
       </TagsContainer>
