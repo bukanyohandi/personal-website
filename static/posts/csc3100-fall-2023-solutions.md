@@ -5,7 +5,7 @@ author: "Yohandi"
 tags: [algorithm, data-structure, tutorial]
 ---
 
-In the very recent term, I got an opportunity to become the teaching assistant for the CSC3100 Data Structures course. The below are compilation of solutions writeup made by me for all the assignments. These solutions are from my own insights and perspectives on the problems and are unofficial.
+In the very recent term, I got an opportunity to become the teaching assistant for the CSC3100 Data Structures course. The below are compilation of solutions writeup made by me for all the assignments. These solutions are from my own insights and perspectives on the problems and are unofficial. PDF version can be found at the bottom of this page.
 
 ## Assignment 1
 
@@ -139,7 +139,6 @@ a & b\\
 f_{N - 1} \\
 f_{N - 2} \\ 
 \end{array}\right) =
-\ldots = 
 \left(\begin{array}{cc} 
 a & b\\
 1 & 0
@@ -750,3 +749,5 @@ int main() {
   return 0;
 }
 ```
+
+PDF version [csc3100-data-structures-fall-2023-assignment-solutions-writeup](/posts/resources/csc3100-fall-2023-solutions/csc3100-data-structures-fall-2023-assignment-solutions-writeup.pdf)
