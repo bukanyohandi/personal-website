@@ -160,7 +160,7 @@ export default function ProjectPage({ data }) {
       <GlobalStyle />
       <Layout>
         <Helmet>
-          <title>Yohandi</title>
+          <title>Projects - Yohandi</title>
           <meta
             name="description"
             content={`
