@@ -1,5 +1,5 @@
 ---
-title: "Li Chao Tree"
+title: "[Tutorial] Li Chao Tree"
 date: "2023-09-11"
 author: "Yohandi"
 tags: [data-structure, geometry, tutorial]

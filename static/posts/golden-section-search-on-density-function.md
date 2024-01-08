@@ -1,5 +1,5 @@
 ---
-title: "Variations of Golden-section Search on a Density Function"
+title: "[Tutorial] Variations of Golden-section Search on a Density Function"
 date: "2023-08-14"
 author: "Yohandi"
 tags: [algorithm, optimization, search, tutorial]

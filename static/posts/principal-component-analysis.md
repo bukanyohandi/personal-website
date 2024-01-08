@@ -1,5 +1,5 @@
 ---
-title: "Principal Component Analysis"
+title: "[Tutorial] Principal Component Analysis"
 date: "2023-10-10"
 author: "Yohandi"
 tags: [algorithm, geometry, machine-learning, optimization, tutorial]

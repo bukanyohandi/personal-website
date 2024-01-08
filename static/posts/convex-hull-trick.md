@@ -1,5 +1,5 @@
 ---
-title: "DP Optimization: Convex Hull Trick"
+title: "[Tutorial] DP Optimization: Convex Hull Trick"
 date: "2023-08-21"
 author: "Yohandi"
 tags: [algorithm, dynamic-programming, geometry, optimization, tutorial]

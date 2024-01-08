@@ -1,5 +1,5 @@
 ---
-title: "Lagrange Relaxation"
+title: "[Tutorial] Lagrange Relaxation"
 date: "2023-09-17"
 author: "Yohandi"
 tags: [geometry, optimization, tutorial]

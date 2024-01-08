@@ -1,5 +1,5 @@
 ---
-title: "Golden-section Search"
+title: "[Tutorial] Golden-section Search"
 date: "2023-08-09"
 author: "Yohandi"
 tags: [algorithm, optimization, search, tutorial]
