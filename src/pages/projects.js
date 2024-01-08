@@ -86,6 +86,7 @@ const ProjectImage = styled.img`
   width: 100%;
   aspect-ratio: 3/2;
   border: 0.1px solid;
+  color: black;
   transition: transform 0.3s ease;
 
   ${Project}:hover & {
