@@ -15,6 +15,10 @@ const Container = styled.div`
   background-color: ${THEME.PRIMARY};
 `;
 
+const TitlePart = styled.span`
+  color: ${({ isMarked }) => (isMarked ? "#c0392b" : "#2c3e50")};
+`;
+
 const Title = styled.div`
   text-align: center;
   font-size: ${({ Location }) => (Location.inHomePage ? "55px" : "55px")};
@@ -49,6 +53,13 @@ const Title = styled.div`
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  width: 200px;
+  justify-content: flex-end;
+
+  &:hover {
+    cursor: pointer;
   }
 `;
 
@@ -131,9 +142,15 @@ const activeLinkStyle = {
 };
 
 const Header = () => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   const inHomePage = useLocation().pathname === "/";
   const inBlogPage = useLocation().pathname === "/blog/";
   const inProjectsPage = useLocation().pathname === "/projects/";
+
+  React.useEffect(() => {
+    console.log("Hover State: ", isHovered);
+  }, [isHovered]);
 
   return (
     <>
@@ -141,8 +158,25 @@ const Header = () => {
         THEME={THEME}
         Location={{ inHomePage, inBlogPage, inProjectsPage }}
       >
-        <Title Location={{ inHomePage, inBlogPage, inProjectsPage }}>
-          yohandi
+        <Title
+          Location={{ inHomePage, inBlogPage, inProjectsPage }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {isHovered ? (
+            <>
+              <TitlePart key="1">it's </TitlePart>
+              <TitlePart key="2" isMarked>
+                yoh{" "}
+              </TitlePart>
+              <TitlePart key="3">and </TitlePart>
+              <TitlePart key="4" isMarked>
+                i
+              </TitlePart>
+            </>
+          ) : (
+            "yohandi"
+          )}
         </Title>
         <Description Location={{ inHomePage, inBlogPage, inProjectsPage }}>
           A passionate student with a strong interest in algorithms and data
