@@ -9,7 +9,17 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: `Yohandi`,
+    description: `A passionate student with a strong interest in algorithms and data structures.`,
+    author: `Yohandi`,
+    siteUrl: `https://www.yohandi.me`,
+  },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {},
+    },
     `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-sharp`,
     {
