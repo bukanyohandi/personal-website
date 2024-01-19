@@ -55,7 +55,7 @@ const Title = styled.div`
     }
   }
 
-  width: 200px;
+  width: 250px;
   justify-content: flex-end;
 
   &:hover {
