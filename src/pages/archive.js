@@ -83,7 +83,7 @@ const ContentWrapper = styled.div`
   height: inherit; // Adjust the height as needed
   overflow-y: auto; // Enable vertical scrolling
   overflow-x: auto;
-  padding: 10px;
+  padding: 0 0 0 10px;
 
   &::-webkit-scrollbar {
     width: 12px;
