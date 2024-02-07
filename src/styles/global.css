@@ -25,7 +25,7 @@ th, td {
 .cactus-bottom {
     width: 32px;
     height: 32px;
-    background: url('../../static/cactus.png') no-repeat;
+    background: url('/assets/cactus.png') no-repeat;
     position: fixed;
     bottom: 0;
     left: 25px;
@@ -57,3 +57,20 @@ th, td {
     pointer-events: none;
 }
 
+.folder-icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  margin-right: 8px;
+  background-image: url("/assets/folder-icon.png");
+  border: 1px;
+}
+
+.file-icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  margin-right: 8px;
+  background-image: url("/assets/file-icon.png");
+  border: 1px;
+}

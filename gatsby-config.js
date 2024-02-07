@@ -22,6 +22,7 @@ module.exports = {
     },
     `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -71,6 +72,13 @@ module.exports = {
         path: `${__dirname}/static/projects`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `archive`,
+        path: `${__dirname}/static/archive`,
+      },
+    },
     "gatsby-plugin-web-font-loader",
     {
       resolve: "gatsby-plugin-web-font-loader",
@@ -86,6 +94,14 @@ module.exports = {
       resolve: `gatsby-plugin-disqus`,
       options: {
         shortname: `yohandi`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
       },
     },
     {

@@ -1,5 +1,6 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
+const archiveStructure = require("./static/archive-structure.json");
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -174,4 +175,25 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+
+  const createPagesForDirectory = (directory, basePath) => {
+    Object.keys(directory).forEach((dirName) => {
+      const dirPath = `${basePath}/${dirName}`;
+      createPage({
+        path: dirPath,
+        component: path.resolve("./src/templates/archiveTemplate.js"),
+        context: {
+          directoryName: dirName,
+          fullPath: dirPath,
+        },
+      });
+
+      const subdirectories = directory[dirName];
+      if (subdirectories && Object.keys(subdirectories).length > 0) {
+        createPagesForDirectory(subdirectories, dirPath);
+      }
+    });
+  };
+
+  createPagesForDirectory(archiveStructure.root, "/archive");
 };
