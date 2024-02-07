@@ -57,7 +57,7 @@ const ArchiveDirectoryContainer = styled.div`
 
   @media only screen and (max-width: 800px) {
     width: 100%;
-    height: 30vh;
+    height: 20vh;
     border-radius: 20px 0 0 0;
   }
 `;
@@ -74,7 +74,7 @@ const DisplayContainer = styled.div`
   margin: 0;
 
   @media only screen and (max-width: 800px) {
-    height: 30vh;
+    height: 48vh;
     border-radius: 0;
   }
 `;
