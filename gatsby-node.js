@@ -181,7 +181,7 @@ exports.createPages = async ({ graphql, actions }) => {
       const dirPath = `${basePath}/${dirName}`;
       createPage({
         path: dirPath,
-        component: path.resolve("./src/templates/archiveTemplate.js"),
+        component: path.resolve("./src/pages/archive.js"),
         context: {
           directoryName: dirName,
           fullPath: dirPath,

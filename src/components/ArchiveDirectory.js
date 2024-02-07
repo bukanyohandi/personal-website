@@ -7,6 +7,7 @@ import { Link } from "gatsby";
 const DirectoryList = styled.ul`
   list-style: none;
   padding: 0;
+  margin: 0;
 `;
 
 const DirectoryItem = styled.li`
@@ -25,14 +26,20 @@ const StyledLink = styled(Link)`
   align-items: center;
   text-decoration: none;
   color: inherit;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const Text = styled.span`
   margin-left: 8px;
   user-select: none;
+  flex: 1;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
 `;
 
-const ArchiveDirectory = ({ location }) => {
+const ArchiveDirectory = ({ location, onFileSelect }) => {
   const [subfolders, setSubfolders] = useState([]);
   const [files, setFiles] = useState([]);
 
@@ -84,9 +91,8 @@ const ArchiveDirectory = ({ location }) => {
     navigate(`/archive/${currentPath ? `${currentPath}/` : ""}${path}`);
   };
 
-  const handleFileClick = (fileName) => {
-    // Handle file click, e.g., navigating to a file viewer or downloading the file
-    // This action depends on how you want to handle file interaction
+  const handleFileClick = (file) => {
+    onFileSelect(file);
   };
 
   return (
@@ -107,15 +113,17 @@ const ArchiveDirectory = ({ location }) => {
             </StyledLink>
           </DirectoryItem>
         ))}
-        {files.map((file) => (
-          <DirectoryItem
-            key={file.name}
-            onClick={() => handleFileClick(file.name)}
-          >
-            <div className="file-icon" />
-            <Text>{`${file.name}.${file.extension}`}</Text>
-          </DirectoryItem>
-        ))}
+        {files
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((file) => (
+            <DirectoryItem
+              key={file.name}
+              onClick={() => handleFileClick(file)}
+            >
+              <div className="file-icon" />
+              <Text>{`${file.name}.${file.extension}`}</Text>
+            </DirectoryItem>
+          ))}
       </DirectoryList>
     </div>
   );
