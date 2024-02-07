@@ -55,8 +55,8 @@ const Title = styled.div`
     }
   }
 
-  width: 250px;
-  justify-content: flex-end;
+  // width: 250px;
+  // justify-content: flex-end;
 
   &:hover {
     cursor: pointer;
@@ -160,10 +160,10 @@ const Header = () => {
       >
         <Title
           Location={{ inHomePage, inBlogPage, inProjectsPage }}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          // onMouseEnter={() => setIsHovered(true)}
+          // onMouseLeave={() => setIsHovered(false)}
         >
-          {isHovered ? (
+          {/* {isHovered ? (
             <>
               <TitlePart key="1">it's </TitlePart>
               <TitlePart key="2" isMarked>
@@ -176,7 +176,8 @@ const Header = () => {
             </>
           ) : (
             "yohandi"
-          )}
+          )} */}
+          yohandi
         </Title>
         <Description Location={{ inHomePage, inBlogPage, inProjectsPage }}>
           A passionate student with a strong interest in algorithms and data
@@ -187,15 +188,19 @@ const Header = () => {
           <NavLink to="/" activeStyle={activeLinkStyle}>
             Home
           </NavLink>
-          <NavLink to="/projects" activeStyle={activeLinkStyle}>
-            Projects
-          </NavLink>
           <NavLink
             to="/blog"
             activeStyle={activeLinkStyle}
             partiallyActive={true}
           >
             Blog
+          </NavLink>
+          <NavLink to="/projects" activeStyle={activeLinkStyle}>
+            Projects
+          </NavLink>
+          <NavLink to="/archive" activeStyle={activeLinkStyle}>
+            {" "}
+            Archive{" "}
           </NavLink>
           {/* <NavLink to="/resume" activeStyle={activeLinkStyle}>
           Resume
