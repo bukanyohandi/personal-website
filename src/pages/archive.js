@@ -67,15 +67,22 @@ const DisplayContainer = styled.div`
   flex-shrink: 1;
   height: 70vh;
   width: 100%;
+  max-width: 99vw;
   background-color: #f0f0f0;
   border: 1px solid;
   border-color: #b8b4b4;
   margin: 0;
+
+  @media only screen and (max-width: 800px) {
+    height: 30vh;
+    border-radius: 0;
+  }
 `;
 
 const ContentWrapper = styled.div`
   height: inherit; // Adjust the height as needed
   overflow-y: auto; // Enable vertical scrolling
+  overflow-x: auto;
   padding: 10px;
 
   &::-webkit-scrollbar {
