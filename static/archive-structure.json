@@ -1,7 +1,12 @@
 {
     "root": {
         "The-Chinese-University-of-Hong-Kong-Shenzhen": {
-            "SchOJ": {}
+            "SchOJ": {},
+            "Term-8": {
+                "CSC4120-Design-and-Analysis-of-Algorithms": {},
+                "DDA4210-Advanced-Machine-Learning": {},
+                "DDA6205-Game-Theory-and-Its-Applications": {}
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ import ArchiveDirectory from "../components/ArchiveDirectory";
 import styled, { createGlobalStyle } from "styled-components";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
+import PDFEmbed from "../components/PDFEmbed";
 
 const GlobalStyle = createGlobalStyle`
 ::-webkit-scrollbar {
@@ -145,7 +146,9 @@ const ArchiveTemplate = () => {
             </Router>
           </ArchiveDirectoryContainer>
           <DisplayContainer>
-            {selectedFile ? (
+            {selectedFile && selectedFile.extension === "pdf" ? (
+              <PDFEmbed src={selectedFile.publicURL} height="100%" />
+            ) : selectedFile ? (
               <ContentWrapper>
                 <SyntaxHighlighter
                   language={getLanguageFromExtension(selectedFile.extension)}
