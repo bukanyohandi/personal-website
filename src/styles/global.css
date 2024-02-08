@@ -74,3 +74,10 @@ th, td {
   background-image: url("/assets/file-icon.png");
   border: 1px;
 }
+
+.back-icon {
+  width: 32px;
+  height: 32px;
+  background-image: url("/assets/back-icon.png");
+  border: 1px;
+}
