@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { navigate, graphql, useStaticQuery } from "gatsby";
 import directoryStructure from "/static/archive-structure.json";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "gatsby";
 
 const DirectoryList = styled.ul`
@@ -19,6 +19,12 @@ const DirectoryItem = styled.li`
   &:hover {
     background-color: #c2e7ff;
   }
+
+  ${(props) =>
+    props.isSelected &&
+    css`
+      background-color: #c2bebe;
+    `}
 `;
 
 const StyledLink = styled(Link)`
@@ -42,6 +48,7 @@ const Text = styled.span`
 const ArchiveDirectory = ({ location, onFileSelect }) => {
   const [subfolders, setSubfolders] = useState([]);
   const [files, setFiles] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null); // New state for tracking the selected file
 
   const currentPath = location.pathname
     .replace("/archive/", "")
@@ -85,7 +92,7 @@ const ArchiveDirectory = ({ location, onFileSelect }) => {
       return currentPath === fileDirectoryPath;
     });
     setFiles(currentDirectoryFiles);
-  }, [currentPath]);
+  }, [currentPath, data.allFile.nodes]);
 
   const handleNavigation = (path) => {
     navigate(`/archive/${currentPath ? `${currentPath}/` : ""}${path}`);
@@ -93,6 +100,7 @@ const ArchiveDirectory = ({ location, onFileSelect }) => {
 
   const handleFileClick = (file) => {
     onFileSelect(file);
+    setSelectedFile(file.name);
   };
 
   return (
@@ -118,6 +126,7 @@ const ArchiveDirectory = ({ location, onFileSelect }) => {
           .map((file) => (
             <DirectoryItem
               key={file.name}
+              isSelected={selectedFile === file.name}
               onClick={() => handleFileClick(file)}
             >
               <div className="file-icon" />
