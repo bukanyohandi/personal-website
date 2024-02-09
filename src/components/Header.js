@@ -198,7 +198,11 @@ const Header = () => {
           <NavLink to="/projects" activeStyle={activeLinkStyle}>
             Projects
           </NavLink>
-          <NavLink to="/archive" activeStyle={activeLinkStyle}>
+          <NavLink
+            to="/archive"
+            activeStyle={activeLinkStyle}
+            partiallyActive={true}
+          >
             {" "}
             Archive{" "}
           </NavLink>
