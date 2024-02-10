@@ -20,11 +20,7 @@ const DirectoryItem = styled.li`
     background-color: #c2e7ff;
   }
 
-  ${(props) =>
-    props.isSelected &&
-    css`
-      background-color: #c2bebe;
-    `}
+  background-color: ${(props) => (props.isSelected ? "#c2bebe" : "inherit")};
 `;
 
 const StyledLink = styled(Link)`
@@ -89,7 +85,8 @@ const NavigationHeader = styled.div`
 const ArchiveDirectory = ({ location, onFileSelect }) => {
   const [subfolders, setSubfolders] = useState([]);
   const [files, setFiles] = useState([]);
-  const [selectedFile, setSelectedFile] = useState(null); // New state for tracking the selected file
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFolder, setSelectedFolder] = useState(null);
 
   const handleBack = () => {
     const pathSegments = currentPath.split("/").filter(Boolean);
@@ -154,6 +151,17 @@ const ArchiveDirectory = ({ location, onFileSelect }) => {
     setSelectedFile(file.name);
   };
 
+  const handleFolderClick = (folderName, event) => {
+    event.preventDefault();
+    setSelectedFolder(folderName);
+  };
+
+  const handleFolderDoubleClick = (folderName, event) => {
+    event.preventDefault();
+    handleNavigation(folderName);
+    setSelectedFolder(null);
+  };
+
   return (
     <div>
       <NavigationHeader>
@@ -170,18 +178,22 @@ const ArchiveDirectory = ({ location, onFileSelect }) => {
         {subfolders.map((folderName) => (
           <DirectoryItem
             key={folderName}
-            onClick={() => handleNavigation(folderName)}
+            isSelected={selectedFolder === folderName}
           >
             <StyledLink
               to={`/archive/${
                 currentPath ? `${currentPath}/` : ""
               }${folderName}`}
+              onClick={(event) => handleFolderClick(folderName, event)}
+              onDoubleClick={(event) =>
+                handleFolderDoubleClick(folderName, event)
+              }
             >
               <div className="folder-icon" />
               <Text>{folderName}</Text>
             </StyledLink>
           </DirectoryItem>
-        ))}
+        ))}{" "}
         {files
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((file) => (
