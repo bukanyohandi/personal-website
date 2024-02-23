@@ -4,9 +4,15 @@
         "The-Chinese-University-of-Hong-Kong-Shenzhen": {
             "SchOJ": {},
             "2020-Fall": {
+                "CHM1001-General-Chemistry": {},
                 "MAT1001-Calculus-I": {},
-                "PHY1001-Mechanics": {},
-                "CHM1001-General-Chemistry": {}
+                "PHY1001-Mechanics": {}
+            },
+            "2021-Spring": {
+                "CSC1001-Introduction-to-Computer-Science-Programming-Methodology": {},
+                "CSC1002-Computational-Laboratory": {},
+                "MAT1002-Calculus-II": {},
+                "STA2001-Probability-and-Statistics-I": {}
             },
             "2024-Spring": {
                 "CSC4120-Design-and-Analysis-of-Algorithms": {},
