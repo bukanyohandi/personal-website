@@ -106,17 +106,33 @@ const ContentWrapper = styled.div`
 const ArchiveTemplate = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileContent, setFileContent] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [lastSelectedFileURL, setLastSelectedFileURL] = useState("");
 
   const handleFileSelect = (file) => {
-    setSelectedFile(file);
+    if (file.publicURL === lastSelectedFileURL) {
+      setIsLoading(false);
+    } else {
+      setSelectedFile(file);
+      setIsLoading(true);
+      setLastSelectedFileURL(file.publicURL);
+    }
   };
 
   useEffect(() => {
     if (selectedFile && selectedFile.publicURL) {
       fetch(selectedFile.publicURL)
         .then((response) => response.text())
-        .then((text) => setFileContent(text))
-        .catch((error) => console.error("Error fetching file content:", error));
+        .then((text) => {
+          setFileContent(text);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching file content:", error);
+          setIsLoading(false);
+        });
+    } else {
+      setIsLoading(false);
     }
   }, [selectedFile]);
 
@@ -146,7 +162,9 @@ const ArchiveTemplate = () => {
             </Router>
           </ArchiveDirectoryContainer>
           <DisplayContainer>
-            {selectedFile && selectedFile.extension === "pdf" ? (
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : selectedFile && selectedFile.extension === "pdf" ? (
               <PDFEmbed src={selectedFile.publicURL} height="100%" />
             ) : selectedFile ? (
               <ContentWrapper>
