@@ -148,7 +148,7 @@ const ArchiveDirectory = ({ location, onFileSelect }) => {
 
   const handleFileClick = (file) => {
     onFileSelect(file);
-    setSelectedFile(file.name);
+    setSelectedFile(`${file.name}.${file.extension}`);
     setSelectedFolder(null);
   };
 
@@ -201,7 +201,7 @@ const ArchiveDirectory = ({ location, onFileSelect }) => {
           .map((file) => (
             <DirectoryItem
               key={file.name}
-              isSelected={selectedFile === file.name}
+              isSelected={selectedFile === `${file.name}.${file.extension}`}
               onClick={() => handleFileClick(file)}
             >
               <div className="file-icon" />
