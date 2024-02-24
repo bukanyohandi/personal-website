@@ -149,11 +149,13 @@ const ArchiveDirectory = ({ location, onFileSelect }) => {
   const handleFileClick = (file) => {
     onFileSelect(file);
     setSelectedFile(file.name);
+    setSelectedFolder(null);
   };
 
   const handleFolderClick = (folderName, event) => {
     event.preventDefault();
     setSelectedFolder(folderName);
+    setSelectedFile(null);
   };
 
   const handleFolderDoubleClick = (folderName, event) => {
