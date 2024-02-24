@@ -1,0 +1,59 @@
+/*  Author: Yohandi (120040025)
+    CSC4130 Assignment 1 */
+
+/* stylize at least text and range slider in HTML (10pts)
+ */
+
+/* * {
+    text-align: center;
+} */
+
+#canvas {
+    border: 1px solid black;
+    background-color: cornsilk;
+}
+
+body {
+    background-color: #fc3153;
+    color: cornsilk;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 22px;
+    position: fixed;
+    text-shadow: 4px 4px 4px #000000;
+}
+
+h1 {
+    color: white;
+    font-size: 32px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+b {
+    font-size: 52px;
+}
+
+input[type='radio'], label{   
+    vertical-align: baseline;
+    padding: 5px;
+    margin: 40px;
+ }
+
+.slider {
+    width: 84%;
+    background: #ffffff;
+    opacity: 0.9;
+    transition: opacity .2s;
+}
+
+#draw, #erase {
+    height: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+    width: 41.8%;
+    box-shadow: 0 5px rgba(111, 91, 91, 0.438);
+}
+
+#draw:active, #erase:active {
+  box-shadow: 0 5px rgba(111, 91, 91, 0.438);
+  transform: translateY(2px);
+}

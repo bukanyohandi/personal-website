@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href=index.css>
+    <title>
+        Assignment 2
+    </title>
+      
+    <style>
+        
+    </style>
+</head>
+  
+<body>
+    <h1>CSC4130 Assignment 2 (Yohandi)</h1>
+    <b>Draw, Move, and Reset Different Shapes</b>
+    <hr>
+    <canvas id="canvas" width="1200" height="400"></canvas>
+    <input type="button" value="draw" id = "draw_button" onclick="use_tool('draw');">
+    <input type="button" value="move" id = "move_button" onclick="use_tool('move');">
+    <input type="button" value="reset" id = "reset_button" onclick="use_tool('reset');" disabled></br>
+
+    <!-- define a color menu and show the corresponding hex value (8pts)-->
+    <input type = "color" id = "favcolor" value = "#000000" oninput = "colorVal.innerText = this.value">
+    <p style = "text-transform:uppercase"><span id = "colorVal"></span></p>
+
+    <!-- define a drop-down list with three options for drawing circle, rectangle, and triangle (6pts)-->
+    <div class = "dropdown">
+        <select name = "shape" id = "shape" onclick = "select_shape(shape)">
+            <option value="circle"> Circle </option>
+            <option value="rectangle"> Rectangle </option>
+            <option value="triangle"> Triangle</option>
+        </select>
+        <label for="shape">Shape Option</label>
+    </div>
+
+    <input type="range" min="0" max="1" value="0.8" step = "0.1" class="slider" id="opacity" name="opacity" oninput = "value.innerText = this.value">
+    <label for="opacity">Opacity</label>
+    <p>Value: <span id="value"></span></p>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.4.0/fabric.min.js"></script> 
+    <script src="src/index.js"></script>
+</body>
+  
+</html>

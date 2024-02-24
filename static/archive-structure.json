@@ -45,6 +45,54 @@
                     "CSC3050-Project-4-CPU": {}
                 }
             },
+            "2022-Fall": {
+                "CSC3100-Data-Structures": {},
+                "CSC3150-Operating-Systems": {
+                    "CSC3150-Assignment-1": {
+                        "source": {
+                            "program1": {},
+                            "program2": {}
+                        }
+                    },
+                    "CSC3150-Assignment-2": {
+                        "bonus": {
+                            "thread_pool": {}
+                        },
+                        "source": {}
+                    },
+                    "CSC3150-Assignment-3": {
+                        "bonus": {},
+                        "source": {}
+                    },
+                    "CSC3150-Assignment-4": {
+                        "source": {}
+                    }
+                },
+                "CSC4130-Introduction-to-Human-Computer-Interaction": {
+                    "CSC4130-Assignment-1": {
+                        "src": {}
+                    },
+                    "CSC4130-Assignment-2": {
+                        "src": {}
+                    },
+                    "CSC4130-Assignment-3": {
+                        "data": {},
+                        "src": {}
+                    },
+                    "CSC4130-Assignment-4": {
+                        "public": {},
+                        "src": {
+                            "components": {}
+                        }
+                    }
+                },
+                "DDA3020-Machine-Learning": {
+                    "DDA3020-Assignment-1": {},
+                    "DDA3020-Assignment-2": {},
+                    "DDA3020-Assignment-3": {},
+                    "DDA3020-Assignment-4": {}
+                }
+            },
             "2024-Spring": {
                 "CSC4120-Design-and-Analysis-of-Algorithms": {},
                 "DDA4210-Advanced-Machine-Learning": {},

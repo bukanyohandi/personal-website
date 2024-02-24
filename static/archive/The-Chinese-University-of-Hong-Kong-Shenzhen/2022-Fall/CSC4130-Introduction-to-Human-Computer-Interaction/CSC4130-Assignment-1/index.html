@@ -1,0 +1,46 @@
+<!-- Author: Yohandi (120040025) -->
+<!-- CSC4130 Assignment 1 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href=index.css>
+</head>
+  
+<body>
+    <h1> CSC4130 Assignment 1 (Yohandi) </h1>
+    <b> Draw and Erase Anything You Want </b>
+    <hr>
+    
+    <!--  define a canvas (5pts) -->
+    <canvas id = "canvas" width = "800" height = "500"></canvas>
+
+    <!--  define two buttons which are used for drawing and erasing
+          and label the two buttons as draw and erase (6pts) -->
+    <button onclick = "changeMode(event)" id = "draw"> Draw </button>
+    <button onclick = "changeMode(event)" id = "erase"> Erase </button>
+    
+    <!--  define three radios which are used for changing colors (green, red, and blue)
+          and label the three radios as green, red, and blue (9pts)-->
+    <form>
+        <input type = "radio" name = "linecolor" id = "green" value = "green" checked>
+        <label for = "green"> Green </label>
+        <input type = "radio" name = "linecolor" id = "red" value = "red">
+        <label for = "red"> Red </label>
+        <input type = "radio" name = "linecolor" id = "blue" value = "blue">
+        <label for = "blue"> Blue </label>
+    </form>
+
+    <!--  define a range slider which are used for controling the line width
+           , label it as "Line Width" and show the corresponding value below the slider bar (5pts)-->
+    <input type = "range" id = "linecap" min = "1" max = "20" value = "10" class = "slider" oninput = "value.innerText = this.value">
+    <p> Line Width: <span id = "value"></span></p>
+
+    <script>
+        document.getElementById("draw").disabled = true;
+    </script>
+    <script src="src/index.js"></script>
+</body>
+  
+</html>
