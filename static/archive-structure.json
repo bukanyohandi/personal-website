@@ -14,6 +14,10 @@
                 "MAT1002-Calculus-II": {},
                 "STA2001-Probability-and-Statistics-I": {}
             },
+            "2021-Fall": {
+                "CSC3001-Discrete-Mathematics": {},
+                "EIE2050-Digital-Logics-and-Systems": {}
+            },
             "2024-Spring": {
                 "CSC4120-Design-and-Analysis-of-Algorithms": {},
                 "DDA4210-Advanced-Machine-Learning": {},
