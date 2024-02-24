@@ -25,14 +25,16 @@ const Container = styled.div`
   margin: 25px auto 0 auto;
   width: 90%;
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 1000px) {
     flex-direction: column;
     align-items: center;
+    margin: 25px auto 0 auto;
   }
 `;
 
 const ArchiveDirectoryContainer = styled.div`
   width: 400px;
+  min-width: 400px;
   height: 70vh; // Default height
   background-color: #f0f0f0;
   overflow-y: auto;
@@ -56,7 +58,7 @@ const ArchiveDirectoryContainer = styled.div`
     background: #d6d4d4;
   }
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 1000px) {
     width: 100%;
     height: 20vh;
     border-radius: 20px 0 0 0;
@@ -68,23 +70,32 @@ const DisplayContainer = styled.div`
   flex-shrink: 1;
   height: 70vh;
   width: 100%;
-  max-width: 99vw;
+  max-width: 60vw;
   background-color: #f0f0f0;
   border: 1px solid;
   border-color: #b8b4b4;
   margin: 0;
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 1000px) {
     height: 48vh;
     border-radius: 0;
+    max-width: 100vw;
   }
 `;
 
 const ContentWrapper = styled.div`
-  height: inherit; // Adjust the height as needed
-  overflow-y: auto; // Enable vertical scrolling
-  overflow-x: auto;
-  padding: 0 0 0 10px;
+  height: inherit;
+  overflow-y: auto;
+  overflow-x: scroll; // Changed to scroll to always show horizontal scrollbar
+  padding: 0 10px;
+  max-width: 100%;
+
+  & pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
 
   &::-webkit-scrollbar {
     width: 12px;
@@ -173,6 +184,8 @@ const ArchiveTemplate = () => {
                   style={{
                     ...prism,
                     hljs: { ...prism.hljs, background: "inherit" },
+                    overflowX: "auto",
+                    maxWidth: "100%",
                   }}
                 >
                   {fileContent}
