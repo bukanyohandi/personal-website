@@ -19,6 +19,32 @@
                 "EIE2050-Digital-Logics-and-Systems": {},
                 "MAT2040-Linear-Algebra": {}
             },
+            "2022-Spring": {
+                "CSC3002-Introduction-to-Computer-Science-Programming-Paradigms": {
+                    "lib": {
+                        "StanfordCPPLib": {
+                            "collections": {},
+                            "graphics": {},
+                            "io": {},
+                            "private": {},
+                            "system": {},
+                            "util": {}
+                        }
+                    },
+                    "CSC3002-Assignment-1-src": {},
+                    "CSC3002-Assignment-2-src": {},
+                    "CSC3002-Assignment-3-src": {},
+                    "CSC3002-Assignment-4-src": {},
+                    "CSC3002-Assignment-5-src": {},
+                    "CSC3002-Assignment-6-src": {}
+                },
+                "CSC3050-Computer-Architecture": {
+                    "CSC3050-Project-1-translator": {},
+                    "CSC3050-Project-2-simulator": {},
+                    "CSC3050-Project-3-verilog": {},
+                    "CSC3050-Project-4-CPU": {}
+                }
+            },
             "2024-Spring": {
                 "CSC4120-Design-and-Analysis-of-Algorithms": {},
                 "DDA4210-Advanced-Machine-Learning": {},

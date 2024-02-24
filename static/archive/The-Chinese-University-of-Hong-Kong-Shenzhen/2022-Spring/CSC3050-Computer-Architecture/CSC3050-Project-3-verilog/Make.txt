@@ -1,0 +1,3 @@
+test_ALU:
+	iverilog -o test_ALU.vvp test_ALU.v
+	vvp test_ALU.vvp
