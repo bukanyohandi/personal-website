@@ -64,7 +64,8 @@
     "remark-math": "^5.1.1",
     "styled-components": "^6.0.5",
     "typeface-open-sans": "^1.1.13",
-    "typeface-roboto": "^1.1.13"
+    "typeface-roboto": "^1.1.13",
+    "xlsx": "^0.18.5"
   },
   "repository": {
     "type": "git",
