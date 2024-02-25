@@ -2,11 +2,32 @@ import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import Layout from "../layouts";
 import ArchiveDirectory from "../components/ArchiveDirectory";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { keyframes, createGlobalStyle } from "styled-components";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 import PDFEmbed from "../components/PDFEmbed";
 import * as XLSX from "xlsx";
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const LoadingSpinner = styled.div`
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #f1f1f1;
+  animation: ${rotate} 1s infinite linear;
+  display: inline-block;
+  margin: 0 auto;
+`;
 
 const GlobalStyle = createGlobalStyle`
 ::-webkit-scrollbar {
@@ -67,6 +88,10 @@ const ArchiveDirectoryContainer = styled.div`
 `;
 
 const DisplayContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: ${({ isLoading }) => (isLoading ? "center" : "flex-start")};
+  align-items: ${({ isLoading }) => (isLoading ? "center" : "stretch")};
   flex-grow: 1;
   flex-shrink: 1;
   height: 70vh;
@@ -76,6 +101,7 @@ const DisplayContainer = styled.div`
   border: 1px solid;
   border-color: #b8b4b4;
   margin: 0;
+  overflow: auto;
 
   @media only screen and (max-width: 1000px) {
     height: 48vh;
@@ -239,9 +265,9 @@ const ArchiveTemplate = () => {
               <ArchiveDirectory path="/*" onFileSelect={handleFileSelect} />
             </Router>
           </ArchiveDirectoryContainer>
-          <DisplayContainer>
+          <DisplayContainer isLoading={isLoading}>
             {isLoading ? (
-              <p>Loading...</p>
+              <LoadingSpinner />
             ) : selectedFile && selectedFile.extension === "pdf" ? (
               <PDFEmbed src={selectedFile.publicURL} height="100%" />
             ) : selectedFile && selectedFile.extension === "xlsx" ? (
