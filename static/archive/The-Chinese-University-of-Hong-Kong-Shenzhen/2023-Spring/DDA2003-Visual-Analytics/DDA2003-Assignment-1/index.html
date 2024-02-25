@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DDA2003 - Assignment 1</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1>Sortable Stacked Bar Chart [SID: 120040025]</h1>
+
+    <div class="container">
+      <div class="col-right">
+        <div class="control-bar">
+          <!-- define a drop list with three different visual options (5 pts) -->
+          <select id="display-type-selection">
+            <option value="Bar">Bar Chart</option>
+            <option value="Stacked">Stacked Bar Chart</option>
+            <option value="Sorted">Sorted Stacked Bar Chart</option>
+          </select>
+        </div>
+        <svg id="bar-chart"></svg>
+      </div>
+    </div>
+
+    <script src="js/d3.v6.min.js"></script>
+    <script src="js/stackedBarChart.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -93,6 +93,47 @@
                     "DDA3020-Assignment-4": {}
                 }
             },
+            "2023-Spring": {
+                "CSC3170-Database-System": {
+                    "CSC3170-Assignment-2": {
+                        "src": {},
+                        "test_cases": {}
+                    }
+                },
+                "CSC4001-Software-Engineering": {
+                    "CSC4001-Project-1": {
+                        "src": {},
+                        "pretest1": {},
+                        "pretest2": {}
+                    }
+                },
+                "DDA2003-Visual-Analytics": {
+                    "DDA2003-Assignment-1": {
+                        "css": {},
+                        "data": {},
+                        "js": {}
+                    },
+                    "DDA2003-Assignment-2": {
+                        "data": {},
+                        "src": {}
+                    },
+                    "DDA2003-Assignment-3": {
+                        "css": {},
+                        "data": {},
+                        "js": {}
+                    },
+                    "DDA2003-Assignment-4": {
+                        "data": {},
+                        "src": {}
+                    },
+                    "DDA2003-Assignment-5": {
+                        "data": {},
+                        "src": {}
+                    },
+                    "DDA2003-Assignment-6": {}
+                },
+                "PHY1002-Physics-Laboratory": {}
+            },
             "2024-Spring": {
                 "CSC4120-Design-and-Analysis-of-Algorithms": {},
                 "DDA4210-Advanced-Machine-Learning": {},
