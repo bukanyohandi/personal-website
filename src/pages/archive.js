@@ -6,6 +6,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 import PDFEmbed from "../components/PDFEmbed";
+import * as XLSX from "xlsx";
 
 const GlobalStyle = createGlobalStyle`
 ::-webkit-scrollbar {
@@ -131,15 +132,34 @@ const ArchiveTemplate = () => {
   };
 
   useEffect(() => {
+    const readXLSXData = async (blob) => {
+      const data = await blob.arrayBuffer();
+      const workbook = XLSX.read(data, { type: "buffer" });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      // Parse the worksheet to an array of arrays
+      return XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: "" });
+    };
+
     if (selectedFile && selectedFile.publicURL) {
+      setIsLoading(true);
       fetch(selectedFile.publicURL)
-        .then((response) => response.text())
-        .then((text) => {
-          setFileContent(text);
-          setIsLoading(false);
+        .then((response) => response.blob())
+        .then((blob) => {
+          if (selectedFile.extension === "xlsx") {
+            readXLSXData(blob).then((dataArray) => {
+              setFileContent(dataArray); // Directly set the parsed array
+              setIsLoading(false);
+            });
+          } else {
+            blob.text().then((text) => {
+              setFileContent(text); // Set the text content for non-.xlsx files
+              setIsLoading(false);
+            });
+          }
         })
         .catch((error) => {
-          console.error("Error fetching file content:", error);
+          console.error("Error:", error);
           setIsLoading(false);
         });
     } else {
@@ -147,16 +167,63 @@ const ArchiveTemplate = () => {
     }
   }, [selectedFile]);
 
+  const renderTable = (dataArray) => {
+    return (
+      <ContentWrapper>
+        <table>
+          <tbody>
+            {dataArray.map((row, rowIndex) => (
+              <tr key={`row-${rowIndex}`}>
+                {row.map((cell, cellIndex) => (
+                  <td key={`cell-${rowIndex}-${cellIndex}`}>{cell}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </ContentWrapper>
+    );
+  };
+
   // Determine the language from the file extension
   const getLanguageFromExtension = (extension) => {
     switch (extension) {
       case "js":
         return "javascript";
+      case "c":
+      case "h":
+        return "c";
+      case "cu":
       case "cpp":
+      case "hpp":
         return "cpp";
       case "py":
         return "python";
-      // Add more cases as needed
+      case "java":
+        return "java";
+      case "ts":
+        return "typescript";
+      case "cs":
+        return "csharp";
+      case "rb":
+        return "ruby";
+      case "php":
+        return "php";
+      case "html":
+      case "htm":
+        return "html";
+      case "css":
+        return "css";
+      case "json":
+        return "json";
+      case "md":
+        return "markdown";
+      case "sh":
+        return "bash";
+      case "v":
+      case "vvp":
+        return "verilog";
+      // Add more cases as needed for additional file types
       default:
         return "plaintext";
     }
@@ -177,6 +244,8 @@ const ArchiveTemplate = () => {
               <p>Loading...</p>
             ) : selectedFile && selectedFile.extension === "pdf" ? (
               <PDFEmbed src={selectedFile.publicURL} height="100%" />
+            ) : selectedFile && selectedFile.extension === "xlsx" ? (
+              renderTable(fileContent)
             ) : selectedFile ? (
               <ContentWrapper>
                 <SyntaxHighlighter
