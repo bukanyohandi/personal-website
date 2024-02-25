@@ -1,0 +1,263 @@
+Quick Sort MPI (Optimized with -O2)
+Number of cores: 1
+Quick Sort Complete!
+Execution Time: 13521 milliseconds
+std::sort Time: 11953 milliseconds
+Pass the sorting result check!
+Number of cores: 2
+Quick Sort Complete!
+Execution Time: 11141 milliseconds
+std::sort Time: 15935 milliseconds
+Pass the sorting result check!
+Number of cores: 4
+Quick Sort Complete!
+Execution Time: 7524 milliseconds
+std::sort Time: 15968 milliseconds
+Pass the sorting result check!
+Number of cores: 8
+Quick Sort Complete!
+Execution Time: 6264 milliseconds
+std::sort Time: 15875 milliseconds
+Pass the sorting result check!
+Number of cores: 16
+Quick Sort Complete!
+Execution Time: 5980 milliseconds
+std::sort Time: 15966 milliseconds
+Pass the sorting result check!
+Number of cores: 32
+Quick Sort Complete!
+Execution Time: 6329 milliseconds
+std::sort Time: 16014 milliseconds
+Pass the sorting result check!
+
+Bucket Sort MPI (Optimized with -O2)
+Number of cores: 1
+Bucket Sort Complete!
+Execution Time: 12357 milliseconds
+std::sort Time: 11840 milliseconds
+Pass the sorting result check!
+Number of cores: 2
+Bucket Sort Complete!
+Execution Time: 9325 milliseconds
+std::sort Time: 15133 milliseconds
+Pass the sorting result check!
+Number of cores: 4
+Bucket Sort Complete!
+Execution Time: 5050 milliseconds
+std::sort Time: 15143 milliseconds
+Pass the sorting result check!
+Number of cores: 8
+Bucket Sort Complete!
+Execution Time: 3116 milliseconds
+std::sort Time: 15153 milliseconds
+Pass the sorting result check!
+Number of cores: 16
+Bucket Sort Complete!
+Execution Time: 2110 milliseconds
+std::sort Time: 15179 milliseconds
+Pass the sorting result check!
+Number of cores: 32
+Bucket Sort Complete!
+Execution Time: 1817 milliseconds
+std::sort Time: 15204 milliseconds
+Pass the sorting result check!
+
+Odd-Even Sort MPI (Optimized with -O2)
+Number of cores: 1
+Odd-Even Sort Complete!
+Execution Time: 44673 milliseconds
+std::sort Time: 16 milliseconds
+Pass the sorting result check!
+Number of cores: 2
+Odd-Even Sort Complete!
+Execution Time: 35702 milliseconds
+std::sort Time: 20 milliseconds
+Pass the sorting result check!
+Number of cores: 4
+Odd-Even Sort Complete!
+Execution Time: 21516 milliseconds
+std::sort Time: 20 milliseconds
+Pass the sorting result check!
+Number of cores: 8
+Odd-Even Sort Complete!
+Execution Time: 12550 milliseconds
+std::sort Time: 20 milliseconds
+Pass the sorting result check!
+Number of cores: 16
+Odd-Even Sort Complete!
+Execution Time: 6860 milliseconds
+std::sort Time: 20 milliseconds
+Pass the sorting result check!
+Number of cores: 32
+Odd-Even Sort Complete!
+Execution Time: 3559 milliseconds
+std::sort Time: 20 milliseconds
+Pass the sorting result check!
+
+Merge Sort Sequential vs. Parallel 32 Cores (Optimized with -O2)
+SIZE = 1000
+Merge Sort Complete!
+Execution Time: 0 milliseconds
+std::sort Time: 0 milliseconds
+Pass the sorting result check!
+Merge Sort Complete!
+Execution Time: 10 milliseconds
+std::sort Time: 0 milliseconds
+Pass the sorting result check!
+SIZE = 5000
+Merge Sort Complete!
+Execution Time: 0 milliseconds
+std::sort Time: 0 milliseconds
+Pass the sorting result check!
+Merge Sort Complete!
+Execution Time: 10 milliseconds
+std::sort Time: 0 milliseconds
+Pass the sorting result check!
+SIZE = 10000
+Merge Sort Complete!
+Execution Time: 4 milliseconds
+std::sort Time: 1 milliseconds
+Pass the sorting result check!
+Merge Sort Complete!
+Execution Time: 12 milliseconds
+std::sort Time: 1 milliseconds
+Pass the sorting result check!
+SIZE = 50000
+Merge Sort Complete!
+Execution Time: 17 milliseconds
+std::sort Time: 4 milliseconds
+Pass the sorting result check!
+Merge Sort Complete!
+Execution Time: 12 milliseconds
+std::sort Time: 6 milliseconds
+Pass the sorting result check!
+SIZE = 100000
+Merge Sort Complete!
+Execution Time: 23 milliseconds
+std::sort Time: 7 milliseconds
+Pass the sorting result check!
+Merge Sort Complete!
+Execution Time: 16 milliseconds
+std::sort Time: 11 milliseconds
+Pass the sorting result check!
+SIZE = 500000
+Merge Sort Complete!
+Execution Time: 94 milliseconds
+std::sort Time: 42 milliseconds
+Pass the sorting result check!
+Merge Sort Complete!
+Execution Time: 35 milliseconds
+std::sort Time: 48 milliseconds
+Pass the sorting result check!
+SIZE = 1000000
+Merge Sort Complete!
+Execution Time: 194 milliseconds
+std::sort Time: 88 milliseconds
+Pass the sorting result check!
+Merge Sort Complete!
+Execution Time: 56 milliseconds
+std::sort Time: 89 milliseconds
+Pass the sorting result check!
+SIZE = 5000000
+Merge Sort Complete!
+Execution Time: 1040 milliseconds
+std::sort Time: 496 milliseconds
+Pass the sorting result check!
+Merge Sort Complete!
+Execution Time: 153 milliseconds
+std::sort Time: 499 milliseconds
+Pass the sorting result check!
+SIZE = 10000000
+Merge Sort Complete!
+Execution Time: 2151 milliseconds
+std::sort Time: 1040 milliseconds
+Pass the sorting result check!
+Merge Sort Complete!
+Execution Time: 315 milliseconds
+std::sort Time: 1048 milliseconds
+Pass the sorting result check!
+SIZE = 50000000
+Merge Sort Complete!
+Execution Time: 11376 milliseconds
+std::sort Time: 5777 milliseconds
+Pass the sorting result check!
+Merge Sort Complete!
+Execution Time: 1262 milliseconds
+std::sort Time: 5787 milliseconds
+Pass the sorting result check!
+
+Merge Sort Parallel (Optimized with -O2)
+Number of cores: 1
+Merge Sort Complete!
+Execution Time: 14094 milliseconds
+std::sort Time: 11949 milliseconds
+Pass the sorting result check!
+Number of cores: 2
+Merge Sort Complete!
+Execution Time: 14108 milliseconds
+std::sort Time: 11957 milliseconds
+Pass the sorting result check!
+Number of cores: 4
+Merge Sort Complete!
+Execution Time: 8354 milliseconds
+std::sort Time: 11958 milliseconds
+Pass the sorting result check!
+Number of cores: 8
+Merge Sort Complete!
+Execution Time: 5005 milliseconds
+std::sort Time: 11959 milliseconds
+Pass the sorting result check!
+Number of cores: 16
+Merge Sort Complete!
+Execution Time: 3210 milliseconds
+std::sort Time: 11995 milliseconds
+Pass the sorting result check!
+Number of cores: 32
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+
+Quick Sort Sequential vs. Parallel 32 Cores (Optimized with -O2)
+SIZE = 1000
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+SIZE = 5000
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+SIZE = 10000
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+SIZE = 50000
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+SIZE = 100000
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+SIZE = 500000
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+SIZE = 1000000
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+SIZE = 5000000
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+SIZE = 10000000
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+SIZE = 50000000
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+
+Quick Sort Parallel (Optimized with -O2)
+Number of cores: 1
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+Number of cores: 2
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+Number of cores: 4
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+Number of cores: 8
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+Number of cores: 16
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+Number of cores: 32
+srun: error: Unable to create step for job 178576: Job/step already completing or completed
+

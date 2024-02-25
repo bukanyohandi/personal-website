@@ -1,0 +1,110 @@
+Quick Sort Parallel (Optimized with -O2)
+Number of cores: 1
+Quick Sort Complete!
+Execution Time: 10601 milliseconds
+std::sort Time: 11949 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/quicksort/quicksort_parallel 1 100000000':
+
+    91,589,446,487      cpu-cycles:u                                                
+       145,954,054      cache-misses:u                                              
+             5,215      page-faults:u                                               
+
+      25.784293033 seconds time elapsed
+
+      31.700952000 seconds user
+       0.194545000 seconds sys
+
+
+Number of cores: 2
+Quick Sort Complete!
+Execution Time: 10599 milliseconds
+std::sort Time: 11951 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/quicksort/quicksort_parallel 2 100000000':
+
+    91,592,619,636      cpu-cycles:u                                                
+       145,821,546      cache-misses:u                                              
+             5,263      page-faults:u                                               
+
+      25.779760498 seconds time elapsed
+
+      31.703690000 seconds user
+       0.182572000 seconds sys
+
+
+Number of cores: 4
+Quick Sort Complete!
+Execution Time: 7297 milliseconds
+std::sort Time: 11967 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/quicksort/quicksort_parallel 4 100000000':
+
+    86,576,449,300      cpu-cycles:u                                                
+       141,706,697      cache-misses:u                                              
+             7,161      page-faults:u                                               
+
+      22.500791696 seconds time elapsed
+
+      30.047618000 seconds user
+       0.218488000 seconds sys
+
+
+Number of cores: 8
+Quick Sort Complete!
+Execution Time: 4822 milliseconds
+std::sort Time: 11964 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/quicksort/quicksort_parallel 8 100000000':
+
+    84,940,647,780      cpu-cycles:u                                                
+       148,198,182      cache-misses:u                                              
+             7,326      page-faults:u                                               
+
+      20.013341717 seconds time elapsed
+
+      29.620487000 seconds user
+       0.186530000 seconds sys
+
+
+Number of cores: 16
+Quick Sort Complete!
+Execution Time: 3783 milliseconds
+std::sort Time: 11955 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/quicksort/quicksort_parallel 16 100000000':
+
+    85,306,335,276      cpu-cycles:u                                                
+       153,439,557      cache-misses:u                                              
+             5,557      page-faults:u                                               
+
+      18.975192879 seconds time elapsed
+
+      30.202456000 seconds user
+       0.174615000 seconds sys
+
+
+Number of cores: 32
+Quick Sort Complete!
+Execution Time: 3730 milliseconds
+std::sort Time: 11953 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/quicksort/quicksort_parallel 32 100000000':
+
+    82,579,215,388      cpu-cycles:u                                                
+       152,374,483      cache-misses:u                                              
+             5,653      page-faults:u                                               
+
+      18.909615476 seconds time elapsed
+
+      29.753509000 seconds user
+       0.182616000 seconds sys
+
+
+

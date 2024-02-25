@@ -1,0 +1,1000 @@
+Memory Locality Matrix Multiplication (Optimized with -O2) with Perf Stats
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-locality.txt
+Multiplication Complete!
+Execution Time: 549 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/locality /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-locality.txt':
+
+     2,125,440,530      cpu-cycles:u                                                
+           326,868      cache-misses:u                                              
+             3,460      page-faults:u                                               
+
+       0.860192239 seconds time elapsed
+
+       0.741209000 seconds user
+       0.018979000 seconds sys
+
+
+
+SIMD + Memory Locality Matrix Multiplication (Optimized with -O2) with Perf Stats
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-simd.txt
+Multiplication Complete!
+Execution Time: 281 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/simd /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-simd.txt':
+
+     1,245,281,245      cpu-cycles:u                                                
+           179,698      cache-misses:u                                              
+             3,459      page-faults:u                                               
+
+       0.584955381 seconds time elapsed
+
+       0.475020000 seconds user
+       0.017145000 seconds sys
+
+
+
+OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2) with Perf Stats
+Number of cores: 1
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 282 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/openmp 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt':
+
+     1,249,363,574      cpu-cycles:u                                                
+           160,747      cache-misses:u                                              
+             3,516      page-faults:u                                               
+
+       0.587405675 seconds time elapsed
+
+       0.471688000 seconds user
+       0.022887000 seconds sys
+
+
+
+Number of cores: 2
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 259 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/openmp 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt':
+
+     1,841,480,324      cpu-cycles:u                                                
+           181,018      cache-misses:u                                              
+             3,525      page-faults:u                                               
+
+       0.565566410 seconds time elapsed
+
+       0.709293000 seconds user
+       0.022977000 seconds sys
+
+
+
+Number of cores: 4
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 151 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/openmp 4 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt':
+
+     2,020,925,558      cpu-cycles:u                                                
+         2,641,180      cache-misses:u                                              
+             3,530      page-faults:u                                               
+
+       0.457393415 seconds time elapsed
+
+       0.797371000 seconds user
+       0.027942000 seconds sys
+
+
+
+Number of cores: 8
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 90 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/openmp 8 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt':
+
+     2,226,097,400      cpu-cycles:u                                                
+         2,993,250      cache-misses:u                                              
+             3,551      page-faults:u                                               
+
+       0.426191201 seconds time elapsed
+
+       0.951123000 seconds user
+       0.024079000 seconds sys
+
+
+
+Number of cores: 16
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 61 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/openmp 16 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt':
+
+     2,580,138,772      cpu-cycles:u                                                
+         2,589,169      cache-misses:u                                              
+             3,583      page-faults:u                                               
+
+       0.396958360 seconds time elapsed
+
+       1.154302000 seconds user
+       0.029108000 seconds sys
+
+
+
+Number of cores: 32
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 42 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/openmp 32 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt':
+
+     3,257,574,157      cpu-cycles:u                                                
+         2,272,633      cache-misses:u                                              
+             3,621      page-faults:u                                               
+
+       0.379766290 seconds time elapsed
+
+       1.566675000 seconds user
+       0.061649000 seconds sys
+
+
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2) with Perf Stats
+Number of Processes: 1, Number of Threads: 32
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 47 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 32 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     2,888,976,821      cpu-cycles:u                                                
+         2,298,680      cache-misses:u                                              
+             6,034      page-faults:u                                               
+
+       0.408837846 seconds time elapsed
+
+       1.403021000 seconds user
+       0.051487000 seconds sys
+
+
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2) with Perf Stats
+Number of Processes: 2, Number of Threads: 16
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 37 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 16 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,946,771,788      cpu-cycles:u                                                
+         1,059,981      cache-misses:u                                              
+             4,520      page-faults:u                                               
+
+       0.400302816 seconds time elapsed
+
+       0.899240000 seconds user
+       0.028038000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 16 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,535,232,685      cpu-cycles:u                                                
+           232,312      cache-misses:u                                              
+             5,649      page-faults:u                                               
+
+       0.532434800 seconds time elapsed
+
+       0.774003000 seconds user
+       0.043111000 seconds sys
+
+
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2) with Perf Stats
+Number of Processes: 4, Number of Threads: 8
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 35 milliseconds
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 8 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 8 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,315,949,464      cpu-cycles:u                                                
+           155,086      cache-misses:u                                              
+     1,312,187,742      cpu-cycles:u                                                
+           155,866      cache-misses:u                                              
+             4,258      page-faults:u                                               
+
+       0.776818799 seconds time elapsed
+
+       0.597505000 seconds user
+       0.022904000 seconds sys
+
+
+             4,273      page-faults:u                                               
+
+       0.408409668 seconds time elapsed
+
+       0.587078000 seconds user
+       0.026866000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 8 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,377,149,472      cpu-cycles:u                                                
+           746,630      cache-misses:u                                              
+             4,282      page-faults:u                                               
+
+       0.397877463 seconds time elapsed
+
+       0.613601000 seconds user
+       0.022985000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 8 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,038,962,836      cpu-cycles:u                                                
+           263,037      cache-misses:u                                              
+             5,743      page-faults:u                                               
+
+       0.817691504 seconds time elapsed
+
+       0.497545000 seconds user
+       0.039922000 seconds sys
+
+
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2) with Perf Stats
+Number of Processes: 8, Number of Threads: 4
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 34 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 4 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,084,340,221      cpu-cycles:u                                                
+           166,213      cache-misses:u                                              
+
+             3,615      page-faults:u                                               
+
+       0.396314724 seconds time elapsed
+
+       0.443888000 seconds user
+       0.022994000 seconds sys
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 4 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,085,853,072      cpu-cycles:u                                                
+           168,903      cache-misses:u                                              
+             3,654      page-faults:u                                               
+
+       0.403589373 seconds time elapsed
+
+       0.440074000 seconds user
+       0.031932000 seconds sys
+
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 4 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 4 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 4 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,078,603,534      cpu-cycles:u                                                
+           173,010      cache-misses:u                                              
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 4 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,079,260,153      cpu-cycles:u                                                
+           196,020      cache-misses:u                                              
+             3,651      page-faults:u                                               
+
+       0.877898918 seconds time elapsed
+
+       0.449707000 seconds user
+       0.024037000 seconds sys
+
+
+     1,080,519,920      cpu-cycles:u                                                
+           189,395      cache-misses:u                                              
+             3,670      page-faults:u                                               
+
+       0.871146513 seconds time elapsed
+
+       0.445117000 seconds user
+       0.029007000 seconds sys
+
+
+     1,084,837,288      cpu-cycles:u                                                
+           198,826      cache-misses:u                                              
+             4,179      page-faults:u                                               
+
+       1.158894939 seconds time elapsed
+
+       0.437389000 seconds user
+       0.037860000 seconds sys
+
+
+             4,143      page-faults:u                                               
+
+       0.879651423 seconds time elapsed
+
+       0.434404000 seconds user
+       0.039036000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 4 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,062,813,042      cpu-cycles:u                                                
+           166,473      cache-misses:u                                              
+             4,161      page-faults:u                                               
+
+       0.412952410 seconds time elapsed
+
+       0.434277000 seconds user
+       0.040931000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 4 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       800,820,114      cpu-cycles:u                                                
+           305,433      cache-misses:u                                              
+             7,021      page-faults:u                                               
+
+       0.902439714 seconds time elapsed
+
+       0.347545000 seconds user
+       0.046203000 seconds sys
+
+
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2) with Perf Stats
+Number of Processes: 16, Number of Threads: 2
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 28 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       952,271,171      cpu-cycles:u                                                
+           209,341      cache-misses:u                                              
+             3,571      page-faults:u                                               
+
+       0.371054788 seconds time elapsed
+
+       0.347252000 seconds user
+       0.027019000 seconds sys
+
+
+       942,359,661      cpu-cycles:u                                                
+           209,827      cache-misses:u                                              
+             3,637      page-faults:u                                               
+
+       0.829955720 seconds time elapsed
+
+       0.345993000 seconds user
+       0.028832000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       945,435,069      cpu-cycles:u                                                
+           190,683      cache-misses:u                                              
+             3,638      page-faults:u                                               
+
+       0.425883781 seconds time elapsed
+
+       0.355969000 seconds user
+       0.018998000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       944,501,621      cpu-cycles:u                                                
+           181,784      cache-misses:u                                              
+             3,600      page-faults:u                                               
+
+       0.393441670 seconds time elapsed
+
+       0.354915000 seconds user
+       0.019939000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       941,984,253      cpu-cycles:u                                                
+           155,135      cache-misses:u                                              
+             4,134      page-faults:u                                               
+
+       0.387919893 seconds time elapsed
+
+       0.348860000 seconds user
+       0.025915000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       944,621,153      cpu-cycles:u                                                
+           162,138      cache-misses:u                                              
+             4,146      page-faults:u                                               
+
+       0.381053182 seconds time elapsed
+
+       0.348252000 seconds user
+       0.026942000 seconds sys
+
+
+       950,000,114      cpu-cycles:u                                                
+           193,008      cache-misses:u                                              
+             4,081      page-faults:u                                               
+
+       0.370387850 seconds time elapsed
+
+       0.357897000 seconds user
+       0.016995000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       942,602,150      cpu-cycles:u                                                
+           231,104      cache-misses:u                                              
+             3,637      page-faults:u                                               
+
+       1.168071441 seconds time elapsed
+
+       0.348267000 seconds user
+       0.027941000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       943,465,262      cpu-cycles:u                                                
+           191,815      cache-misses:u                                              
+             4,149      page-faults:u                                               
+
+       0.910894927 seconds time elapsed
+
+       0.347648000 seconds user
+       0.028887000 seconds sys
+
+
+       940,965,706      cpu-cycles:u                                                
+           210,909      cache-misses:u                                              
+             3,637      page-faults:u                                               
+
+       0.824554909 seconds time elapsed
+
+       0.346469000 seconds user
+       0.028872000 seconds sys
+
+
+       939,581,812      cpu-cycles:u                                                
+           188,343      cache-misses:u                                              
+             4,393      page-faults:u                                               
+
+       0.886022195 seconds time elapsed
+
+       0.347244000 seconds user
+       0.028937000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       942,503,887      cpu-cycles:u                                                
+           183,265      cache-misses:u                                              
+             4,342      page-faults:u                                               
+
+       0.989675426 seconds time elapsed
+
+       0.347377000 seconds user
+       0.028948000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       938,798,256      cpu-cycles:u                                                
+           183,053      cache-misses:u                                              
+             4,392      page-faults:u                                               
+
+       0.813797360 seconds time elapsed
+
+       0.352610000 seconds user
+       0.022909000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       940,853,885      cpu-cycles:u                                                
+           186,171      cache-misses:u                                              
+             4,151      page-faults:u                                               
+
+       0.849712789 seconds time elapsed
+
+       0.349737000 seconds user
+       0.025906000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       938,633,087      cpu-cycles:u                                                
+           196,787      cache-misses:u                                              
+             3,871      page-faults:u                                               
+
+       0.878975688 seconds time elapsed
+
+       0.349715000 seconds user
+       0.025978000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 2 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+       680,104,939      cpu-cycles:u                                                
+           408,470      cache-misses:u                                              
+             7,441      page-faults:u                                               
+
+       0.855646588 seconds time elapsed
+
+       0.255942000 seconds user
+       0.041151000 seconds sys
+
+
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2) with Perf Stats
+Number of Processes: 32, Number of Threads: 1
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 31 milliseconds
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,452,787,889      cpu-cycles:u                                                
+           211,929      cache-misses:u                                              
+             3,572      page-faults:u                                               
+
+       0.574464426 seconds time elapsed
+
+       0.515627000 seconds user
+       0.031792000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,454,165,098      cpu-cycles:u                                                
+           202,149      cache-misses:u                                              
+             4,086      page-faults:u                                               
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+
+       0.568530402 seconds time elapsed
+
+       0.517729000 seconds user
+       0.030983000 seconds sys
+
+
+     1,445,857,772      cpu-cycles:u                                                
+           182,796      cache-misses:u                                              
+             4,063      page-faults:u                                               
+
+       0.586485159 seconds time elapsed
+
+       0.517500000 seconds user
+       0.031969000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,437,174,120      cpu-cycles:u                                                
+           166,368      cache-misses:u                                              
+             4,066      page-faults:u                                               
+
+       0.597345374 seconds time elapsed
+
+       0.515985000 seconds user
+       0.032999000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,452,455,223      cpu-cycles:u                                                
+           207,713      cache-misses:u                                              
+             3,553      page-faults:u                                               
+
+       0.582648410 seconds time elapsed
+
+       0.521760000 seconds user
+       0.026935000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,452,136,459      cpu-cycles:u                                                
+           202,545      cache-misses:u                                              
+             4,074      page-faults:u                                               
+
+       0.569199857 seconds time elapsed
+
+       0.520206000 seconds user
+       0.028955000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,450,077,572      cpu-cycles:u                                                
+           195,444      cache-misses:u                                              
+             4,058      page-faults:u                                               
+
+       0.576705320 seconds time elapsed
+
+       0.520899000 seconds user
+       0.028883000 seconds sys
+
+
+     1,450,335,636      cpu-cycles:u                                                
+           197,083      cache-misses:u                                              
+             4,061      page-faults:u                                               
+
+       0.572713487 seconds time elapsed
+
+       0.511558000 seconds user
+       0.037819000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,445,396,848      cpu-cycles:u                                                
+           181,923      cache-misses:u                                              
+             4,062      page-faults:u                                               
+
+       0.584008175 seconds time elapsed
+
+       0.515663000 seconds user
+       0.033912000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,453,044,695      cpu-cycles:u                                                
+           203,410      cache-misses:u                                              
+             4,050      page-faults:u                                               
+
+       0.570732962 seconds time elapsed
+
+       0.524228000 seconds user
+       0.025912000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,453,958,380      cpu-cycles:u                                                
+           200,158      cache-misses:u                                              
+             4,054      page-faults:u                                               
+
+       0.570295308 seconds time elapsed
+
+       0.518932000 seconds user
+       0.030876000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,438,535,305      cpu-cycles:u                                                
+           179,945      cache-misses:u                                              
+             4,065      page-faults:u                                               
+
+       0.606001634 seconds time elapsed
+
+       0.525773000 seconds user
+       0.024894000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,424,559,292      cpu-cycles:u                                                
+           227,975      cache-misses:u                                              
+             3,557      page-faults:u                                               
+
+       1.067754722 seconds time elapsed
+
+       0.509655000 seconds user
+       0.040812000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,427,091,153      cpu-cycles:u                                                
+           200,809      cache-misses:u                                              
+             4,074      page-faults:u                                               
+
+       1.291525713 seconds time elapsed
+
+       0.508731000 seconds user
+       0.043976000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,426,838,379      cpu-cycles:u                                                
+           200,078      cache-misses:u                                              
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,431,078,082      cpu-cycles:u                                                
+           234,864      cache-misses:u                                              
+             3,595      page-faults:u                                               
+
+       0.868859498 seconds time elapsed
+
+       0.512790000 seconds user
+       0.037910000 seconds sys
+
+
+             4,106      page-faults:u                                               
+
+       1.108164162 seconds time elapsed
+
+       0.512678000 seconds user
+       0.038899000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,426,458,548      cpu-cycles:u                                                
+           198,529      cache-misses:u                                              
+             4,106      page-faults:u                                               
+
+       1.150173412 seconds time elapsed
+
+       0.509538000 seconds user
+       0.041961000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,428,559,822      cpu-cycles:u                                                
+           232,705      cache-misses:u                                              
+             3,581      page-faults:u                                               
+
+       1.084827730 seconds time elapsed
+
+       0.516923000 seconds user
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,415,431,865      cpu-cycles:u                                                
+           224,467      cache-misses:u                                              
+             3,587      page-faults:u                                               
+
+       1.042000813 seconds time elapsed
+
+       0.508852000 seconds user
+       0.039831000 seconds sys
+
+
+       0.034859000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,429,714,362      cpu-cycles:u                                                
+           225,335      cache-misses:u                                              
+             3,586      page-faults:u                                               
+
+       1.669012623 seconds time elapsed
+
+       0.518309000 seconds user
+       0.033889000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,428,711,284      cpu-cycles:u                                                
+           233,417      cache-misses:u                                              
+             3,570      page-faults:u                                               
+
+       0.873900167 seconds time elapsed
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,428,240,927      cpu-cycles:u                                                
+           230,367      cache-misses:u                                              
+             3,603      page-faults:u                                               
+
+       0.851672660 seconds time elapsed
+
+       0.519296000 seconds user
+       0.031834000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,428,490,556      cpu-cycles:u                                                
+           222,458      cache-misses:u                                              
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,428,595,302      cpu-cycles:u                                                
+           236,673      cache-misses:u                                              
+             3,580      page-faults:u                                               
+
+       0.953309492 seconds time elapsed
+
+       0.512308000 seconds user
+       0.038796000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,429,926,384      cpu-cycles:u                                                
+           205,266      cache-misses:u                                              
+             4,107      page-faults:u                                               
+
+       0.898150201 seconds time elapsed
+
+       0.518835000 seconds user
+       0.032926000 seconds sys
+
+
+       0.513533000 seconds user
+       0.037891000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,428,024,891      cpu-cycles:u                                                
+           234,887      cache-misses:u                                              
+             3,579      page-faults:u                                               
+
+       0.925260354 seconds time elapsed
+
+       0.511771000 seconds user
+       0.039749000 seconds sys
+
+
+             3,590      page-faults:u                                               
+
+       0.979510460 seconds time elapsed
+
+       0.513960000 seconds user
+       0.037849000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,427,309,181      cpu-cycles:u                                                
+           200,339      cache-misses:u                                              
+             4,115      page-faults:u                                               
+
+       1.291441454 seconds time elapsed
+
+       0.511752000 seconds user
+       0.040820000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,426,417,419      cpu-cycles:u                                                
+           198,324      cache-misses:u                                              
+             4,111      page-faults:u                                               
+
+       0.896679661 seconds time elapsed
+
+       0.515493000 seconds user
+       0.035825000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,427,397,657      cpu-cycles:u                                                
+           195,771      cache-misses:u                                              
+             4,105      page-faults:u                                               
+
+       1.065722113 seconds time elapsed
+
+       0.518107000 seconds user
+       0.033941000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,435,431,072      cpu-cycles:u                                                
+           231,353      cache-misses:u                                              
+             4,066      page-faults:u                                               
+
+       2.690408845 seconds time elapsed
+
+       0.518801000 seconds user
+       0.034986000 seconds sys
+
+
+     1,426,154,203      cpu-cycles:u                                                
+           193,468      cache-misses:u                                              
+             4,101      page-faults:u                                               
+
+       1.278690964 seconds time elapsed
+
+       0.511817000 seconds user
+       0.039907000 seconds sys
+
+
+
+ Performance counter stats for '/nfsmnt/120040025/project2/src/../build/src/mpi 1 /nfsmnt/120040025/project2/src/../matrices/matrix5.txt /nfsmnt/120040025/project2/src/../matrices/matrix6.txt /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt':
+
+     1,160,662,460      cpu-cycles:u                                                
+           359,008      cache-misses:u                                              
+             7,757      page-faults:u                                               
+
+       1.689979053 seconds time elapsed
+
+       0.422282000 seconds user
+       0.049149000 seconds sys
+
+
+

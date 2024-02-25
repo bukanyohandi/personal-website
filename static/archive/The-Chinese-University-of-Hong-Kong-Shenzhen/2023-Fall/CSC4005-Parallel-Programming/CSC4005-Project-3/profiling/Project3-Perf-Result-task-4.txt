@@ -1,0 +1,110 @@
+Merge Sort Parallel (Optimized with -O2)
+Number of cores: 1
+Merge Sort Complete!
+Execution Time: 14102 milliseconds
+std::sort Time: 11966 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/mergesort/mergesort_parallel 1 100000000':
+
+   122,524,737,310      cpu-cycles:u                                                
+       207,871,976      cache-misses:u                                              
+            58,519      page-faults:u                                               
+
+      29.767014574 seconds time elapsed
+
+      42.417786000 seconds user
+       0.739253000 seconds sys
+
+
+Number of cores: 2
+Merge Sort Complete!
+Execution Time: 14108 milliseconds
+std::sort Time: 11974 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/mergesort/mergesort_parallel 2 100000000':
+
+   122,271,900,750      cpu-cycles:u                                                
+       223,166,544      cache-misses:u                                              
+            71,606      page-faults:u                                               
+
+      29.777731589 seconds time elapsed
+
+      42.329236000 seconds user
+       0.791191000 seconds sys
+
+
+Number of cores: 4
+Merge Sort Complete!
+Execution Time: 8367 milliseconds
+std::sort Time: 11975 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/mergesort/mergesort_parallel 4 100000000':
+
+   127,086,322,471      cpu-cycles:u                                                
+       226,669,215      cache-misses:u                                              
+            97,805      page-faults:u                                               
+
+      24.048633695 seconds time elapsed
+
+      44.147095000 seconds user
+       0.953863000 seconds sys
+
+
+Number of cores: 8
+Merge Sort Complete!
+Execution Time: 5058 milliseconds
+std::sort Time: 11993 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/mergesort/mergesort_parallel 8 100000000':
+
+   129,432,689,336      cpu-cycles:u                                                
+       234,787,214      cache-misses:u                                              
+            71,104      page-faults:u                                               
+
+      20.764034112 seconds time elapsed
+
+      45.038020000 seconds user
+       0.803608000 seconds sys
+
+
+Number of cores: 16
+Merge Sort Complete!
+Execution Time: 3208 milliseconds
+std::sort Time: 11974 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/mergesort/mergesort_parallel 16 100000000':
+
+   131,183,106,032      cpu-cycles:u                                                
+       240,200,691      cache-misses:u                                              
+            96,457      page-faults:u                                               
+
+      18.897623443 seconds time elapsed
+
+      45.852014000 seconds user
+       0.937834000 seconds sys
+
+
+Number of cores: 32
+Merge Sort Complete!
+Execution Time: 2442 milliseconds
+std::sort Time: 11964 milliseconds
+Pass the sorting result check!
+
+ Performance counter stats for '/nfsmnt/120040025/project3/build/src/mergesort/mergesort_parallel 32 100000000':
+
+   152,246,015,779      cpu-cycles:u                                                
+       245,254,666      cache-misses:u                                              
+           117,808      page-faults:u                                               
+
+      18.153674736 seconds time elapsed
+
+      53.617386000 seconds user
+       1.073307000 seconds sys
+
+
+

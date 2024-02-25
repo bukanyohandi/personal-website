@@ -1,0 +1,173 @@
+Current directory: /nfsmnt/120040025/project1/src/scripts
+Sequential PartB (Optimized with -O2)
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-sequential.jpg
+Transformation Complete!
+Execution Time: 4728 milliseconds
+
+SIMD(AVX2) PartB (Optimized with -O2)
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-simd.jpg
+Transformation Complete!
+Execution Time: 1209 milliseconds
+
+MPI PartB (Optimized with -O2)
+Number of processes: 1
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-1.jpg
+Transformation Complete!
+Execution Time: 7000 milliseconds
+
+Number of processes: 2
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-2.jpg
+Transformation Complete!
+Execution Time: 6001 milliseconds
+
+Number of processes: 4
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-4.jpg
+Transformation Complete!
+Execution Time: 3231 milliseconds
+
+Number of processes: 8
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-8.jpg
+Transformation Complete!
+Execution Time: 1800 milliseconds
+
+Number of processes: 16
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-16.jpg
+Transformation Complete!
+Execution Time: 1084 milliseconds
+
+Number of processes: 32
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-32.jpg
+Transformation Complete!
+Execution Time: 753 milliseconds
+
+Pthread PartB (Optimized with -O2)
+Number of cores: 1
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-pthread-1.jpg
+Transformation Complete!
+Execution Time: 4738 milliseconds
+
+Number of cores: 2
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-pthread-2.jpg
+Transformation Complete!
+Execution Time: 4188 milliseconds
+
+Number of cores: 4
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-pthread-4.jpg
+Transformation Complete!
+Execution Time: 2129 milliseconds
+
+Number of cores: 8
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-pthread-8.jpg
+Transformation Complete!
+Execution Time: 1068 milliseconds
+
+Number of cores: 16
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-pthread-16.jpg
+Transformation Complete!
+Execution Time: 548 milliseconds
+
+Number of cores: 32
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-pthread-32.jpg
+Transformation Complete!
+Execution Time: 380 milliseconds
+
+OpenMP PartB (Optimized with -O2)
+Number of cores: 1
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-openmp-1.jpg
+Transformation Complete!
+Execution Time: 5928 milliseconds
+
+Number of cores: 2
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-openmp-2.jpg
+Transformation Complete!
+Execution Time: 5933 milliseconds
+
+Number of cores: 4
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-openmp-4.jpg
+Transformation Complete!
+Execution Time: 2999 milliseconds
+
+Number of cores: 8
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-openmp-8.jpg
+Transformation Complete!
+Execution Time: 1722 milliseconds
+
+Number of cores: 16
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-openmp-16.jpg
+Transformation Complete!
+Execution Time: 779 milliseconds
+
+Number of cores: 32
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-openmp-32.jpg
+Transformation Complete!
+Execution Time: 504 milliseconds
+
+CUDA PartB
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-cuda.jpg
+Transformation Complete!
+GPU Execution Time: 23.7951 milliseconds
+
+OpenACC PartB
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-openacc.jpg
+Transformation Complete!
+Execution Time: 21 milliseconds
+
+MPI+OpenMP PartB (Optimized with -O2)
+Number of MPI processes: 1, Number of OpenMP threads per process: 32
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-openmp-1x32.jpg
+Transformation Complete!
+Execution Time: 392 milliseconds
+
+Number of MPI processes: 2, Number of OpenMP threads per process: 16
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-openmp-2x16.jpg
+Transformation Complete!
+Execution Time: 612 milliseconds
+
+Number of MPI processes: 4, Number of OpenMP threads per process: 8
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-openmp-4x8.jpg
+Transformation Complete!
+Execution Time: 675 milliseconds
+
+Number of MPI processes: 8, Number of OpenMP threads per process: 4
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-openmp-8x4.jpg
+Transformation Complete!
+Execution Time: 710 milliseconds
+
+Number of MPI processes: 16, Number of OpenMP threads per process: 2
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-openmp-16x2.jpg
+Transformation Complete!
+Execution Time: 710 milliseconds
+
+Number of MPI processes: 32, Number of OpenMP threads per process: 1
+Input file from: /nfsmnt/120040025/project1/src/scripts/../../images/20K-RGB.jpg
+Output file to: /nfsmnt/120040025/project1/src/scripts/../../images/results/20K-smooth-mpi-openmp-32x1.jpg
+Transformation Complete!
+Execution Time: 764 milliseconds
+

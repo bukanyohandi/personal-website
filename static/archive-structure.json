@@ -134,6 +134,77 @@
                 },
                 "PHY1002-Physics-Laboratory": {}
             },
+            "2023-Fall": {
+                "CSC4005-Parallel-Programming": {
+                    "CSC4005-Project-1": {
+                        "appendix": {},
+                        "project1": {
+                            "images": {
+                                "results": {}
+                            },
+                            "src": {
+                                "cpu": {},
+                                "gpu": {},
+                                "scripts": {}
+                            }
+                        },
+                        "results": {
+                            "20K-smooth (no image)": {},
+                            "Gray (no image)": {},
+                            "Lena-smooth": {}
+                        },
+                        "scripts": {
+                            "20K-smooth": {},
+                            "Gray": {},
+                            "Lena-smooth": {}
+                        }
+                    },
+                    "CSC4005-Project-2": {
+                        "appendix": {},
+                        "project2": {
+                            "matrices": {},
+                            "src": {
+                                "gpu": {}
+                            }
+                        }
+                    },
+                    "CSC4005-Project-3": {
+                        "profiling": {},
+                        "src": {
+                            "bucketsort": {},
+                            "mergesort": {},
+                            "odd-even-sort": {},
+                            "quicksort": {}
+                        }
+                    },
+                    "CSC4005-Project-4": {
+                        "appendix": {},
+                        "profiling": {},
+                        "src": {}
+                    }
+                },
+                "CSC4008-Techniques-for-Data-Mining": {
+                    "CSC4008 - Assignment 1": {
+                        "data-Q1": {},
+                        "data-Q2": {}
+                    },
+                    "CSC4008 - Assignment 2": {
+                        "data": {}
+                    },
+                    "CSC4008 - Assignment 3": {
+                        "data": {}
+                    },
+                    "CSC4008 - Assignment 4": {
+                        "data-Q1": {},
+                        "data-Q2": {}
+                    }
+                },
+                "DDA6050-Analysis-of-Algorithms": {
+                    "DDA6050-Assignment-2": {},
+                    "DDA6050-Assignment-4": {}
+                },
+                "MAT3007-Optimization": {}
+            },
             "2024-Spring": {
                 "CSC4120-Design-and-Analysis-of-Algorithms": {},
                 "DDA4210-Advanced-Machine-Learning": {},

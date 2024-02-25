@@ -1,0 +1,107 @@
+Naive Matrix Multiplication (Optimized with -O2)
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-naive.txt
+Multiplication Complete!
+Execution Time: 8173 milliseconds
+
+Memory Locality Matrix Multiplication (Optimized with -O2)
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-locality.txt
+Multiplication Complete!
+Execution Time: 551 milliseconds
+
+SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-simd.txt
+Multiplication Complete!
+Execution Time: 281 milliseconds
+
+OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Number of cores: 1
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 283 milliseconds
+
+Number of cores: 2
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 259 milliseconds
+
+Number of cores: 4
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 153 milliseconds
+
+Number of cores: 8
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 89 milliseconds
+
+Number of cores: 16
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 63 milliseconds
+
+Number of cores: 32
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-openmp.txt
+Multiplication Complete!
+Execution Time: 46 milliseconds
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Number of Processes: 1, Number of Threads: 32
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 47 milliseconds
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Number of Processes: 2, Number of Threads: 16
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 46 milliseconds
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Number of Processes: 4, Number of Threads: 8
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 47 milliseconds
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Number of Processes: 8, Number of Threads: 4
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 34 milliseconds
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Number of Processes: 16, Number of Threads: 2
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 27 milliseconds
+
+MPI + OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)
+Number of Processes: 32, Number of Threads: 1
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-mpi.txt
+Multiplication Complete!
+Execution Time: 32 milliseconds
+
+CUDA
+Output file to: /nfsmnt/120040025/project2/src/../matrices/result-cuda.txt
+Multiplication Complete!
+GPU Execution Time: 4.79062 milliseconds
+
+Comparing matrices/result-naive.txt and matrices/result-locality.txt...
+[log] 1025 lines were compared
+Both files are identical
+
+Comparing matrices/result-naive.txt and matrices/result-simd.txt...
+[log] 1025 lines were compared
+Both files are identical
+
+Comparing matrices/result-naive.txt and matrices/result-openmp.txt...
+[log] 1025 lines were compared
+Both files are identical
+
+Comparing matrices/result-naive.txt and matrices/result-mpi.txt...
+[log] 1025 lines were compared
+Both files are identical
+
+Comparing matrices/result-naive.txt and matrices/result-cuda.txt...
+[log] 1025 lines were compared
+Both files are identical
+

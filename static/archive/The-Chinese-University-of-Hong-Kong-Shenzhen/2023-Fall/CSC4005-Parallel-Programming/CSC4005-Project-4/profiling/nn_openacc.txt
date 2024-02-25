@@ -1,0 +1,99 @@
+bash-4.2$ nsys stats nn_openacc.qdrep
+Generating SQLite file nn_openacc.sqlite from nn_openacc.qdrep
+Exporting 1892421 events: [===============================================100%]
+Using nn_openacc.sqlite for SQL queries.
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/cudaapisum.py nn_openacc.sqlite]... 
+
+ Time(%)  Total Time (ns)  Num Calls    Average      Minimum     Maximum     StdDev            Name        
+ -------  ---------------  ---------  ------------  ----------  ----------  ---------  --------------------
+    78.0    4,471,692,859    204,361      21,881.3         640  51,365,839  500,091.3  cuStreamSynchronize 
+    21.4    1,225,868,929    204,280       6,000.9       3,756     911,991    5,843.4  cuLaunchKernel      
+     0.5       26,694,530          1  26,694,530.0  26,694,530  26,694,530        0.0  cuMemHostAlloc      
+     0.0        2,706,946         21     128,902.2       2,436     497,316  170,581.0  cuMemAlloc_v2       
+     0.0        1,140,447          1   1,140,447.0   1,140,447   1,140,447        0.0  cuMemAllocHost_v2   
+     0.0          851,080         80      10,638.5       4,052     141,082   16,027.6  cuMemcpyDtoHAsync_v2
+     0.0          613,431         80       7,667.9       3,244     158,218   17,442.1  cuMemsetD32Async    
+     0.0          464,809          1     464,809.0     464,809     464,809        0.0  cuModuleLoadDataEx  
+     0.0          355,110         94       3,777.8       1,978      56,183    5,733.5  cuEventRecord       
+     0.0          306,526         18      17,029.2       3,809      35,450    8,024.9  cuMemcpyHtoDAsync_v2
+     0.0          144,756         93       1,556.5         574      12,428    1,888.8  cuEventSynchronize  
+     0.0           21,097          1      21,097.0      21,097      21,097        0.0  cuStreamCreate      
+     0.0            9,274          3       3,091.3         537       5,675    2,569.1  cuEventCreate       
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/gpukernsum.py nn_openacc.sqlite]... 
+
+ Time(%)  Total Time (ns)  Instances    Average    Minimum   Maximum      StdDev                                                     Name                                                
+ -------  ---------------  ---------  -----------  -------  ----------  -----------  ----------------------------------------------------------------------------------------------------
+    60.7    2,672,498,888     24,080    110,984.2   17,920  51,363,255  1,445,196.9  matrix_dot_openacc_6_gpu(float const*, float const*, float*, unsigned long, unsigned long, unsigned…
+    25.2    1,109,457,703     24,000     46,227.4    5,984     144,191     40,662.6  matrix_dot_trans_openacc_34_gpu(float const*, float const*, float*, unsigned long, unsigned long, u…
+     2.6      115,063,600         40  2,876,590.0  777,788   5,303,717  2,087,974.2  mean_softmax_loss_openacc_281_gpu(float const*, unsigned char const*, unsigned long, unsigned long) 
+     2.5      110,670,068     36,000      3,074.2    1,696      11,264      1,807.0  matrix_minus_openacc_87_gpu(float*, float const*, unsigned long, unsigned long)                     
+     2.0       85,954,912     24,000      3,581.5    1,695       9,120      1,829.9  matrix_mul_scalar_openacc_99_gpu(float*, float, unsigned long, unsigned long)                       
+     1.9       85,693,023     24,000      3,570.5    1,472      12,928      1,818.6  matrix_div_scalar_openacc_112_gpu(float*, float, unsigned long, unsigned long)                      
+     1.3       55,174,915     12,000      4,597.9    4,224       8,736        579.1  matrix_trans_dot_openacc_61_gpu(float const*, float const*, float*, unsigned long, unsigned long, u…
+     0.9       39,469,316     12,040      3,278.2    2,112     513,629     21,087.2  ReLU_openacc_336_gpu(float*, unsigned long)                                                         
+     0.9       37,678,597     12,000      3,139.9    2,943       5,504        381.6  matrix_softmax_normalize_openacc_130_gpu(float*, unsigned long, unsigned long)                      
+     0.7       32,391,271     12,000      2,699.3    2,527       4,672        318.4  matrix_softmax_normalize_openacc_124_gpu(float*, unsigned long, unsigned long)                      
+     0.6       27,861,179     12,000      2,321.8    2,175       3,968        257.4  nn_epoch_openacc_366_gpu(float const*, unsigned char const*, float*, float*, unsigned long, unsigne…
+     0.6       27,370,918     12,000      2,280.9    2,143      12,127        267.2  vector_to_one_hot_matrix_openacc_156_gpu(unsigned char const*, float*, unsigned long, unsigned long)
+     0.0        1,095,961         40     27,399.0    9,312      49,023     17,957.3  mean_softmax_loss_openacc_281_gpu__red(float const*, unsigned char const*, unsigned long, unsigned …
+     0.0          258,752         40      6,468.8    3,681       9,888      2,661.1  mean_err_openacc_306_gpu(float const*, unsigned char const*, unsigned long, unsigned long)          
+     0.0          114,400         40      2,860.0    2,592       3,423        179.6  mean_err_openacc_306_gpu__red(float const*, unsigned char const*, unsigned long, unsigned long)     
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/gpumemtimesum.py nn_openacc.sqlite]... 
+
+ Time(%)  Total Time (ns)  Operations   Average   Minimum   Maximum    StdDev        Operation     
+ -------  ---------------  ----------  ---------  -------  ---------  ---------  ------------------
+    99.2       17,987,559          18  999,308.8    2,560  1,366,009  589,400.2  [CUDA memcpy HtoD]
+     0.4           81,599          80    1,020.0      959      1,536       91.9  [CUDA memcpy DtoH]
+     0.4           67,488          80      843.6      800      1,088       36.0  [CUDA memset]     
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/gpumemsizesum.py nn_openacc.sqlite]... 
+
+    Total     Operations   Average    Minimum   Maximum     StdDev        Operation     
+ -----------  ----------  ----------  -------  ----------  ---------  ------------------
+ 215,683.984          18  11,982.444    9.766  16,384.000  7,085.808  [CUDA memcpy HtoD]
+       0.469          80       0.006    0.004       0.008      0.002  [CUDA memcpy DtoH]
+       0.469          80       0.006    0.004       0.008      0.002  [CUDA memset]     
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/osrtsum.py nn_openacc.sqlite]... 
+
+ Time(%)  Total Time (ns)  Num Calls     Average       Minimum      Maximum       StdDev              Name         
+ -------  ---------------  ---------  -------------  -----------  -----------  ------------  ----------------------
+    49.9    8,615,670,893         98   87,915,009.1       10,499  100,283,705  31,846,568.3  poll                  
+    49.2    8,502,278,539         17  500,134,031.7  500,042,896  500,465,313      88,798.7  pthread_cond_timedwait
+     0.7      116,609,704        755      154,449.9        1,144   25,874,856   1,329,595.9  ioctl                 
+     0.2       31,770,440         23    1,381,323.5        1,628   26,649,119   5,603,891.5  read                  
+     0.0        3,392,639         68       49,891.8        6,763    1,048,275     124,897.1  mmap64                
+     0.0        2,009,861         10      200,986.1      103,389      958,097     266,175.4  sem_timedwait         
+     0.0        1,368,971         11      124,451.9       37,081      796,980     223,689.6  pthread_mutex_lock    
+     0.0          815,076          4      203,769.0      144,835      289,288      61,459.0  fopen64               
+     0.0          782,176         88        8,888.4        3,343       48,061       5,929.2  open64                
+     0.0          709,475         28       25,338.4        3,329       97,897      34,490.6  fclose                
+     0.0          632,197         29       21,799.9        2,269      177,365      36,971.6  mmap                  
+     0.0          538,707         30       17,956.9        1,186      228,914      41,164.7  fopen                 
+     0.0          494,358          5       98,871.6       75,308      138,088      24,399.5  pthread_create        
+     0.0          248,227         22       11,283.0        6,765       18,897       2,130.7  fflush                
+     0.0          144,042         15        9,602.8        2,113       47,974      15,632.4  munmap                
+     0.0          110,986         20        5,549.3        1,047       53,594      12,613.2  fwrite                
+     0.0           95,730         10        9,573.0        1,466       51,160      14,916.6  fgetc                 
+     0.0           78,324          6       13,054.0        5,044       41,401      14,012.7  open                  
+     0.0           70,065         12        5,838.8        1,742       10,224       2,686.7  write                 
+     0.0           47,676         31        1,537.9        1,014        2,362         361.2  fcntl                 
+     0.0           34,262          1       34,262.0       34,262       34,262           0.0  fgets                 
+     0.0           31,301          2       15,650.5       11,270       20,031       6,195.0  socket                
+     0.0           15,770          5        3,154.0        2,385        4,581         860.9  mprotect              
+     0.0           12,416          1       12,416.0       12,416       12,416           0.0  fread                 
+     0.0            8,680          1        8,680.0        8,680        8,680           0.0  connect               
+     0.0            7,667          1        7,667.0        7,667        7,667           0.0  pipe2                 
+     0.0            1,616          1        1,616.0        1,616        1,616           0.0  bind                  
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/nvtxsum.py nn_openacc.sqlite]... SKIPPED: nn_openacc.sqlite does not contain NV Tools Extension (NVTX) data
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/openmpevtsum.py nn_openacc.sqlite]... SKIPPED: nn_openacc.sqlite does not contain OpenMP event data.
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/vulkanmarkerssum.py nn_openacc.sqlite]... SKIPPED: nn_openacc.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/pixsum.py nn_openacc.sqlite]... SKIPPED: nn_openacc.sqlite does not contain DX11/DX12 CPU debug markers
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/khrdebugsum.py nn_openacc.sqlite]... SKIPPED: nn_openacc.sqlite does not contain KHR Extension (KHR_DEBUG) data

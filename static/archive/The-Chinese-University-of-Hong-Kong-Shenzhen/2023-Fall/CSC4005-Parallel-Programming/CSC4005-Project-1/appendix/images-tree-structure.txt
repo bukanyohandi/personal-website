@@ -1,0 +1,38 @@
+bash-4.2$ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+.
+|____4k-RGB.jpg
+|____4k-Smooth.jpg
+|____Lena-RGB.jpg
+|____Lena-Sharpen.jpg
+|____Lena-Smooth.jpg
+|____20K-RGB.jpg
+|____results
+| |____20K-Gray.jpg
+| |____20K-smooth-sequential.jpg
+| |____20K-smooth-simd.jpg
+| |____20K-smooth-mpi-1.jpg
+| |____20K-smooth-mpi-2.jpg
+| |____20K-smooth-mpi-4.jpg
+| |____20K-smooth-mpi-8.jpg
+| |____20K-smooth-mpi-16.jpg
+| |____20K-smooth-mpi-32.jpg
+| |____20K-smooth-pthread-1.jpg
+| |____20K-smooth-pthread-2.jpg
+| |____20K-smooth-pthread-4.jpg
+| |____20K-smooth-pthread-8.jpg
+| |____20K-smooth-pthread-16.jpg
+| |____20K-smooth-pthread-32.jpg
+| |____20K-smooth-openmp-1.jpg
+| |____20K-smooth-openmp-2.jpg
+| |____20K-smooth-openmp-4.jpg
+| |____20K-smooth-openmp-8.jpg
+| |____20K-smooth-openmp-16.jpg
+| |____20K-smooth-openmp-32.jpg
+| |____20K-smooth-cuda.jpg
+| |____20K-smooth-openacc.jpg
+| |____20K-smooth-mpi-openmp-1x32.jpg
+| |____20K-smooth-mpi-openmp-2x16.jpg
+| |____20K-smooth-mpi-openmp-4x8.jpg
+| |____20K-smooth-mpi-openmp-8x4.jpg
+| |____20K-smooth-mpi-openmp-16x2.jpg
+| |____20K-smooth-mpi-openmp-32x1.jpg    

@@ -1,0 +1,96 @@
+bash-4.2$ nsys stats softmax_openacc.qdrep
+Generating SQLite file softmax_openacc.sqlite from softmax_openacc.qdrep
+Exporting 501644 events: [================================================100%]
+Using softmax_openacc.sqlite for SQL queries.
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/cudaapisum.py softmax_openacc.sqlite]... 
+
+ Time(%)  Total Time (ns)  Num Calls    Average      Minimum     Maximum     StdDev            Name        
+ -------  ---------------  ---------  ------------  ----------  ----------  ---------  --------------------
+    66.7      680,848,737     54,141      12,575.5         719   7,142,616   89,480.0  cuStreamSynchronize 
+    30.3      309,080,764     54,100       5,713.1       3,532     844,768    5,747.8  cuLaunchKernel      
+     2.6       26,355,800          1  26,355,800.0  26,355,800  26,355,800        0.0  cuMemHostAlloc      
+     0.2        1,733,940         13     133,380.0       2,669   1,069,302  297,800.1  cuMemAlloc_v2       
+     0.1        1,003,238          1   1,003,238.0   1,003,238   1,003,238        0.0  cuMemAllocHost_v2   
+     0.0          429,892          1     429,892.0     429,892     429,892        0.0  cuModuleLoadDataEx  
+     0.0          359,132         40       8,978.3       4,463      30,348    6,206.8  cuMemcpyDtoHAsync_v2
+     0.0          245,540         16      15,346.3       5,018      34,508    6,471.3  cuMemcpyHtoDAsync_v2
+     0.0          227,695         40       5,692.4       2,977      17,991    4,059.4  cuMemsetD32Async    
+     0.0          170,787         54       3,162.7       1,805      13,129    1,670.3  cuEventRecord       
+     0.0          100,480         53       1,895.8         680      12,706    2,041.0  cuEventSynchronize  
+     0.0           20,262          1      20,262.0      20,262      20,262        0.0  cuStreamCreate      
+     0.0            8,947          3       2,982.3         537       5,071    2,287.9  cuEventCreate       
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/gpukernsum.py softmax_openacc.sqlite]... 
+
+ Time(%)  Total Time (ns)  Instances    Average    Minimum   Maximum     StdDev                                                     Name                                                
+ -------  ---------------  ---------  -----------  -------  ---------  -----------  ----------------------------------------------------------------------------------------------------
+    61.1      393,930,100      6,020     65,436.9   54,015  3,584,077    115,766.9  matrix_dot_openacc_6_gpu(float const*, float const*, float*, unsigned long, unsigned long, unsigned…
+    10.1       65,380,362         20  3,269,018.1  853,500  7,086,619  2,433,543.0  mean_softmax_loss_openacc_281_gpu(float const*, unsigned char const*, unsigned long, unsigned long) 
+     8.9       57,679,849      6,000      9,613.3    8,576     12,320        911.9  matrix_dot_trans_openacc_34_gpu(float const*, float const*, float*, unsigned long, unsigned long, u…
+     4.6       29,791,016     12,000      2,482.6    2,176      3,328        223.0  matrix_minus_openacc_87_gpu(float*, float const*, unsigned long, unsigned long)                     
+     4.0       25,970,404      6,000      4,328.4    3,871      5,472        435.4  matrix_softmax_normalize_openacc_130_gpu(float*, unsigned long, unsigned long)                      
+     3.6       22,977,930      6,000      3,829.7    3,423      7,265        368.4  matrix_softmax_normalize_openacc_124_gpu(float*, unsigned long, unsigned long)                      
+     2.8       18,239,833      6,000      3,040.0    2,623      3,904        275.6  vector_to_one_hot_matrix_openacc_156_gpu(unsigned char const*, float*, unsigned long, unsigned long)
+     2.4       15,166,578      6,000      2,527.8    2,271      3,264        225.9  matrix_mul_scalar_openacc_99_gpu(float*, float, unsigned long, unsigned long)                       
+     2.3       14,966,135      6,000      2,494.4    2,239      3,169        218.9  matrix_div_scalar_openacc_112_gpu(float*, float, unsigned long, unsigned long)                      
+     0.1          630,010         20     31,500.5   10,112     62,623     21,203.1  mean_softmax_loss_openacc_281_gpu__red(float const*, unsigned char const*, unsigned long, unsigned …
+     0.0          143,520         20      7,176.0    3,935     12,160      3,060.1  mean_err_openacc_306_gpu(float const*, unsigned char const*, unsigned long, unsigned long)          
+     0.0           64,482         20      3,224.1    2,784      3,968        333.6  mean_err_openacc_306_gpu__red(float const*, unsigned char const*, unsigned long, unsigned long)     
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/gpumemtimesum.py softmax_openacc.sqlite]... 
+
+ Time(%)  Total Time (ns)  Operations    Average    Minimum   Maximum    StdDev        Operation     
+ -------  ---------------  ----------  -----------  -------  ---------  ---------  ------------------
+    99.5       17,733,732          16  1,108,358.3    2,400  1,360,377  505,305.5  [CUDA memcpy HtoD]
+     0.2           44,353          40      1,108.8      992      1,504      101.6  [CUDA memcpy DtoH]
+     0.2           36,802          40        920.1      832      1,152       71.3  [CUDA memset]     
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/gpumemsizesum.py softmax_openacc.sqlite]... 
+
+    Total     Operations   Average    Minimum   Maximum     StdDev        Operation     
+ -----------  ----------  ----------  -------  ----------  ---------  ------------------
+ 214,443.359          16  13,402.710    9.766  16,384.000  6,122.884  [CUDA memcpy HtoD]
+       0.234          40       0.006    0.004       0.008      0.002  [CUDA memcpy DtoH]
+       0.234          40       0.006    0.004       0.008      0.002  [CUDA memset]     
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/osrtsum.py softmax_openacc.sqlite]... 
+
+ Time(%)  Total Time (ns)  Num Calls     Average       Minimum      Maximum       StdDev              Name         
+ -------  ---------------  ---------  -------------  -----------  -----------  ------------  ----------------------
+    54.7    2,002,400,925         32   62,575,028.9        9,123  100,232,822  46,849,226.3  poll                  
+    41.0    1,500,401,503          3  500,133,834.3  500,073,608  500,193,687      60,040.4  pthread_cond_timedwait
+     3.2      115,756,595        731      158,353.8        1,040   25,511,554   1,340,688.3  ioctl                 
+     0.7       26,139,075         23    1,136,481.5        1,581   22,803,905   4,770,607.1  read                  
+     0.1        3,287,626         68       48,347.4        8,302    1,245,053     148,411.6  mmap64                
+     0.1        2,311,554          4      577,888.5      243,399      941,952     372,239.6  fopen64               
+     0.1        2,198,999         10      219,899.9      108,325    1,025,678     283,375.5  sem_timedwait         
+     0.0        1,405,838         28       50,208.5        4,227      331,306      83,844.5  fclose                
+     0.0          917,587          4      229,396.8       41,841      738,810     340,231.0  pthread_mutex_lock    
+     0.0          790,252         88        8,980.1        3,024       34,999       4,917.7  open64                
+     0.0          464,201         26       17,853.9        2,368       86,665      21,774.2  mmap                  
+     0.0          454,783          5       90,956.6       68,923      118,967      19,147.3  pthread_create        
+     0.0          324,059         30       10,802.0        1,300       51,536       9,213.4  fopen                 
+     0.0          176,745         13       13,595.8        1,086      103,319      27,650.5  fgetc                 
+     0.0          152,602          6       25,433.7        5,424      113,211      43,085.9  open                  
+     0.0          138,226         12       11,518.8        2,772       16,656       3,357.5  fflush                
+     0.0           62,410         12        5,200.8        1,402        9,272       2,141.5  write                 
+     0.0           53,934         34        1,586.3        1,061        2,356         350.4  fcntl                 
+     0.0           36,040          1       36,040.0       36,040       36,040           0.0  fgets                 
+     0.0           32,064          2       16,032.0       11,094       20,970       6,983.4  socket                
+     0.0           31,383          9        3,487.0        1,656        5,248       1,264.9  munmap                
+     0.0           29,619         10        2,961.9        1,022       19,254       5,725.2  fwrite                
+     0.0           14,135          5        2,827.0        2,188        4,336         860.1  mprotect              
+     0.0           10,291          1       10,291.0       10,291       10,291           0.0  fread                 
+     0.0            9,467          1        9,467.0        9,467        9,467           0.0  pipe2                 
+     0.0            8,569          1        8,569.0        8,569        8,569           0.0  connect               
+     0.0            2,194          1        2,194.0        2,194        2,194           0.0  bind                  
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/nvtxsum.py softmax_openacc.sqlite]... SKIPPED: softmax_openacc.sqlite does not contain NV Tools Extension (NVTX) data
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/openmpevtsum.py softmax_openacc.sqlite]... SKIPPED: softmax_openacc.sqlite does not contain OpenMP event data.
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/vulkanmarkerssum.py softmax_openacc.sqlite]... SKIPPED: softmax_openacc.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/pixsum.py softmax_openacc.sqlite]... SKIPPED: softmax_openacc.sqlite does not contain DX11/DX12 CPU debug markers
+
+Running [/opt/nvidia/hpc_sdk/Linux_x86_64/21.7/profilers/Nsight_Systems/target-linux-x64/reports/khrdebugsum.py softmax_openacc.sqlite]... SKIPPED: softmax_openacc.sqlite does not contain KHR Extension (KHR_DEBUG) data
