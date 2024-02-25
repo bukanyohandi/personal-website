@@ -87,7 +87,9 @@
                     }
                 },
                 "DDA3020-Machine-Learning": {
-                    "DDA3020-Assignment-1": {},
+                    "DDA3020-Assignment-1": {
+                        "results": {}
+                    },
                     "DDA3020-Assignment-2": {},
                     "DDA3020-Assignment-3": {},
                     "DDA3020-Assignment-4": {}
