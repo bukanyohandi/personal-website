@@ -81,6 +81,7 @@ const ArchiveDirectoryContainer = styled.div`
   }
 
   @media only screen and (max-width: 1000px) {
+    min-width: 100px;
     width: 100%;
     height: 20vh;
     border-radius: 20px 0 0 0;
