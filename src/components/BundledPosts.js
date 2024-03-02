@@ -253,9 +253,10 @@ const BundledPosts = ({ bundleKey }) => {
 
   if (
     bundleKey ==
-    "/blog/natural-parallelism-in-distributed-and-parallel-sorting-algorithms/"
+    "/blog/natural-parallelism-advancing-machine-learning-with-openacc/"
   ) {
     bundledPostsSlugs = [
+      "/blog/natural-parallelism-advancing-machine-learning-with-openacc/",
       "/blog/natural-parallelism-disclosing-efficient-techniques-for-image-processing/",
       "/blog/natural-parallelism-in-distributed-and-parallel-sorting-algorithms/",
       "/blog/natural-parallelism-the-paradigm-of-refined-matrix-multiplication/",
@@ -266,6 +267,8 @@ const BundledPosts = ({ bundleKey }) => {
   const bundledPosts = data.allMarkdownRemark.edges.filter((edge) =>
     bundledPostsSlugs.includes(edge.node.fields.slug)
   );
+
+  console.log(bundledPosts);
 
   const handleNext = () => {
     setActivePostIndex((prevIndex) => (prevIndex + 1) % bundledPosts.length);

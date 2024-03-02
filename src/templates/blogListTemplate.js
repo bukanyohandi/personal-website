@@ -310,6 +310,7 @@ export const pageQuery = graphql`
         fields: {
           slug: {
             nin: [
+              "/blog/natural-parallelism-in-distributed-and-parallel-sorting-algorithms/"
               "/blog/natural-parallelism-disclosing-efficient-techniques-for-image-processing/"
               "/blog/natural-parallelism-the-paradigm-of-refined-matrix-multiplication/"
             ]
