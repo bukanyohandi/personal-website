@@ -305,7 +305,7 @@ const BundledPosts = ({ bundleKey }) => {
                     {bundledPosts[activePostIndex].node.frontmatter.title}
                   </PostTitle>
                 </PostLink>
-                <PostMeta>{`${bundledPosts[activePostIndex].node.frontmatter.date} by ${bundledPosts[activePostIndex].node.frontmatter.author}`}</PostMeta>
+                <PostMeta>{`${bundledPosts[activePostIndex].node.frontmatter.date}`}</PostMeta>
                 <PostExcerpt>
                   {bundledPosts[activePostIndex].node.excerpt}
                 </PostExcerpt>
