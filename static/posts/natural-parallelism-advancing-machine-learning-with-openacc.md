@@ -1,5 +1,5 @@
 ---
-title: "Natural Parallelism: Disclosing Efficient Techniques for Image Processing"
+title: "Natural Parallelism: Advancing Machine Learning with OpenACC"
 date: "2024-03-02"
 author: "Yohandi"
 tags: [machine-learning, parallel-programming, project]
