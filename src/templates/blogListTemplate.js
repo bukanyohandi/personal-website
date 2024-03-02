@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import { Helmet } from "react-helmet";
 import { ContributionsComponent } from "../components/ContributionsCard.js";
 import TagsComponent from "../components/TagsCard.js";
+import BundledPosts from "../components/BundledPosts.js";
 import { THEME } from "../constants.js";
 
 const EDIT_MODE = false;
@@ -255,34 +256,37 @@ const BlogPage = ({ data, pageContext }) => {
         </Helmet>
         <Container>
           <LeftContainer>
-            <Card>
-              {data.allMarkdownRemark.edges.map((post) => (
-                <PostLink
-                  key={post.node.id}
-                  to={post.node.fields.slug.replace(/\/$/, "")}
-                >
-                  <Post>
-                    <PostTitle>{post.node.frontmatter.title}</PostTitle>
-                    <PostMeta>{post.node.frontmatter.date}</PostMeta>
-                    <PostExcerpt>{post.node.excerpt}</PostExcerpt>
-                    <PostTags>
-                      {post.node.frontmatter.tags.map((tag) => (
-                        <PostTagLink
-                          key={tag}
-                          to={`/blog/tags/${tag
-                            .toLowerCase()
-                            .replace(/ /g, "_")}`}
-                        >
-                          {tag}
-                        </PostTagLink>
-                      ))}
-                    </PostTags>
-                  </Post>
-                </PostLink>
-              ))}
-            </Card>
+            {data.allMarkdownRemark.edges.map((post, index) => {
+              const isBundle = post.node.frontmatter.type === "bundle";
+              if (isBundle) {
+                return <BundledPosts bundleKey={post.node.fields.slug} />;
+              } else {
+                return (
+                  <PostLink
+                    key={post.node.id}
+                    to={post.node.fields.slug.replace(/\/$/, "")}
+                  >
+                    <Post>
+                      <PostTitle>{post.node.frontmatter.title}</PostTitle>
+                      <PostMeta>{post.node.frontmatter.date}</PostMeta>
+                      <PostExcerpt>{post.node.excerpt}</PostExcerpt>
+                      <PostTags>
+                        {post.node.frontmatter.tags.map((tag) => (
+                          <PostTagLink
+                            key={tag}
+                            to={`/tags/${tag.toLowerCase().replace(/ /g, "_")}`}
+                          >
+                            {tag}
+                          </PostTagLink>
+                        ))}
+                      </PostTags>
+                    </Post>
+                  </PostLink>
+                );
+              }
+            })}
             <ButtonContainer>
-              {renderPageButtons(currentPage, numPages)}
+              {renderPageButtons(pageContext.currentPage, pageContext.numPages)}
             </ButtonContainer>
           </LeftContainer>
           <RightContainer>
@@ -302,7 +306,17 @@ export default BlogPage;
 export const pageQuery = graphql`
   query blogPageQuery($skip: Int, $limit: Int) {
     allMarkdownRemark(
-      sort: [{ frontmatter: { date: DESC } }]
+      filter: {
+        fields: {
+          slug: {
+            nin: [
+              "/blog/natural-parallelism-disclosing-efficient-techniques-for-image-processing/"
+              "/blog/natural-parallelism-the-paradigm-of-refined-matrix-multiplication/"
+            ]
+          }
+        }
+      }
+      sort: { frontmatter: { date: DESC } }
       limit: $limit
       skip: $skip
     ) {
@@ -314,6 +328,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             author
             tags
+            type
           }
           fields {
             slug
