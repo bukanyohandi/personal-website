@@ -145,7 +145,7 @@ const BundledPostsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between; /* Adjust content spacing */
-  min-height: 450px; /* Fixed height; adjust as necessary */
+  min-height: 400px; /* Fixed height; adjust as necessary */
   overflow: hidden; /* Hide overflow */
 `;
 
