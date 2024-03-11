@@ -101,6 +101,7 @@ const PostTagLink = styled(Link)`
 
   @media only screen and (max-width: 800px) {
     margin-top: 0.8em;
+    font-size: ${0.9 * MOBILE_CONST}rem;
   }
 `;
 
@@ -147,6 +148,10 @@ const BundledPostsContainer = styled.div`
   justify-content: space-between; /* Adjust content spacing */
   min-height: 400px; /* Fixed height; adjust as necessary */
   overflow: hidden; /* Hide overflow */
+
+  @media only screen and (max-width: 800px) {
+    height: 500px; /* Fixed height; adjust as necessary */
+  }
 `;
 
 const NavigationButtonsContainer = styled.div`
@@ -163,6 +168,10 @@ const BundleTitle = styled.h2`
   font-family: "Merriweather", serif;
   text-align: center;
   text-transform: uppercase;
+
+  @media only screen and (max-width: 800px) {
+    font-size: ${1.6 * MOBILE_CONST}em;
+  }
 `;
 
 const TagContainer = styled.div`
