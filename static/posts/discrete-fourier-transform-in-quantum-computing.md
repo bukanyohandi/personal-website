@@ -95,6 +95,9 @@ import numpy as np
 
 def dft(N, arr):
     n = math.ceil(math.log2(N))
+
+    qc = QuantumCircuit(n, n)
+    
     norm_arr = np.array(arr) / np.linalg.norm(arr)
     for i, amp in enumerate(norm_arr):
         if amp > 0:
@@ -109,8 +112,6 @@ def dft(N, arr):
 
         for k in range(n // 2):
             circuit.swap(j, n - k - 1)
-
-    qc = QuantumCircuit(n, n)
 
     apply_qft(qc, n)
 
