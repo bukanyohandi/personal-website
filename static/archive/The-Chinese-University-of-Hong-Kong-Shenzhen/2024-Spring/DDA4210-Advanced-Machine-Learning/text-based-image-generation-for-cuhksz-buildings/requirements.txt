@@ -1,0 +1,7 @@
+numpy
+torch
+torchvision
+sentence_transformers
+matplotlib
+opencv-python
+imageio

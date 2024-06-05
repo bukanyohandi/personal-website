@@ -208,8 +208,12 @@
                 "MAT3007-Optimization": {}
             },
             "2024-Spring": {
-                "CSC4120-Design-and-Analysis-of-Algorithms": {},
-                "DDA4210-Advanced-Machine-Learning": {},
+                "CSC4120-Design-and-Analysis-of-Algorithms": {
+                    "party-together": {}
+                },
+                "DDA4210-Advanced-Machine-Learning": {
+                    "text-based-image-generation-for-cuhksz-buildings": {}
+                },
                 "DDA6205-Game-Theory-and-Its-Applications": {}
             }
         }
