@@ -6,6 +6,7 @@ import styled, { keyframes, createGlobalStyle } from "styled-components";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 import PDFEmbed from "../components/PDFEmbed";
+import GradesList from "../components/GradesList";
 import * as XLSX from "xlsx";
 
 const rotate = keyframes`
@@ -142,11 +143,79 @@ const ContentWrapper = styled.div`
   }
 `;
 
+const renderTable = (dataArray) => {
+  return (
+    <ContentWrapper>
+      <table>
+        <tbody>
+          {dataArray.map((row, rowIndex) => (
+            <tr key={`row-${rowIndex}`}>
+              {row.map((cell, cellIndex) => (
+                <td key={`cell-${rowIndex}-${cellIndex}`}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </ContentWrapper>
+  );
+};
+
+const getLanguageFromExtension = (extension) => {
+  switch (extension) {
+    case "js":
+      return "javascript";
+    case "c":
+    case "h":
+      return "c";
+    case "cu":
+    case "cpp":
+    case "hpp":
+      return "cpp";
+    case "py":
+      return "python";
+    case "java":
+      return "java";
+    case "ts":
+      return "typescript";
+    case "cs":
+      return "csharp";
+    case "rb":
+      return "ruby";
+    case "php":
+      return "php";
+    case "html":
+    case "htm":
+      return "html";
+    case "css":
+      return "css";
+    case "json":
+      return "json";
+    case "md":
+      return "markdown";
+    case "sh":
+      return "bash";
+    case "v":
+    case "vvp":
+      return "verilog";
+    default:
+      return "plaintext";
+  }
+};
+
 const ArchiveTemplate = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileContent, setFileContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [lastSelectedFileURL, setLastSelectedFileURL] = useState("");
+
+  // State to manage sorting for the grades list
+  const [sortedGrades, setSortedGrades] = useState([]);
+  const [sortOrder, setSortOrder] = useState({
+    task: null,
+    dueDate: null,
+    grade: null,
+  });
 
   const handleFileSelect = (file) => {
     if (file.publicURL === lastSelectedFileURL) {
@@ -164,8 +233,17 @@ const ArchiveTemplate = () => {
       const workbook = XLSX.read(data, { type: "buffer" });
       const sheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[sheetName];
-      // Parse the worksheet to an array of arrays
       return XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: "" });
+    };
+
+    const parseGradesFile = (text) => {
+      return text
+        .split("\n")
+        .filter((line) => line.trim() !== "")
+        .map((line) => {
+          const [task, dueDate, grade] = line.split(":");
+          return { task, dueDate, grade };
+        });
     };
 
     if (selectedFile && selectedFile.publicURL) {
@@ -175,12 +253,18 @@ const ArchiveTemplate = () => {
         .then((blob) => {
           if (selectedFile.extension === "xlsx") {
             readXLSXData(blob).then((dataArray) => {
-              setFileContent(dataArray); // Directly set the parsed array
+              setFileContent(dataArray);
               setIsLoading(false);
             });
           } else {
             blob.text().then((text) => {
-              setFileContent(text); // Set the text content for non-.xlsx files
+              if (selectedFile.extension === "grades") {
+                const parsedGrades = parseGradesFile(text);
+                setFileContent(parsedGrades);
+                setSortedGrades(parsedGrades); // Initialize sortedGrades with parsed data
+              } else {
+                setFileContent(text);
+              }
               setIsLoading(false);
             });
           }
@@ -194,66 +278,56 @@ const ArchiveTemplate = () => {
     }
   }, [selectedFile]);
 
-  const renderTable = (dataArray) => {
-    return (
-      <ContentWrapper>
-        <table>
-          <tbody>
-            {dataArray.map((row, rowIndex) => (
-              <tr key={`row-${rowIndex}`}>
-                {row.map((cell, cellIndex) => (
-                  <td key={`cell-${rowIndex}-${cellIndex}`}>{cell}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </ContentWrapper>
-    );
+  // Function to calculate the percentage from "mark/full_mark" string
+  const calculatePercentage = (gradeString) => {
+    const [mark, fullMark] = gradeString.split("/").map(Number);
+    return (mark / fullMark) * 100;
   };
 
-  // Determine the language from the file extension
-  const getLanguageFromExtension = (extension) => {
-    switch (extension) {
-      case "js":
-        return "javascript";
-      case "c":
-      case "h":
-        return "c";
-      case "cu":
-      case "cpp":
-      case "hpp":
-        return "cpp";
-      case "py":
-        return "python";
-      case "java":
-        return "java";
-      case "ts":
-        return "typescript";
-      case "cs":
-        return "csharp";
-      case "rb":
-        return "ruby";
-      case "php":
-        return "php";
-      case "html":
-      case "htm":
-        return "html";
-      case "css":
-        return "css";
-      case "json":
-        return "json";
-      case "md":
-        return "markdown";
-      case "sh":
-        return "bash";
-      case "v":
-      case "vvp":
-        return "verilog";
-      // Add more cases as needed for additional file types
-      default:
-        return "plaintext";
+  const handleSort = (column) => {
+    const newSortOrder = sortOrder[column] === "asc" ? "desc" : "asc";
+    let sorted;
+
+    if (column === "dueDate") {
+      sorted = [...sortedGrades].sort((a, b) => {
+        const dateA = new Date(a[column]);
+        const dateB = new Date(b[column]);
+
+        if (dateA - dateB === 0) {
+          // If dates are equal, sort by task name
+          return newSortOrder === "asc"
+            ? a.task.localeCompare(b.task)
+            : b.task.localeCompare(a.task);
+        }
+        return newSortOrder === "asc" ? dateA - dateB : dateB - dateA;
+      });
+    } else if (column === "grade") {
+      sorted = [...sortedGrades].sort((a, b) => {
+        const percentageA = calculatePercentage(a[column]);
+        const percentageB = calculatePercentage(b[column]);
+
+        if (percentageA === percentageB) {
+          // If percentages are equal, sort by full mark
+          const fullMarkA = parseInt(a[column].split("/")[1], 10);
+          const fullMarkB = parseInt(b[column].split("/")[1], 10);
+          return newSortOrder === "asc"
+            ? fullMarkA - fullMarkB
+            : fullMarkB - fullMarkA;
+        }
+        return newSortOrder === "asc"
+          ? percentageA - percentageB
+          : percentageB - percentageA;
+      });
+    } else {
+      sorted = [...sortedGrades].sort((a, b) => {
+        if (a[column] < b[column]) return newSortOrder === "asc" ? -1 : 1;
+        if (a[column] > b[column]) return newSortOrder === "asc" ? 1 : -1;
+        return 0;
+      });
     }
+
+    setSortedGrades(sorted);
+    setSortOrder({ ...sortOrder, [column]: newSortOrder });
   };
 
   return (
@@ -273,6 +347,8 @@ const ArchiveTemplate = () => {
               <PDFEmbed src={selectedFile.publicURL} height="100%" />
             ) : selectedFile && selectedFile.extension === "xlsx" ? (
               renderTable(fileContent)
+            ) : selectedFile && selectedFile.extension === "grades" ? (
+              <GradesList grades={sortedGrades} onSort={handleSort} />
             ) : selectedFile ? (
               <ContentWrapper>
                 <SyntaxHighlighter
