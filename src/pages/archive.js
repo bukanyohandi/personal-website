@@ -47,7 +47,7 @@ const Container = styled.div`
   padding: 0;
   margin: 25px auto 0 auto;
   width: 90%;
-
+  // max-width: 50%;
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
     align-items: center;
@@ -56,8 +56,8 @@ const Container = styled.div`
 `;
 
 const ArchiveDirectoryContainer = styled.div`
-  width: 400px;
-  min-width: 400px;
+  width: 20%;
+  min-width: 350px;
   height: 70vh; // Default height
   background-color: #f0f0f0;
   overflow-y: auto;
@@ -84,6 +84,7 @@ const ArchiveDirectoryContainer = styled.div`
   @media only screen and (max-width: 1000px) {
     min-width: 100px;
     width: 100%;
+    max-width: 100vw;
     height: 20vh;
     border-radius: 20px 0 0 0;
   }
@@ -98,7 +99,7 @@ const DisplayContainer = styled.div`
   flex-shrink: 1;
   height: 70vh;
   width: 100%;
-  max-width: 60vw;
+  // max-width: 60vw;
   background-color: #f0f0f0;
   border: 1px solid;
   border-color: #b8b4b4;
@@ -364,7 +365,7 @@ const ArchiveTemplate = () => {
                 </SyntaxHighlighter>
               </ContentWrapper>
             ) : (
-              <p></p>
+              <ContentWrapper></ContentWrapper>
             )}
           </DisplayContainer>
         </Container>
