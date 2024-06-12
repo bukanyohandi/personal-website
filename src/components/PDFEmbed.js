@@ -1,25 +1,34 @@
 import React from "react";
 import { isMobile } from "react-device-detect";
+import styled from "styled-components";
 
-const PDFEmbed = ({ src, width = "100%", height = "100%" }) => {
+const IFrameContainer = styled.div`
+  margin: 2px;
+`;
+
+const PDFEmbed = ({ src, width, height }) => {
   const containerStyle = {
     width: width,
     height: height,
     minHeight: "400px",
-    border: "1px solid #ccc", // Adjust as needed
+    border: "1px solid #ccc",
     overflow: "hidden",
   };
 
   if (isMobile) {
     return (
-      <div>
-        <iframe src={src} style={containerStyle}></iframe>
+      <IFrameContainer>
         <p>
+          If the PDF doesn't load, you can download it{" "}
           <a href={src} download>
-            Download PDF
+            here
           </a>
+          .
         </p>
-      </div>
+        <IFrameContainer>
+          <iframe src={src} style={containerStyle}></iframe>
+        </IFrameContainer>
+      </IFrameContainer>
     );
   }
 

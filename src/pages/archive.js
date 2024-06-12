@@ -47,7 +47,7 @@ const Container = styled.div`
   padding: 0;
   margin: 25px auto 0 auto;
   width: 90%;
-  // max-width: 50%;
+  // max-width: 90%;
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
     align-items: center;
@@ -99,7 +99,7 @@ const DisplayContainer = styled.div`
   flex-shrink: 1;
   height: 70vh;
   width: 100%;
-  // max-width: 60vw;
+  max-width: 70vw;
   background-color: #f0f0f0;
   border: 1px solid;
   border-color: #b8b4b4;
@@ -116,9 +116,10 @@ const DisplayContainer = styled.div`
 const ContentWrapper = styled.div`
   height: inherit;
   overflow-y: auto;
-  overflow-x: scroll; // Changed to scroll to always show horizontal scrollbar
+  overflow-x: auto;
   padding: 0 10px;
   max-width: 100%;
+  background-color: #f0f0f0;
 
   & pre {
     white-space: pre-wrap;
@@ -129,6 +130,7 @@ const ContentWrapper = styled.div`
 
   &::-webkit-scrollbar {
     width: 12px;
+    height: 12px;
   }
 
   &::-webkit-scrollbar-track {
