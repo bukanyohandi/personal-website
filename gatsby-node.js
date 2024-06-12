@@ -86,7 +86,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create blog post pages.
   const posts = result.data.allMarkdownRemark.edges;
   const postsPerPage = 4;
-  const numPages = Math.ceil((posts.length - 2) / postsPerPage);
+  const numPages = Math.ceil((posts.length - 3) / postsPerPage);
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node;
