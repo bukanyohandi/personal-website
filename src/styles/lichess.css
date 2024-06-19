@@ -1,0 +1,19 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #161512;
+    font-family: 'Open Sans', sans-serif;
+    color: #999999;
+}
+
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 801px) {
+    .container {
+        flex-direction: row;
+    }
+}
