@@ -37,125 +37,131 @@ const Lichess = () => {
   const chess = useRef(new Chess());
 
   useEffect(() => {
-    console.log("Selected game updated", selectedGame);
-    if (selectedGame) {
-      setOrientation(
-        selectedGame.whitePlayer === "bukanYohandi" ? "white" : "black"
-      );
-      chess.current.reset();
-      setFen(chess.current.fen());
+    if (typeof window !== "undefined") {
+      console.log("Selected game updated", selectedGame);
+      if (selectedGame) {
+        setOrientation(
+          selectedGame.whitePlayer === "bukanYohandi" ? "white" : "black"
+        );
+        chess.current.reset();
+        setFen(chess.current.fen());
+      }
     }
   }, [selectedGame]);
 
   useEffect(() => {
-    const pgnFilePath = "/content/lichess_bukanYohandi_2024-06-12.pgn";
-    fetch(pgnFilePath)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.text();
-      })
-      .then((data) => {
-        try {
-          const parsedGames = pgnParser.parse(data);
-          const bulletGames = parsedGames.filter((game) => {
-            const timeControlHeader = game.headers.find(
-              (header) => header.name === "TimeControl"
-            );
-            return timeControlHeader && timeControlHeader.value === "60+0";
-          });
+    if (typeof window !== "undefined") {
+      const pgnFilePath = "/content/lichess_bukanYohandi_2024-06-12.pgn";
+      fetch(pgnFilePath)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.text();
+        })
+        .then((data) => {
+          try {
+            const parsedGames = pgnParser.parse(data);
+            const bulletGames = parsedGames.filter((game) => {
+              const timeControlHeader = game.headers.find(
+                (header) => header.name === "TimeControl"
+              );
+              return timeControlHeader && timeControlHeader.value === "60+0";
+            });
 
-          const gameRatingsData = bulletGames
-            .map((game) => {
-              const dateHeader = game.headers.find(
-                (header) => header.name === "Date"
-              );
-              const timeHeader = game.headers.find(
-                (header) => header.name === "UTCTime"
-              );
-              const whitePlayerHeader = game.headers.find(
-                (header) => header.name === "White"
-              );
-              const blackPlayerHeader = game.headers.find(
-                (header) => header.name === "Black"
-              );
-              const whiteEloHeader = game.headers.find(
-                (header) => header.name === "WhiteElo"
-              );
-              const blackEloHeader = game.headers.find(
-                (header) => header.name === "BlackElo"
-              );
+            const gameRatingsData = bulletGames
+              .map((game) => {
+                const dateHeader = game.headers.find(
+                  (header) => header.name === "Date"
+                );
+                const timeHeader = game.headers.find(
+                  (header) => header.name === "UTCTime"
+                );
+                const whitePlayerHeader = game.headers.find(
+                  (header) => header.name === "White"
+                );
+                const blackPlayerHeader = game.headers.find(
+                  (header) => header.name === "Black"
+                );
+                const whiteEloHeader = game.headers.find(
+                  (header) => header.name === "WhiteElo"
+                );
+                const blackEloHeader = game.headers.find(
+                  (header) => header.name === "BlackElo"
+                );
 
+                if (
+                  !dateHeader ||
+                  !timeHeader ||
+                  !whitePlayerHeader ||
+                  !blackPlayerHeader ||
+                  !whiteEloHeader ||
+                  !blackEloHeader
+                ) {
+                  return null;
+                }
+
+                const date = new Date(
+                  `${dateHeader.value.replace(/\./g, "-")}T${timeHeader.value}Z`
+                );
+                const whitePlayer = whitePlayerHeader.value;
+                const blackPlayer = blackPlayerHeader.value;
+                const isUserWhite = whitePlayer === "bukanYohandi";
+                const userRating = isUserWhite
+                  ? parseInt(whiteEloHeader.value)
+                  : parseInt(blackEloHeader.value);
+                const sequence = game.moves;
+                return {
+                  date,
+                  rating: userRating,
+                  sequence,
+                  whitePlayer,
+                  blackPlayer,
+                };
+              })
+              .filter((game) => game !== null); // Filter out any null values
+
+            const ratingsByDate = {};
+            gameRatingsData.forEach((data) => {
+              const dateStr = data.date.toISOString().split("T")[0];
               if (
-                !dateHeader ||
-                !timeHeader ||
-                !whitePlayerHeader ||
-                !blackPlayerHeader ||
-                !whiteEloHeader ||
-                !blackEloHeader
+                !ratingsByDate[dateStr] ||
+                ratingsByDate[dateStr].rating < data.rating
               ) {
-                return null;
+                ratingsByDate[dateStr] = data;
               }
+            });
 
-              const date = new Date(
-                `${dateHeader.value.replace(/\./g, "-")}T${timeHeader.value}Z`
-              );
-              const whitePlayer = whitePlayerHeader.value;
-              const blackPlayer = blackPlayerHeader.value;
-              const isUserWhite = whitePlayer === "bukanYohandi";
-              const userRating = isUserWhite
-                ? parseInt(whiteEloHeader.value)
-                : parseInt(blackEloHeader.value);
-              const sequence = game.moves;
-              return {
-                date,
-                rating: userRating,
-                sequence,
-                whitePlayer,
-                blackPlayer,
-              };
-            })
-            .filter((game) => game !== null); // Filter out any null values
+            gameRatingsData.forEach((game, index) => {
+              game.ratingChange =
+                index === 0
+                  ? 0
+                  : game.rating - gameRatingsData[index - 1].rating;
+            });
 
-          const ratingsByDate = {};
-          gameRatingsData.forEach((data) => {
-            const dateStr = data.date.toISOString().split("T")[0];
-            if (
-              !ratingsByDate[dateStr] ||
-              ratingsByDate[dateStr].rating < data.rating
-            ) {
-              ratingsByDate[dateStr] = data;
-            }
-          });
+            console.log(ratingsByDate);
 
-          gameRatingsData.forEach((game, index) => {
-            game.ratingChange =
-              index === 0 ? 0 : game.rating - gameRatingsData[index - 1].rating;
-          });
+            const aggregatedRatingsData = Object.values(ratingsByDate);
+            aggregatedRatingsData.sort((a, b) => a.date - b.date);
 
-          console.log(ratingsByDate);
+            const minDateVal = new Date(
+              Math.min(...aggregatedRatingsData.map((d) => d.date))
+            );
+            const maxDateVal = new Date(
+              Math.max(...aggregatedRatingsData.map((d) => d.date))
+            );
 
-          const aggregatedRatingsData = Object.values(ratingsByDate);
-          aggregatedRatingsData.sort((a, b) => a.date - b.date);
-
-          const minDateVal = new Date(
-            Math.min(...aggregatedRatingsData.map((d) => d.date))
-          );
-          const maxDateVal = new Date(
-            Math.max(...aggregatedRatingsData.map((d) => d.date))
-          );
-
-          setMinDate(minDateVal);
-          setMaxDate(maxDateVal);
-          setRatingsData(aggregatedRatingsData);
-        } catch (error) {
-          console.error("Error parsing PGN data:", error);
-        }
-      })
-      .catch((error) => {
-        console.error("Fetch error:", error);
-      });
+            setMinDate(minDateVal);
+            setMaxDate(maxDateVal);
+            setRatingsData(aggregatedRatingsData);
+          } catch (error) {
+            console.error("Error parsing PGN data:", error);
+          }
+        })
+        .catch((error) => {
+          console.error("Fetch error:", error);
+        });
+    }
   }, []);
 
   const plugins = [
@@ -203,7 +209,7 @@ const Lichess = () => {
 
   const handlePointClick = (event, elements, chart) => {
     console.log("click");
-    if (elements.length > 0) {
+    if (typeof window !== "undefined" && elements.length > 0) {
       const elementIndex = elements[0].index;
       const game = ratingsData[elementIndex];
       setSelectedGame(ratingsData[elementIndex]);
