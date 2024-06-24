@@ -2,7 +2,7 @@ const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 const archiveStructure = require("./static/archive-structure.json");
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   actions.setWebpackConfig({
     resolve: {
       fallback: {
@@ -11,6 +11,19 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       },
     },
   });
+
+  // if (stage === "build-html" || stage === "develop-html") {
+  //   actions.setWebpackConfig({
+  //     module: {
+  //       rules: [
+  //         {
+  //           test: /react-chessboard|chess.js|@fortawesome\/fontawesome-svg-core/,
+  //           use: loaders.null(),
+  //         },
+  //       ],
+  //     },
+  //   });
+  // }
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

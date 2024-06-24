@@ -4,25 +4,21 @@ import { Chart, registerables } from "chart.js";
 import "chartjs-adapter-date-fns";
 import pgnParser from "pgn-parser";
 import zoomPlugin from "chartjs-plugin-zoom";
-import { Chessboard } from "react-chessboard";
-import { Chess } from "chess.js";
 import "../styles/lichess.css";
 
 Chart.register(...registerables, zoomPlugin);
 
-function getRatingTitle(rating) {
-  if (rating >= 2700) return "Super Grandmaster";
-  else if (rating >= 2500) return "Grandmaster (GM)";
-  else if (rating >= 2400) return "International Master (IM)";
-  else if (rating >= 2300) return "FIDE Master (FM)";
-  else if (rating >= 2200) return "Candidate Master (CM)";
-  else if (rating >= 2000) return "Expert";
-  else if (rating >= 1800) return "Class A";
-  else if (rating >= 1600) return "Class B";
-  else if (rating >= 1400) return "Class C";
-  else if (rating >= 1200) return "Class D";
-  else if (rating >= 1000) return "Class E";
-  else return "Novice";
+let Chessboard = null;
+let Chess = null;
+let library, fas, fab;
+
+if (typeof window !== "undefined") {
+  Chessboard = require("react-chessboard").Chessboard;
+  Chess = require("chess.js").Chess;
+  library = require("@fortawesome/fontawesome-svg-core").library;
+  fas = require("@fortawesome/free-solid-svg-icons").fas;
+  fab = require("@fortawesome/free-brands-svg-icons").fab;
+  library.add(fas, fab);
 }
 
 const Lichess = () => {
@@ -34,7 +30,13 @@ const Lichess = () => {
   const [fen, setFen] = useState("start");
   const [orientation, setOrientation] = useState("white");
   const chartRef = useRef(null);
-  const chess = useRef(new Chess());
+  const chess = useRef(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      chess.current = new Chess();
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -208,8 +210,7 @@ const Lichess = () => {
   ];
 
   const handlePointClick = (event, elements, chart) => {
-    console.log("click");
-    if (typeof window !== "undefined" && elements.length > 0) {
+    if (elements.length > 0) {
       const elementIndex = elements[0].index;
       const game = ratingsData[elementIndex];
       setSelectedGame(ratingsData[elementIndex]);
@@ -221,7 +222,6 @@ const Lichess = () => {
   };
 
   const handleMoveChange = (direction) => {
-    console.log("move");
     if (!selectedGame) return;
 
     if (direction === -1) {
@@ -234,24 +234,13 @@ const Lichess = () => {
     }
 
     const newIndex = currentMoveIndex + direction;
-    console.log(newIndex);
     if (newIndex >= 0 && newIndex < selectedGame.sequence.length) {
       const moveObject = selectedGame.sequence[newIndex];
       const move = moveObject.move;
 
-      console.log(chess.current.moves());
-      console.log(move);
-
       if (!chess.current.moves().includes(move)) return;
 
       chess.current.move(move);
-      console.log(chess.current.moves());
-      //   chess.move("e5");
-      //   if (result === null) {
-      //     console.error(`Invalid move attempted: ${move}`);
-      //     alert(`Invalid move: ${move}`);
-      //     return;
-      //   }
       setFen(chess.current.fen());
       setCurrentMoveIndex(newIndex);
     }
@@ -389,6 +378,10 @@ const Lichess = () => {
       },
     ],
   };
+
+  if (typeof window === "undefined") {
+    return null;
+  }
 
   return (
     <div
