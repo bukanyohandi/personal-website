@@ -274,7 +274,9 @@ const BlogPage = ({ data, pageContext }) => {
                         {post.node.frontmatter.tags.map((tag) => (
                           <PostTagLink
                             key={tag}
-                            to={`/tags/${tag.toLowerCase().replace(/ /g, "_")}`}
+                            to={`/blog/tags/${tag
+                              .toLowerCase()
+                              .replace(/ /g, "_")}`}
                           >
                             {tag}
                           </PostTagLink>
