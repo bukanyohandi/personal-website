@@ -180,7 +180,7 @@ const Header = () => {
           yohandi
         </Title>
         <Description Location={{ inHomePage, inBlogPage, inProjectsPage }}>
-          A passionate student with a strong interest in algorithms and data
+          A recent graduate with a strong interest in algorithms and data
           structures.
         </Description>
         <SearchBar inHomePage={inHomePage} />

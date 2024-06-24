@@ -28,8 +28,8 @@ export default function HomePage() {
             <meta
               name="description"
               content={`
-            Yohandi. A passionate student with a strong interest in algorithms and data structures.
-          `}
+                Yohandi. A recent graduate with a strong interest in algorithms and data structures.
+              `}
             />
           </Helmet>
         </Layout>
