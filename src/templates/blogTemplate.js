@@ -403,7 +403,7 @@ const BlogTemplate = ({ data, pageContext }) => {
 
     a: (props) => {
       if (props.href && props.href.endsWith(".pdf")) {
-        return <PDFEmbed src={props.href} />;
+        return <PDFEmbed src={props.href} width={"100%"} height={"600px"} />;
       }
       return <a {...props} />;
     },
