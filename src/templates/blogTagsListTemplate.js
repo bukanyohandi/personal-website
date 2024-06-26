@@ -216,13 +216,21 @@ const PostTagLink = styled(Link)`
   }
 `;
 
+const StyledTag = styled.span`
+  background-color: #f9f9f9;
+  padding: 2px 5px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #333;
+  display: inline;
+`;
+
 const ResultsHeading = styled.div`
   font-family: "Merriweather", serif;
   text-align: center;
   font-size: 1em;
   color: #2c3e50;
   width: 100%;
-  text-align: center;
   padding: 10px;
   background-color: ${THEME.SECONDARY}
   margin: 5px;
@@ -264,7 +272,9 @@ const BlogPage = ({ data, pageContext }) => {
         </Helmet>
         <Container>
           <LeftContainer>
-            <ResultsHeading>Showing all posts with a tag: {tag}</ResultsHeading>
+            <ResultsHeading>
+              Showing all posts with <StyledTag>{tag}</StyledTag> tag
+            </ResultsHeading>
             <Card>
               {data.allMarkdownRemark.edges.map((post) => (
                 <PostLink
