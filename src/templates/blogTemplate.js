@@ -456,6 +456,17 @@ const BlogTemplate = ({ data, pageContext }) => {
     setToc(createTOCTree(headingsRef.current));
   }, [headingsRef.current]);
 
+  const formatAuthors = (authors) => {
+    return authors
+      .split(",")
+      .map((author) =>
+        author.trim().toLowerCase() === "yohandi"
+          ? `<strong>${author.trim()}</strong>`
+          : author.trim()
+      )
+      .join(", ");
+  };
+
   return (
     <>
       <Style />
@@ -471,9 +482,13 @@ const BlogTemplate = ({ data, pageContext }) => {
         <PostContainer>
           <Post>
             <PostTitle>{post.frontmatter.title}</PostTitle>
-            <PostInfo>
-              {post.frontmatter.date} by {post.frontmatter.author}
-            </PostInfo>
+            <PostInfo
+              dangerouslySetInnerHTML={{
+                __html: `${post.frontmatter.date} by ${formatAuthors(
+                  post.frontmatter.author
+                )}`,
+              }}
+            />
             <TagsWrapper>
               {post.frontmatter.tags.map((tag) => (
                 <TagLink href={`/blog/tags/${tag}`} key={tag}>
