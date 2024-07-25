@@ -1,5 +1,44 @@
 [
     {
+        "title": "Text-Based Image Generation for CUHK-Shenzhen Buildings",
+        "img": "/projects/generator-discriminator.png",
+        "url": "https://yohandi.me/blog/multiple-dispatch-micro-kernels/",
+        "desc": "An <span>innovative approach</span> of integrating both text embeddings and noise vectors to <span>generate realistic images</span> based on textual descriptions using <span>Deep Convolutional Generative Adversarial Networks</span>.",
+        "year": "2024"
+    },
+    {
+        "title": "Multiple Dispatch Micro-Kernels for IREE",
+        "img": "/projects/iree-architecture.png",
+        "url": "https://github.com/iree-org/iree",
+        "desc": "A <span>research</span> project in <span>optimizing the IREE ML compiler</span>. Achieved an up to <span>70% performance uplift</span> for the VMVX runtime target on the Intel Golden Cove µ-Architecture.",
+        "year": "2024"
+    },
+
+    {
+        "title": "Genetic Algorithm on Party Together Problem",
+        "img": "/projects/genetic-algorithm-party-together.png",
+        "url": "https://yohandi.me/archive/The-Chinese-University-of-Hong-Kong-Shenzhen/2024-Spring/CSC4120-Design-and-Analysis-of-Algorithms/party-together/",
+        "desc": "A <span>heuristic approach</span> of finding pick-up locations that optimizes the transportation plan for the Party Together problem, which is an <span>NP-Hard</span> problem, using a <span>genetic algorithm</span>.",
+        "year": "2024"
+    },
+
+    {
+        "title": "Advancing Machine Learning by Natural Parallelism",
+        "img": "/projects/machine-learning-openacc.png",
+        "url": "https://github.com/bukanyohandi/natural-parallelism-advancing-machine-learning-with-openacc",
+        "desc": "Enhancing <span>machine learning</span> models with <span>natural parallelism</span> using OpenACC. Accelerates softmax regression, neural networks, and CNNs by optimizing for GPU parallel computing.",
+        "year": "2024"
+    },
+
+    {
+        "title": "Scaling Distributed and Parallel Sorting Algorithms by Natural Parallelism",
+        "img": "/projects/parallel-sorting.png",
+        "url": "https://github.com/bukanyohandi/natural-parallelism-in-distributed-and-parallel-sorting-algorithms",
+        "desc": "Adapting <span>sorting algorithms</span> for <span>parallel execution</span> using MPI. Focuses on task division, inter-process communication, and synchronization for improved performance.",
+        "year": "2024"
+    },
+
+    {
         "title": "AI Assistant with GPT-NLP Integration",
         "img": "/projects/ai-assistant-gpt-nlp.png",
         "url": "http://yohandi.me/projects",
