@@ -1,10 +1,70 @@
 ---
 title: "Text-Based Image Generation for CUHK-Shenzhen Buildings"
 date: "2024-05-25"
-author: "Yohandi"
+author: "B. D. T. Sibarani, Yohandi, D. D. Halim, N. L. Tandaju"
 tags: [machine-learning, project]
 ---
 
+The PDF version is available at the bottom of the page.
+
+### Introduction
+
 In the current visually-driven world, combining text and imagery offers a unique way to explore and document various subjects. Our project focuses on this intersection, specifically on the architectural landscape of CUHK-Shenzhen. We chose this topic for several reasons. Firstly, it provides a familiarization for new and exchange students with campus architecture before their arrival. Secondly, it contributes to the architectural and cultural documentation of CUHK-Shenzhen, preserving its unique identity for posterity. Lastly, our work aligns with the aspiration to contribute to the academic community at CUHK-Shenzhen, particularly in shaping future research and developments in Generative Adversarial Networks (GANs).
+
+### Significance and Novelty of the Study
+
+This project represents a significant advancement in the domain of text-to-image synthesis, building upon the foundational work presented in the "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks" paper by Radford et al. in 2016. While the original DC-GAN framework relies on noise embedding to generate images, we innovate by replacing this noise embedding with a concatenation of noise and text embedding of the image label. Mathematically, the original noise embedding $\textbf{z} \sim \mathcal{N}(0, 1) \in \mathbb{R}^{100} $ is concatenated with text embedding $\textbf{y} \in \mathbb{R}^{128}$ such that the embedding passed to the generator is $\textbf{x} = [\textbf{y} ; \textbf{z}] \in \mathbb{R}^{228}$.  The integration of text embedding fundamentally alters the learning process, enabling the model to generate images conditioned not only on noise but also on textual descriptions, thereby bridging the gap between text and imagery in a supervised manner. Furthermore, we introduce a novel adjustment to the GAN training algorithm by incorporating a third type of input for the discriminator. In addition to real images and generated images, we include real images of different buildings with their corresponding text as a part of learning. This modification allows the discriminator to isolate error sources more effectively, maximizing image-text matching and image realism. The novelty offers several advantages: enhanced control of image generation, improved fidelity to descriptions, and greater interpretability of generated images.
+
+Besides the modification we made to the existing method, we also collected a new dataset as a part of the novelties. The rigorous procedure of gathering data, which includes various photos of CUHK-Shenzhen buildings with labels, highlights the importance and originality of the research. With the use of this dataset, which provides an extensive representation of the architectural diversity of the university, the model is able to generate images in a variety of scenarios. This curated dataset enhances the text-to-image synthesis and contributes to the academic documentation of CUHK-Shenzhen, enriching future scholarly research in image processing.
+
+### Data Collection and Preprocessing
+
+We start our project with thorough data collection, which includes taking 144 photos of different CUHK-Shenzhen buildings, each annotated with an appropriate English description that ensures high-quality text-image pairs, providing a robust dataset for training our model. For the data pre-processing, we create a Text2ImageDataset class to facilitate the creation of a dataset suitable for training text-to-image generation models by providing pairs of correct images with corresponding text embeddings and randomly sampled wrong images of different buildings.
+
+### Methodology
+
+The methodology used for our training is Deep Convolutional Generative Adversarial Network (DC-GAN). The architecture consists of two main components: a generator and a discriminator, both of which are trained in an adversarial manner.
+
+![](/posts/figures/text-based-image-generation-for-cuhksz-buildings/generator-discriminator.png)
+
+The training process for the model involves two main steps: discriminator training and generator training, repeated iteratively over several epochs. In discriminator training, the text encoder first converts the matching text into a text embedding. Using a noise vector drawn from a normal distribution, the generator produces a fake image. The discriminator then evaluates real, wrong, and fake images with the text embedding, producing scores for each. The discriminator loss is calculated using Binary Cross-Entropy (BCE) loss, penalizing misclassification, and its parameters are updated with the Adam optimizer. In generator training, the generator loss is a weighted sum of BCE, Mean Absolute Error (MAE), and Mean Squared Error (MSE) losses. The MAE aims to make fake images generated by the generator and real images as similar as possible, likely preserving detailed textures. The MSE encourages the score of the discriminator given the fake images and real images to be as similar as possible, ensuring the generated images align closely with the real data distribution. The generator parameters are updated with the Adam optimizer. This alternating training process continues until a predefined number of epochs and training batches are completed, allowing the model to generate increasingly realistic images that correspond to the given text descriptions. The choice of the respective loss functions was made accordingly to address the discriminator's needs to distinguish between real images, fake images, and real images with mismatched text, thereby maximizing both image-text matching and image realism, which enhances learning dynamics.
+
+The discriminator in the original GAN learns from two inputs: generated images $x_{\text{fake}}$ from the generator and actual images $x_{\text{real}}$ with matched text $t$. Consequently, it needs to implicitly distinguish between two error sources: real images of the various buildings that do not match the conditioning information and unrealistic images (for any text). We adjusted the GAN training algorithm to isolate these error sources as we had the notion that this would affect learning dynamics. We introduce a third type of input in addition to the real and fake images, which are real images of different buildings $x_{\text{wrong}}$ with the corresponding text $t$, to the discriminator during training. The discriminator has to learn to identify these images as fake. The discriminator can give the generator an extra signal by learning to maximize both image-text matching and image realism.
+
+The pseudocode is written as follows:
+
+![](/posts/figures/text-based-image-generation-for-cuhksz-buildings/pseudocode.png)
+
+For the text embedding, we adopt from an existing model: $\texttt{all-MiniLM-L12-v2}$. The model is a sentence-transformers model that maps sentences and paragraphs to a 384-dimensional dense vector space that can be used for tasks like clustering or semantic search. The embedding is then processed through a series of convolutional layers to transform them into a 128-dimensional space.
+
+### Results
+
+The progression of generated images over different epochs is illustrated in the following figure. Notably, around epoch 100, the images become distinguishable and recognizable by the naked eye. This demonstrates the model's capability to generate coherent and detailed images from textual descriptions as training progresses. However, to quantify the model's performance objectively and avoid relying solely on visual inspection, we use the loss metrics for the generator and discriminator as stopping criteria.
+
+![](/posts/figures/text-based-image-generation-for-cuhksz-buildings/training-data-epochs.png)
+
+To quantify the training progress and determine the stopping criteria, we examine the loss metrics for both the generator and the discriminator.
+
+![](/posts/figures/text-based-image-generation-for-cuhksz-buildings/training-loss.png)
+
+The generator's stopping criteria are defined by observing the discriminator's loss curve. As shown in the above figure, the discriminator loss decreases over time, reaching a lower bound where it becomes adept at distinguishing between real and fake images. Once the discriminator reaches this level of performance, the generator loss also converges, indicating that the generator has learned to produce images that are challenging for the discriminator.
+
+![](/posts/figures/text-based-image-generation-for-cuhksz-buildings/functions-loss.png)
+
+The $D_{\text{wrong}}$ loss function shows a decreasing trend, indicating that the discriminator is becoming more proficient at identifying real images with incorrect text embeddings. This improvement suggests the discriminator is effectively learning to match images with the correct textual descriptions. The $D_{\text{fake}}$ loss function exhibits a small increasing trend, in line with the generator's increment. This trend aligns with the $G_{\text{fake}}$ loss, which also shows a small increase. Both metrics indicate that the generator is getting better at producing realistic images, making it harder for the discriminator to distinguish them from real images.
+
+### Conclusion
+
+By modifying the original DC-GAN framework to include text embeddings and introducing a third type of input for the discriminator, we significantly improved the model's ability to generate high-quality, realistic images that match the given text descriptions. The results demonstrated that the approach effectively bridges the gap between textual descriptions and visual representations. The qualitative improvements in generated images over epochs, coupled with the quantitative analysis of loss metrics, confirmed the model's learning progress. By reaching a convergence point where the discriminator becomes adept at distinguishing real from fake images, the generator achieves a level of performance that produces highly realistic and detailed images.
+
+### Future Work
+
+Our research lays a foundation for further exploration in the field of text-based image generation. There are several interesting possibilities for future work:
+
+1. Personalization and Contextualization: Inspired by the concept of personalization in text-to-image diffusion models such as DreamBooth, future research can focus on fine-tuning the pre-trained models to bind unique identifiers with specific campus buildings. By embedding these identifiers into the model's output domain, we can synthesize fully novel photo-realistic images of campus buildings contextualized in different scenes, lighting conditions, and architectural styles.
+
+2. Stable Diffusion for Transfer Learning: Developing Diffusion Models instead of GANs offers more opportunity for cross-domain transfer learning, which may facilitate the adaptation of the text-based image generation model to other domains beyond campus buildings. By transferring knowledge learned from one domain to another, the model can generalize better and produce high-quality images across diverse contexts. However, it requires high computational power due to complex architecture.
+
+By pursuing these future works, we aim to further advance the capabilities and applications of text-based image generation in the domain of campus buildings and beyond.
 
 [text-based-image-generation-for-cuhksz-buildings](/posts/resources/text-based-image-generation-for-cuhksz-buildings/text-based-image-generation-for-cuhksz-buildings.pdf)
