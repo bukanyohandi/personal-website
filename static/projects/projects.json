@@ -2,7 +2,7 @@
     {
         "title": "Text-Based Image Generation for CUHK-Shenzhen Buildings",
         "img": "/projects/generator-discriminator.png",
-        "url": "https://yohandi.me/blog/multiple-dispatch-micro-kernels/",
+        "url": "https://www.yohandi.me/blog/text-based-image-generation-for-cuhksz-buildings/",
         "desc": "An <span>innovative approach</span> of integrating both text embeddings and noise vectors to <span>generate realistic images</span> based on textual descriptions using <span>Deep Convolutional Generative Adversarial Networks</span>.",
         "year": "2024"
     },
