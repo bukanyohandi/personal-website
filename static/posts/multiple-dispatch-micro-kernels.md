@@ -110,4 +110,4 @@ Moving forward, there are several promising directions for extending the capabil
 
 [multiple-dispatch-micro-kernels](/posts/resources/multiple-dispatch-micro-kernels/multiple-dispatch-micro-kernels.pdf)
 
-All implementations are available [here](https://github.com/iree-org/iree).
+IREE's repository is accessible [here](https://github.com/iree-org/iree).
