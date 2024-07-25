@@ -34,23 +34,6 @@ const GlobalStyle = createGlobalStyle`
 
 const MOBILE_CONST = 0.85;
 
-const PostContainer = styled.div`
-  display: column;
-  grid-template-columns: 1fr 300px;
-  gap: 2rem;
-  min-height: 150px;
-  max-width: 650px;
-  margin: 20px auto;
-  padding: 2rem;
-  background-color: white;
-
-  @media only screen and (max-width: 800px) {
-    max-width: 500px;
-    margin: 20px auto 0 auto;
-    padding: 0.75rem;
-  }
-`;
-
 const Post = styled.div`
   width: 100%;
 `;
@@ -73,13 +56,30 @@ const PostTitle = styled.h1`
 
 const PostInfo = styled.p`
   font-family: "Open Sans", sans-serif;
-  font-size: 1rem; /* Slightly larger font for better readability */
+  font-size: 1rem;
   text-transform: uppercase;
-  color: #666; /* Darker color for better contrast */
+  color: #666;
   margin-top: -0.4em;
-  margin-bottom: 1.2rem; /* Keep the same bottom margin */
-  font-weight: 400; /* Normal font weight */
-  letter-spacing: 0.4px; /* Slightly wider letter spacing */
+  margin-bottom: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+`;
+
+const PostContainer = styled.div`
+  display: column;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  min-height: 150px;
+  max-width: 650px;
+  margin: 20px auto;
+  padding: 2rem;
+  background-color: white;
+
+  @media only screen and (max-width: 800px) {
+    max-width: 500px;
+    margin: 20px auto 0 auto;
+    padding: 0.75rem;
+  }
 `;
 
 const PostContent = styled.div`
@@ -471,7 +471,9 @@ const BlogTemplate = ({ data, pageContext }) => {
         <PostContainer>
           <Post>
             <PostTitle>{post.frontmatter.title}</PostTitle>
-            <PostInfo>{post.frontmatter.date}</PostInfo>
+            <PostInfo>
+              {post.frontmatter.date} by {post.frontmatter.author}
+            </PostInfo>
             <TagsWrapper>
               {post.frontmatter.tags.map((tag) => (
                 <TagLink href={`/blog/tags/${tag}`} key={tag}>
