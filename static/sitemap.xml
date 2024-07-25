@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://www.yohandi.me/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/projects/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/archive/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/text-based-image-generation-for-cuhksz-buildings/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/machine-learning/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/project/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/multiple-dispatch-micro-kernels/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/compiler/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/optimization/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/parallel-programming/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/discrete-fourier-transform-in-quantum-computing/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/algorithm/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/polynomial/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/quantum-computing/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/tutorial/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/natural-parallelism-advancing-machine-learning-with-openacc/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/2/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/3/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/4/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/challenge/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/data-structure/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/dynamic-programming/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/geometry/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/image-filtering/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/matrix-multiplication/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/miscellaneous/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/notes/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/search/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/sorting/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/principal-component-analysis/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/natural-parallelism-in-distributed-and-parallel-sorting-algorithms/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/project/2/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/lagrange-relaxation/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/convex-hull-trick/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/optimization/2/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/natural-parallelism-the-paradigm-of-refined-matrix-multiplication/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/parallel-programming/2/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/csc3100-fall-2023-solutions/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/algorithm-and-data-structure-class-header/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/karps-challenge-knapsack-to-partition/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/algorithm/2/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/tags/tutorial/2/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/li-chao-tree/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/golden-section-search-on-density-function/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/golden-section-search/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/introduction/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.yohandi.me/blog/natural-parallelism-disclosing-efficient-techniques-for-image-processing/</loc>
+  <lastmod>2024-07-25T08:32:24+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
