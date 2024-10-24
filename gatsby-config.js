@@ -79,6 +79,13 @@ module.exports = {
         path: `${__dirname}/static/archive`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `recruitment`,
+        path: `${__dirname}/static/recruitment`,
+      },
+    },
     "gatsby-plugin-web-font-loader",
     {
       resolve: "gatsby-plugin-web-font-loader",

@@ -96,10 +96,11 @@ const Description = styled.div`
 const Navigation = styled.nav`
   display: flex;
   justify-content: center;
-  width: 120px;
+  width: 100%;
   gap: 30px;
   margin-top: -10px;
   padding-top: 0px;
+  flex-wrap: wrap; /* Allows buttons to wrap into multiple lines */
 
   opacity: ${({ Location }) =>
     Location.inProjectsPage || Location.inBlogPage || Location.inHomePage
@@ -113,13 +114,17 @@ const Navigation = styled.nav`
         ? "-15vh"
         : "0"}
   );
-  animation: fadeInMoveUp 0.1s forwards 0s; // starts after 0.5s, lasts 1s
+  animation: fadeInMoveUp 0.1s forwards 0s;
 
   @keyframes fadeInMoveUp {
     to {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  @media (max-width: 800px) {
+    gap: 13px; /* Reduce gap for smaller screens */
   }
 `;
 
@@ -132,8 +137,6 @@ const NavLink = styled(Link)`
   text-transform: uppercase;
   transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   font-weight: 400;
-
-  user-select: none;
 `;
 
 const activeLinkStyle = {
@@ -205,6 +208,9 @@ const Header = () => {
           >
             {" "}
             Archive{" "}
+          </NavLink>
+          <NavLink to="/recruitment" activeStyle={activeLinkStyle}>
+            Recruitment
           </NavLink>
           {/* <NavLink to="/resume" activeStyle={activeLinkStyle}>
           Resume
