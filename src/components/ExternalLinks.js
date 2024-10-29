@@ -11,19 +11,19 @@ const ExternalLinksContainer = styled.div`
   justify-content: center;
     
   @media only screen and (max-width: 800px) {
-    max-width: 600px;
+    max-width: 590px;
   }
 
   @media only screen and (max-width: 700px) {
-    max-width: 450px;
+    max-width: 440px;
   }
 
   @media only screen and (max-width: 650px) {
-    max-width: 420px;
+    max-width: 410px;
   }
 
   @media only screen and (max-width: 600px) {
-    max-width: 400px;
+    max-width: 390px;
 `;
 
 const LinksWrapper = styled.div`
