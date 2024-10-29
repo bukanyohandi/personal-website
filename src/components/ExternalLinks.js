@@ -15,15 +15,15 @@ const ExternalLinksContainer = styled.div`
   }
 
   @media only screen and (max-width: 700px) {
-    max-width: 550px;
+    max-width: 450px;
   }
 
   @media only screen and (max-width: 650px) {
-    max-width: 480px;
+    max-width: 420px;
   }
 
   @media only screen and (max-width: 600px) {
-    max-width: 450px;
+    max-width: 400px;
 `;
 
 const LinksWrapper = styled.div`
