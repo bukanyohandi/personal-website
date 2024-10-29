@@ -17,7 +17,7 @@ const LinksWrapper = styled.div`
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   max-width: 800px; /* Maximum width to contain multiple cards */
-  width: 90%;
+  width: 40%;
   margin: 0 auto;
   margin-top: -50px;
   padding: 10px;
@@ -27,15 +27,21 @@ const LinksWrapper = styled.div`
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
+    
+  @media only screen and (max-width: 800px) {
+    max-width: 400px;
   }
 
-  @media (max-width: 800px) {
-    max-width: 600px;
+  @media only screen and (max-width: 700px) {
+    max-width: 350px;
   }
 
-  @media (max-width: 600px) {
-    max-width: 450px;
+  @media only screen and (max-width: 650px) {
+    max-width: 325px;
   }
+
+  @media only screen and (max-width: 600px) {
+    max-width: 300px;
 `;
 
 const LinkCard = styled.a`
@@ -64,15 +70,15 @@ const LinkCard = styled.a`
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   }
 
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     flex: 0 0 250px; /* Adjust width for medium screens */
-    padding: 12px;
+    padding: 8px;
     max-width: 200px;
   }
 
-  @media (max-width: 480px) {
+  @media only screen and (max-width: 480px) {
     flex: 0 0 200px; /* Adjust width for small screens */
-    padding: 10px;
+    padding: 6px;
     max-width: 150px;
   }
 `;
@@ -83,12 +89,12 @@ const LinkImage = styled.img`
   object-fit: contain;
   margin-bottom: 10px;
 
-  @media (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     width: 80px;
     height: 35px;
   }
 
-  @media (max-width: 480px) {
+  @media only screen and (max-width: 480px) {
     width: 60px;
     height: 30px;
   }
@@ -107,12 +113,12 @@ const LinkTitle = styled.h4`
   box-sizing: border-box; /* Include padding and borders in width */
   word-break: break-word; /* Allow breaking long words if necessary */
 
-  @media (max-width: 600px) {
-    font-size: 14px;
+  @media only screen and (max-width: 600px) {
+    font-size: 10px;
   }
 
-  @media (max-width: 480px) {
-    font-size: 12px;
+  @media only screen and (max-width: 480px) {
+    font-size: 8px;
   }
 `;
 
@@ -128,14 +134,14 @@ const LinkDescription = styled.p`
   -webkit-box-orient: vertical;
   box-sizing: border-box; /* Include padding and borders in width */
 
-  @media (max-width: 600px) {
-    font-size: 10px;
-    -webkit-line-clamp: 2; /* Limit to 2 lines on medium screens */
+  @media only screen and (max-width: 600px) {
+    font-size: 8px;
+    // -webkit-line-clamp: 2; /* Limit to 2 lines on medium screens */
   }
 
-  @media (max-width: 480px) {
-    font-size: 8px;
-    -webkit-line-clamp: 2; /* Limit to 2 lines on small screens */
+  @media only screen and (max-width: 480px) {
+    font-size: 6px;
+    // -webkit-line-clamp: 2; /* Limit to 2 lines on small screens */
   }
 `;
 
