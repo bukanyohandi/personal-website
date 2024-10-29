@@ -7,7 +7,7 @@ const cheerio = require("cheerio");
 const { createFilePath } = require("gatsby-source-filesystem");
 const archiveStructure = require("./static/archive-structure.json");
 
-const fetchWithAbort = async (url, timeout = 60000) => {
+const fetchWithAbort = async (url, timeout = 10000) => {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeout);
 
@@ -247,7 +247,7 @@ exports.sourceNodes = async ({
     const image = parts[1] || ""; // If second part exists, it's the image URL
 
     try {
-      const response = await fetchWithAbort(url, 60000); // Set to 60 seconds
+      const response = await fetchWithAbort(url, 10000); // Set to 60 seconds
 
       if (!response.ok) {
         throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
