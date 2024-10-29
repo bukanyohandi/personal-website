@@ -11,7 +11,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: ${({ Location }) => (Location.inHomePage ? "90vh" : "17vh")};
+  height: ${({ Location }) => (Location.inHomePage ? "60vh" : "17vh")};
   background-color: ${THEME.PRIMARY};
 `;
 
