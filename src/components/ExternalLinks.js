@@ -9,6 +9,21 @@ const ExternalLinksContainer = styled.div`
   padding: 20px 0; /* Increased padding for better spacing */
   display: flex;
   justify-content: center;
+    
+  @media only screen and (max-width: 800px) {
+    max-width: 600px;
+  }
+
+  @media only screen and (max-width: 700px) {
+    max-width: 550px;
+  }
+
+  @media only screen and (max-width: 650px) {
+    max-width: 480px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    max-width: 450px;
 `;
 
 const LinksWrapper = styled.div`
@@ -17,7 +32,7 @@ const LinksWrapper = styled.div`
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   max-width: 800px; /* Maximum width to contain multiple cards */
-  width: 40%;
+  width: 60%;
   margin: 0 auto;
   margin-top: -50px;
   padding: 10px;
@@ -27,21 +42,6 @@ const LinksWrapper = styled.div`
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
-    
-  @media only screen and (max-width: 800px) {
-    max-width: 400px;
-  }
-
-  @media only screen and (max-width: 700px) {
-    max-width: 350px;
-  }
-
-  @media only screen and (max-width: 650px) {
-    max-width: 325px;
-  }
-
-  @media only screen and (max-width: 600px) {
-    max-width: 300px;
 `;
 
 const LinkCard = styled.a`
@@ -68,6 +68,12 @@ const LinkCard = styled.a`
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  @media only screen and (max-width: 800px) {
+    flex: 0 0 250px; /* Adjust width for medium screens */
+    padding: 8px;
+    max-width: 280px;
   }
 
   @media only screen and (max-width: 600px) {
