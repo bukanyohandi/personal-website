@@ -37,11 +37,18 @@ const LinksWrapper = styled.div`
   margin-top: -50px;
   padding: 10px;
 
-  /* Hide scrollbar */
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   &::-webkit-scrollbar {
-    display: none;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
 `;
 
 const LinkCard = styled.a`
