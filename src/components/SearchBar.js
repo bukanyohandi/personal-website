@@ -5,6 +5,25 @@ import { useFlexSearch } from "react-use-flexsearch";
 import { Link } from "gatsby";
 import { useLocation } from "@reach/router";
 import { FiX } from "react-icons/fi";
+import archiveStructure from "/static/archive-structure.json";
+
+const extractFiles = (node, path = []) => {
+  let files = [];
+  for (const key in node) {
+    const currentPath = [...path, key];
+    if (Object.keys(node[key]).length === 0) {
+      files.push({
+        id: currentPath.join("/"),
+        title: key,
+        path: `/archive/${currentPath.join("/")}`,
+        type: "archive-file",
+      });
+    } else {
+      files = files.concat(extractFiles(node[key], currentPath));
+    }
+  }
+  return files;
+};
 
 const ClearButton = styled.button`
   position: absolute;
@@ -77,11 +96,12 @@ const ResultTitle = styled.h3`
   padding-bottom: 5px; // Space between title and content snippet
 `;
 
-const ContentSnippet = styled.p`
+const ContentSnippetBlog = styled.p`
   font-family: "Open Sans", sans-serif;
   font-size: 0.9em;
   color: #666;
   margin: 0;
+  margin-bottom: 10px;
   padding: 5px 0;
 
   mark {
@@ -90,11 +110,35 @@ const ContentSnippet = styled.p`
   }
 `;
 
+const ContentSnippetArchive = styled.p`
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9em;
+  color: #666;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
 const BlogLabel = styled.span`
   position: absolute;
   bottom: 5px; // Adjust as needed
   right: 5px; // Adjust as needed
   background: #3498db; // Use your blog's theme color
+  color: white;
+  padding: 2px 6px;
+  font-size: 0.7em;
+  border-radius: 3px;
+  text-transform: uppercase;
+`;
+
+const ArchiveLabel = styled.span`
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #e67e22; // Choose a distinct color
   color: white;
   padding: 2px 6px;
   font-size: 0.7em;
@@ -124,6 +168,41 @@ const ResultItem = styled(Link)`
   }
 `;
 
+const formatPath = (path, limit = 45) => {
+  if (!path) return "";
+
+  const parts = path.split('/');
+  // if (parts.length <= 2) {
+    // If the path has two or fewer parts, return it as is
+    // return path.length <= limit ? path : `${parts[0]}/.../${parts[parts.length -1]}`;
+  // }
+
+  const first = parts[0];
+  const last = parts[parts.length -1];
+
+  // Calculate the length available for the first and last parts
+  const ellipsis = '...';
+  const available = limit - ellipsis.length - 2; // 2 for the slashes
+
+  // if (first.length + last.length + ellipsis.length + 2 <= limit) {
+  //   return `${first}/.../${last}`;
+  // }
+
+  // Determine how much of the first and last parts can be displayed
+  let remaining = available - last.length;
+  if(remaining < 3){
+    remaining = 3;
+  }
+
+  const firstPart = first.length > remaining
+    ? `${first.slice(0, remaining)}…`
+    : first;
+
+  const lastPart = last;
+
+  return `${firstPart}/.../${lastPart}`;
+};
+
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
@@ -137,20 +216,67 @@ const SearchBar = () => {
         index
         store
       }
+      allFile(filter: { sourceInstanceName: { eq: "archive" } }) {
+        nodes {
+          relativeDirectory
+          relativePath
+          name
+          base
+        }
+      }
+      allDirectory(filter: { sourceInstanceName: { eq: "archive" } }) {
+        nodes {
+          relativePath
+          name
+        }
+      }
     }
   `);
 
+  const getParentDirectory = (path) => {
+    const parts = path.split('/');
+    parts.pop();
+    const parent = parts.join('/');
+    return parent || '';
+  }; 
+  
+  const archiveFiles = data.allFile.nodes.map((node) => ({
+    id: node.relativePath,
+    title: node.base,
+    path: `/archive/${node.relativeDirectory}`,
+    type: "archive-file",
+    description: formatPath(node.relativeDirectory) || '',
+  }));
+
+  const archiveDirectories = data.allDirectory.nodes.map((node) => ({
+    id: node.relativePath,
+    title: node.name,
+    path: `/archive/${node.relativePath}`,
+    type: "archive-folder",
+    description: formatPath(getParentDirectory(node.relativePath)),
+  }));
+  
+  const archiveItems = [...archiveFiles, ...archiveDirectories];  
+
   // Extract the index and store from the query result
   const { index, store } = data.localSearchPages;
-  const results = useFlexSearch(query, index, store);
+
+  const blogResults = useFlexSearch(query, index, store).map((result) => ({
+    ...result,
+    type: "blog",
+    hasSnippet: result.body.toLowerCase().includes(query.toLowerCase()),
+  }));  
+
+  const archiveResults = archiveItems.filter((file) =>
+    file.title.toLowerCase().includes(query.toLowerCase())
+  );
+
+  const combinedResults = [...blogResults, ...archiveResults];
 
   const handleInputChange = (event) => {
-    setQuery(event.target.value.toLowerCase());
-    if (event.target.value.length > 0) {
-      setShowResults(true);
-    } else {
-      setShowResults(false);
-    }
+    const input = event.target.value.toLowerCase();
+    setQuery(input);
+    setShowResults(input.length > 0);
   };
 
   const clearSearch = () => {
@@ -173,34 +299,36 @@ const SearchBar = () => {
   }, []);
 
   const sortResults = (results, query) => {
-    // Convert the query to lowercase for case-insensitive comparison
     const queryLower = query.toLowerCase();
-
-    // Sort the results array
+  
     return results.sort((a, b) => {
-      // Check if title contains the query for both results
-      const titleMatchA = a.title.toLowerCase().includes(queryLower);
-      const titleMatchB = b.title.toLowerCase().includes(queryLower);
-
-      // If both have a match in the title or neither have, sort by the index of the match in the title
-      if (titleMatchA && titleMatchB) {
-        return (
-          a.title.toLowerCase().indexOf(queryLower) -
-          b.title.toLowerCase().indexOf(queryLower)
-        );
-      } else if (titleMatchA) {
-        return -1; // Prioritize result A with title match
-      } else if (titleMatchB) {
-        return 1; // Prioritize result B with title match
+      const getPriority = (result) => {
+        if (result.type === "blog" && result.hasSnippet) return 1;
+        if (result.type === "archive-folder") return 2;
+        if (result.type === "archive-file") return 3;
+        if (result.type === "blog" && !result.hasSnippet) return 4;
+        return 5; // Just in case
+      };
+  
+      const priorityA = getPriority(a);
+      const priorityB = getPriority(b);
+  
+      if (priorityA !== priorityB) {
+        return priorityA - priorityB; // Lower priority number comes first
       }
-
-      // If neither result has a title match, sort by the index of the match in the body
-      return (
-        a.body.toLowerCase().indexOf(queryLower) -
-        b.body.toLowerCase().indexOf(queryLower)
-      );
+  
+      // If priorities are the same, sort by relevance in title
+      const titleIndexA = a.title.toLowerCase().indexOf(queryLower);
+      const titleIndexB = b.title.toLowerCase().indexOf(queryLower);
+  
+      if (titleIndexA !== titleIndexB) {
+        return titleIndexA - titleIndexB;
+      }
+  
+      // If still the same, sort alphabetically
+      return a.title.localeCompare(b.title);
     });
-  };
+  };  
 
   const getRelevantSnippet = (content, query) => {
     content = content.replace(/###/g, "");
@@ -226,14 +354,23 @@ const SearchBar = () => {
     return "No relevant snippet available...";
   };
 
-  const highlightQuery = (snippet, query) => {
-    const regex = new RegExp(`\\b${query}`, "gi");
-    const highlighted = snippet.replace(regex, `<mark>${query}</mark>`);
-
-    return highlighted;
+  const escapeRegExp = (string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   };
+  
+  const highlightQuery = (snippet, query) => {
+    if (typeof snippet !== "string") {
+      return "";
+    }
+  
+    const escapedQuery = escapeRegExp(query);
+    const regex = new RegExp(`(${escapedQuery})`, "gi");
+    const highlighted = snippet.replace(regex, `<mark>$1</mark>`);
+  
+    return highlighted;
+  };  
 
-  const sortedResults = sortResults(results, query);
+  const sortedResults = sortResults(combinedResults, query);
 
   return location.pathname === "/" ? (
     <SearchBarContainer ref={searchBarRef}>
@@ -254,13 +391,23 @@ const SearchBar = () => {
       <ResultsContainer show={showResults}>
         {sortedResults.map((result) => (
           <ResultItem key={result.id} to={result.path}>
-            <BlogLabel>BLOG</BlogLabel> {/* This is the new label */}
+            {result.type === "blog" && <BlogLabel>BLOG</BlogLabel>}
+            {(result.type === "archive-file" || result.type === "archive-folder") && <ArchiveLabel>ARCHIVE</ArchiveLabel>}
             <ResultTitle>{result.title}</ResultTitle>
-            <ContentSnippet
-              dangerouslySetInnerHTML={{
-                __html: getRelevantSnippet(result.body, query),
-              }}
-            />
+            {result.type === "blog" && (
+              <ContentSnippetBlog
+                dangerouslySetInnerHTML={{
+                  __html: getRelevantSnippet(result.body, query),
+                }}
+              />
+            )}
+            {(result.type === "archive-file" || result.type === "archive-folder") && (
+              <ContentSnippetArchive
+                dangerouslySetInnerHTML={{
+                  __html: result.description,
+                }}
+              />
+            )}
           </ResultItem>
         ))}
       </ResultsContainer>
