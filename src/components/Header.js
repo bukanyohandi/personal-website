@@ -191,9 +191,9 @@ const Header = () => {
   const [placeholderVersion, setPlaceholderVersion] = React.useState(0); // Added state
 
   const inHomePage = useLocation().pathname === "/";
-  const inBlogPage = useLocation().pathname === "/blog/";
+  const inBlogPage = useLocation().pathname.startsWith("/blog/");
   const inProjectsPage = useLocation().pathname === "/projects/";
-  const inArchivePage = useLocation().pathname === "/archive/";
+  const inArchivePage = useLocation().pathname.startsWith("/archive/");
   const inRecruitmentPage = useLocation().pathname === "/recruitment/";
 
   const handleTitleClick = () => {
