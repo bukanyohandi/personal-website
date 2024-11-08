@@ -12,7 +12,7 @@ const HeaderContent = styled.div`
   align-items: center;
   width: 100%;
   max-width: ${({ condition }) => (condition ? "500px" : "100%")};
-  padding: ${({ condition }) => (condition ? "0" : "0 20px")};
+  // padding: ${({ condition }) => (condition ? "0" : "0 20px")};
 
   @media (max-width: 800px) {
     flex-direction: column;
