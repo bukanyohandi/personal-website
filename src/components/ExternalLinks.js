@@ -34,7 +34,6 @@ const LinksWrapper = styled.div`
   max-width: 800px; /* Maximum width to contain multiple cards */
   width: 60%;
   margin: 0 auto;
-  margin-top: -50px;
   padding: 10px;
 
   &::-webkit-scrollbar {

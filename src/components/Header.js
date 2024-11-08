@@ -11,7 +11,9 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: ${({ Location }) => (Location.inHomePage ? "60vh" : "17vh")};
+  // border: 2px solid red;
+  margin-top: ${({ Location }) => (Location.inHomePage ? "20vh" : "0vh")};
+  height: ${({ Location }) => (Location.inHomePage ? "35vh" : "17vh")};
   background-color: ${THEME.PRIMARY};
 `;
 
@@ -40,7 +42,10 @@ const Title = styled.div`
   opacity: ${({ Location }) => (Location.inHomePage ? "0" : "1")};
   transform: translateY(
     ${({ Location }) =>
-      Location.inProjectsPage || Location.inBlogPage
+      Location.inProjectsPage ||
+      Location.inBlogPage ||
+      Location.inArchivePage ||
+      Location.inRecruitmentPage
         ? "0vh"
         : Location.inHomePage
         ? "-8vh"
@@ -103,12 +108,19 @@ const Navigation = styled.nav`
   flex-wrap: wrap; /* Allows buttons to wrap into multiple lines */
 
   opacity: ${({ Location }) =>
-    Location.inProjectsPage || Location.inBlogPage || Location.inHomePage
+    Location.inProjectsPage ||
+    Location.inBlogPage ||
+    Location.inArchivePage ||
+    Location.inRecruitmentPage ||
+    Location.inHomePage
       ? "0"
       : "1"};
   transform: translateY(
     ${({ Location }) =>
-      Location.inProjectsPage || Location.inBlogPage
+      Location.inProjectsPage ||
+      Location.inBlogPage ||
+      Location.inArchivePage ||
+      Location.inRecruitmentPage
         ? "1vh"
         : Location.inHomePage
         ? "-15vh"
@@ -150,6 +162,8 @@ const Header = () => {
   const inHomePage = useLocation().pathname === "/";
   const inBlogPage = useLocation().pathname === "/blog/";
   const inProjectsPage = useLocation().pathname === "/projects/";
+  const inArchivePage = useLocation().pathname === "/archive/";
+  const inRecruitmentPage = useLocation().pathname === "/recruitment/";
 
   React.useEffect(() => {
     console.log("Hover State: ", isHovered);
@@ -159,10 +173,22 @@ const Header = () => {
     <>
       <Container
         THEME={THEME}
-        Location={{ inHomePage, inBlogPage, inProjectsPage }}
+        Location={{
+          inHomePage,
+          inBlogPage,
+          inProjectsPage,
+          inArchivePage,
+          inRecruitmentPage,
+        }}
       >
         <Title
-          Location={{ inHomePage, inBlogPage, inProjectsPage }}
+          Location={{
+            inHomePage,
+            inBlogPage,
+            inProjectsPage,
+            inArchivePage,
+            inRecruitmentPage,
+          }}
           // onMouseEnter={() => setIsHovered(true)}
           // onMouseLeave={() => setIsHovered(false)}
         >
@@ -182,12 +208,28 @@ const Header = () => {
           )} */}
           yohandi
         </Title>
-        <Description Location={{ inHomePage, inBlogPage, inProjectsPage }}>
+        <Description
+          Location={{
+            inHomePage,
+            inBlogPage,
+            inProjectsPage,
+            inArchivePage,
+            inRecruitmentPage,
+          }}
+        >
           A recent graduate with a strong interest in algorithms and data
           structures.
         </Description>
         <SearchBar inHomePage={inHomePage} />
-        <Navigation Location={{ inHomePage, inBlogPage, inProjectsPage }}>
+        <Navigation
+          Location={{
+            inHomePage,
+            inBlogPage,
+            inProjectsPage,
+            inArchivePage,
+            inRecruitmentPage,
+          }}
+        >
           <NavLink to="/" activeStyle={activeLinkStyle}>
             Home
           </NavLink>
