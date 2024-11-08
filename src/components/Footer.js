@@ -46,9 +46,9 @@ const Footer = () => {
       <Wrapper href="mailto:yohandi.0903@gmail.com">
         <EmailIcon size={25} />
       </Wrapper>
-      {/* <Wrapper href="https://linkedin.com/in/yohandi">
+      <Wrapper href="https://linkedin.com/in/yohandi">
         <FaLinkedin size={25} />
-      </Wrapper> */}
+      </Wrapper>
       <Wrapper href="https://github.com/bukanyohandi">
         <GitHubIcon size={25} />
       </Wrapper>
