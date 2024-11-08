@@ -7,6 +7,29 @@ import { useLocation } from "@reach/router";
 import { FiX } from "react-icons/fi";
 import archiveStructure from "/static/archive-structure.json";
 
+const placeholderSentences = [
+  "Searching for answers as deep as a Dark Roast...",
+  "Looking for that secret ingredient in your Pumpkin Spice Latte?",
+  "Did someone say FRAPPUCCINO? It's a search party now!",
+  "Typing... fueled by a venti Caramel Macchiato.",
+  "ESPRESSO yourself and search away!",
+  "Finding the perfect answer, one Cold Brew at a time...",
+  "Brewing up some search results with a touch of Mocha madness...",
+  "Looking for more than just the foam on your Cappuccino?",
+  "Pouring over results like a barista making a Flat White...",
+  "Need answers fast? Double-shot of search coming up!",
+  "Spicing up your search with a hint of Chai Latte humor...",
+  "Searching for something smoother than a Vanilla Latte...",
+  "On a quest for results as bold as your Americano?",
+  "Mixing up your search like a perfect Iced Caramel Macchiato...",
+  "Exploring results one sip of White Chocolate Mocha at a time...",
+  "Adding some Pumpkin Cream Cold Brew vibes to your search...",
+  "Searching with the energy of a Triple Espresso shot!",
+  "Finding that hidden gem like a secret menu Pink Drink...",
+  "Brewing results as carefully as a Nitro Cold Brew...",
+  "Stirring up answers with the smoothness of a Honey Oat Latte...",
+];
+
 const extractFiles = (node, path = []) => {
   let files = [];
   for (const key in node) {
@@ -42,7 +65,8 @@ const ClearButton = styled.button`
 
 const SearchBarContainer = styled.div`
   min-width: 300px;
-  width: 25%;
+  max-width: 500px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -171,17 +195,17 @@ const ResultItem = styled(Link)`
 const formatPath = (path, limit = 45) => {
   if (!path) return "";
 
-  const parts = path.split('/');
+  const parts = path.split("/");
   // if (parts.length <= 2) {
-    // If the path has two or fewer parts, return it as is
-    // return path.length <= limit ? path : `${parts[0]}/.../${parts[parts.length -1]}`;
+  // If the path has two or fewer parts, return it as is
+  // return path.length <= limit ? path : `${parts[0]}/.../${parts[parts.length -1]}`;
   // }
 
   const first = parts[0];
-  const last = parts[parts.length -1];
+  const last = parts[parts.length - 1];
 
   // Calculate the length available for the first and last parts
-  const ellipsis = '...';
+  const ellipsis = "...";
   const available = limit - ellipsis.length - 2; // 2 for the slashes
 
   // if (first.length + last.length + ellipsis.length + 2 <= limit) {
@@ -190,24 +214,32 @@ const formatPath = (path, limit = 45) => {
 
   // Determine how much of the first and last parts can be displayed
   let remaining = available - last.length;
-  if(remaining < 3){
+  if (remaining < 3) {
     remaining = 3;
   }
 
-  const firstPart = first.length > remaining
-    ? `${first.slice(0, remaining)}…`
-    : first;
+  const firstPart =
+    first.length > remaining ? `${first.slice(0, remaining)}…` : first;
 
   const lastPart = last;
 
   return `${firstPart}/.../${lastPart}`;
 };
 
-const SearchBar = () => {
+const SearchBar = ({ condition, placeholderVersion }) => {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
   const location = useLocation();
   const searchBarRef = useRef(); // Ref for the search bar container
+  const [placeholder, setPlaceholder] = useState(""); // State for the placeholder
+
+  useEffect(() => {
+    const randomSentence =
+      placeholderSentences[
+        Math.floor(Math.random() * placeholderSentences.length)
+      ];
+    setPlaceholder(randomSentence);
+  }, [placeholderVersion]); // Empty dependency array ensures this runs only once when the component mounts
 
   // Use the useStaticQuery hook to query for your data
   const data = useStaticQuery(graphql`
@@ -234,18 +266,18 @@ const SearchBar = () => {
   `);
 
   const getParentDirectory = (path) => {
-    const parts = path.split('/');
+    const parts = path.split("/");
     parts.pop();
-    const parent = parts.join('/');
-    return parent || '';
-  }; 
-  
+    const parent = parts.join("/");
+    return parent || "";
+  };
+
   const archiveFiles = data.allFile.nodes.map((node) => ({
     id: node.relativePath,
     title: node.base,
     path: `/archive/${node.relativeDirectory}`,
     type: "archive-file",
-    description: formatPath(node.relativeDirectory) || '',
+    description: formatPath(node.relativeDirectory) || "",
   }));
 
   const archiveDirectories = data.allDirectory.nodes.map((node) => ({
@@ -255,8 +287,8 @@ const SearchBar = () => {
     type: "archive-folder",
     description: formatPath(getParentDirectory(node.relativePath)),
   }));
-  
-  const archiveItems = [...archiveFiles, ...archiveDirectories];  
+
+  const archiveItems = [...archiveFiles, ...archiveDirectories];
 
   // Extract the index and store from the query result
   const { index, store } = data.localSearchPages;
@@ -265,7 +297,7 @@ const SearchBar = () => {
     ...result,
     type: "blog",
     hasSnippet: result.body.toLowerCase().includes(query.toLowerCase()),
-  }));  
+  }));
 
   const archiveResults = archiveItems.filter((file) =>
     file.title.toLowerCase().includes(query.toLowerCase())
@@ -300,7 +332,7 @@ const SearchBar = () => {
 
   const sortResults = (results, query) => {
     const queryLower = query.toLowerCase();
-  
+
     return results.sort((a, b) => {
       const getPriority = (result) => {
         if (result.type === "blog" && result.hasSnippet) return 1;
@@ -309,26 +341,26 @@ const SearchBar = () => {
         if (result.type === "blog" && !result.hasSnippet) return 4;
         return 5; // Just in case
       };
-  
+
       const priorityA = getPriority(a);
       const priorityB = getPriority(b);
-  
+
       if (priorityA !== priorityB) {
         return priorityA - priorityB; // Lower priority number comes first
       }
-  
+
       // If priorities are the same, sort by relevance in title
       const titleIndexA = a.title.toLowerCase().indexOf(queryLower);
       const titleIndexB = b.title.toLowerCase().indexOf(queryLower);
-  
+
       if (titleIndexA !== titleIndexB) {
         return titleIndexA - titleIndexB;
       }
-  
+
       // If still the same, sort alphabetically
       return a.title.localeCompare(b.title);
     });
-  };  
+  };
 
   const getRelevantSnippet = (content, query) => {
     content = content.replace(/###/g, "");
@@ -357,27 +389,31 @@ const SearchBar = () => {
   const escapeRegExp = (string) => {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   };
-  
+
   const highlightQuery = (snippet, query) => {
     if (typeof snippet !== "string") {
       return "";
     }
-  
+
     const escapedQuery = escapeRegExp(query);
     const regex = new RegExp(`(${escapedQuery})`, "gi");
     const highlighted = snippet.replace(regex, `<mark>$1</mark>`);
-  
+
     return highlighted;
-  };  
+  };
 
   const sortedResults = sortResults(combinedResults, query);
 
-  return location.pathname === "/" ? (
+  if (!condition) {
+    return null;
+  }
+
+  return (
     <SearchBarContainer ref={searchBarRef}>
       <>
         <StyledInput
           type="text"
-          placeholder="Looking for something?"
+          placeholder={placeholder}
           value={query}
           onChange={handleInputChange}
           onFocus={() => query.length > 0 && setShowResults(true)}
@@ -392,7 +428,10 @@ const SearchBar = () => {
         {sortedResults.map((result) => (
           <ResultItem key={result.id} to={result.path}>
             {result.type === "blog" && <BlogLabel>BLOG</BlogLabel>}
-            {(result.type === "archive-file" || result.type === "archive-folder") && <ArchiveLabel>ARCHIVE</ArchiveLabel>}
+            {(result.type === "archive-file" ||
+              result.type === "archive-folder") && (
+              <ArchiveLabel>ARCHIVE</ArchiveLabel>
+            )}
             <ResultTitle>{result.title}</ResultTitle>
             {result.type === "blog" && (
               <ContentSnippetBlog
@@ -401,7 +440,8 @@ const SearchBar = () => {
                 }}
               />
             )}
-            {(result.type === "archive-file" || result.type === "archive-folder") && (
+            {(result.type === "archive-file" ||
+              result.type === "archive-folder") && (
               <ContentSnippetArchive
                 dangerouslySetInnerHTML={{
                   __html: result.description,
@@ -412,7 +452,7 @@ const SearchBar = () => {
         ))}
       </ResultsContainer>
     </SearchBarContainer>
-  ) : null;
+  );
 };
 
 export default SearchBar;

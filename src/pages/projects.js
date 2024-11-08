@@ -169,7 +169,7 @@ export default function ProjectPage({ data }) {
           />
         </Helmet>
         <Container>
-          <TemporaryInformation> More will be added soon!</TemporaryInformation>
+          {/* <TemporaryInformation> More will be added soon!</TemporaryInformation> */}
           {projects.map(({ node }) => (
             <Project key={node.title} href={node.url}>
               <ProjectImage src={node.img} />

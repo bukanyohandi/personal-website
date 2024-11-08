@@ -6,15 +6,50 @@ import { THEME } from "../constants.js";
 import "../styles/fonts.css";
 import SearchBar from "./SearchBar.js";
 
+const HeaderContent = styled.div`
+  display: flex;
+  flex-direction: ${({ condition }) => (condition ? "column" : "row")};
+  align-items: center;
+  width: 100%;
+  max-width: ${({ condition }) => (condition ? "500px" : "100%")};
+  padding: ${({ condition }) => (condition ? "0" : "0 20px")};
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    max-width: 100%;
+  }
+`;
+
+const SearchBarWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* Optional: Adjust width as needed */
+  max-width: 450px; /* Optional: Limit the maximum width */
+  padding: 0 20px; /* Optional: Add padding if necessary */
+
+  @media (max-width: 800px) {
+    max-width: 90%;
+  }
+`;
+
+// Existing Container component
 const Container = styled.div`
+  position: relative; /* Added to establish a containing block */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   // border: 2px solid red;
-  margin-top: ${({ Location }) => (Location.inHomePage ? "20vh" : "0vh")};
-  height: ${({ Location }) => (Location.inHomePage ? "35vh" : "17vh")};
+  margin-top: ${({ Location }) => (Location.inHomePage ? "13vh" : "0vh")};
+  height: ${({ Location }) => (Location.inHomePage ? "35vh" : "15vh")};
   background-color: ${THEME.PRIMARY};
+
+  @media (max-width: 800px) {
+    margin-top: ${({ Location }) => (Location.inHomePage ? "10vh" : "0vh")};
+    height: ${({ Location }) => (Location.inHomePage ? "35vh" : "15vh")};
+  }
 `;
 
 const TitlePart = styled.span`
@@ -23,23 +58,23 @@ const TitlePart = styled.span`
 
 const Title = styled.div`
   text-align: center;
-  font-size: ${({ Location }) => (Location.inHomePage ? "55px" : "55px")};
+  font-size: ${({ Location }) => (Location.inHomePage ? "55px" : "0px")};
   color: #2c3e50;
-  margin: ${({ Location }) => (Location.inHomePage ? "0px" : "20px 0")};
+  margin: ${({ Location }) => (Location.inHomePage ? "0px" : "0")};
   font-weight: 300;
   font-family: "Pixelify Sans", sans-serif;
   letter-spacing: 2px;
-  margin-top: 0px;
+  margin-top: ${({ Location }) => (Location.inHomePage ? "0px" : "20px")};
   user-select: none;
   display: flex;
-  align-items: center; // Vertically centers the items
-  justify-content: center; // Horizontally centers the items
+  align-items: center;
+  justify-content: center;
 
   @media only screen and (max-width: 800px) {
-    font-size: 60px;
+    font-size: ${({ Location }) => (Location.inHomePage ? "60px" : "px")};
   }
 
-  opacity: ${({ Location }) => (Location.inHomePage ? "0" : "1")};
+  opacity: ${({ Location }) => (Location.inHomePage ? "1" : "1")};
   transform: translateY(
     ${({ Location }) =>
       Location.inProjectsPage ||
@@ -48,20 +83,17 @@ const Title = styled.div`
       Location.inRecruitmentPage
         ? "0vh"
         : Location.inHomePage
-        ? "-8vh"
+        ? "0vh"
         : "0"}
   );
-  animation: fadeInMoveUp 0.4s forwards 0s; // starts after 0.5s, lasts 1s
+  // animation: fadeInMoveUp 0.4s forwards 0s;
 
-  @keyframes fadeInMoveUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  // width: 250px;
-  // justify-content: flex-end;
+  // @keyframes fadeInMoveUp {
+  //   to {
+  //     opacity: 1;
+  //     transform: translateY(0);
+  //   }
+  // }
 
   &:hover {
     cursor: pointer;
@@ -74,7 +106,7 @@ const Description = styled.div`
   max-width: 450px;
   width: 95%;
   line-height: 1.5;
-  font-size: 23px;
+  font-size: 21px;
   font-family: "Open Sans", sans-serif;
   font-weight: lighter;
   text-align: center;
@@ -84,11 +116,9 @@ const Description = styled.div`
     font-size: 18px;
   }
 
-  opacity: ${({ Location }) => (Location.inHomePage ? "0" : "1")};
-  transform: translateY(
-    ${({ Location }) => (Location.inHomePage ? "-12vh" : "0")}
-  );
-  animation: fadeInMoveUp 0.4s forwards 0s; // starts after 0.5s, lasts 1s
+  opacity: ${({ Location }) => (Location.inHomePage ? "1" : "1")};
+  transform: translateY(${({ Location }) => (Location.inHomePage ? "0" : "0")});
+  // animation: fadeInMoveUp 0.4s forwards 0s; // starts after 0.5s, lasts 1s
 
   @keyframes fadeInMoveUp {
     to {
@@ -103,7 +133,7 @@ const Navigation = styled.nav`
   justify-content: center;
   width: 100%;
   gap: 30px;
-  margin-top: -10px;
+  // margin-top: -10px;
   padding-top: 0px;
   flex-wrap: wrap; /* Allows buttons to wrap into multiple lines */
 
@@ -113,7 +143,7 @@ const Navigation = styled.nav`
     Location.inArchivePage ||
     Location.inRecruitmentPage ||
     Location.inHomePage
-      ? "0"
+      ? "1"
       : "1"};
   transform: translateY(
     ${({ Location }) =>
@@ -123,10 +153,10 @@ const Navigation = styled.nav`
       Location.inRecruitmentPage
         ? "1vh"
         : Location.inHomePage
-        ? "-15vh"
+        ? "0vh"
         : "0"}
   );
-  animation: fadeInMoveUp 0.1s forwards 0s;
+  // animation: fadeInMoveUp 0.1s forwards 0s;
 
   @keyframes fadeInMoveUp {
     to {
@@ -158,12 +188,17 @@ const activeLinkStyle = {
 
 const Header = () => {
   const [isHovered, setIsHovered] = React.useState(false);
+  const [placeholderVersion, setPlaceholderVersion] = React.useState(0); // Added state
 
   const inHomePage = useLocation().pathname === "/";
   const inBlogPage = useLocation().pathname === "/blog/";
   const inProjectsPage = useLocation().pathname === "/projects/";
   const inArchivePage = useLocation().pathname === "/archive/";
   const inRecruitmentPage = useLocation().pathname === "/recruitment/";
+
+  const handleTitleClick = () => {
+    setPlaceholderVersion((prev) => prev + 1);
+  };
 
   React.useEffect(() => {
     console.log("Hover State: ", isHovered);
@@ -181,46 +216,42 @@ const Header = () => {
           inRecruitmentPage,
         }}
       >
-        <Title
-          Location={{
-            inHomePage,
-            inBlogPage,
-            inProjectsPage,
-            inArchivePage,
-            inRecruitmentPage,
-          }}
-          // onMouseEnter={() => setIsHovered(true)}
-          // onMouseLeave={() => setIsHovered(false)}
-        >
-          {/* {isHovered ? (
-            <>
-              <TitlePart key="1">it's </TitlePart>
-              <TitlePart key="2" isMarked>
-                yoh{" "}
-              </TitlePart>
-              <TitlePart key="3">and </TitlePart>
-              <TitlePart key="4" isMarked>
-                i
-              </TitlePart>
-            </>
-          ) : (
-            "yohandi"
-          )} */}
-          yohandi
-        </Title>
-        <Description
-          Location={{
-            inHomePage,
-            inBlogPage,
-            inProjectsPage,
-            inArchivePage,
-            inRecruitmentPage,
-          }}
-        >
-          A recent graduate with a strong interest in algorithms and data
-          structures.
-        </Description>
-        <SearchBar/>
+        <HeaderContent condition={inHomePage}>
+          <Title
+            Location={{
+              inHomePage,
+              inBlogPage,
+              inProjectsPage,
+              inArchivePage,
+              inRecruitmentPage,
+            }}
+            onClick={handleTitleClick}
+          >
+            yohandi
+          </Title>
+          <Description
+            Location={{
+              inHomePage,
+              inBlogPage,
+              inProjectsPage,
+              inArchivePage,
+              inRecruitmentPage,
+            }}
+          >
+            A recent graduate with a strong interest in algorithms and data
+            structures (and coffee).
+          </Description>
+          <SearchBar
+            condition={inHomePage}
+            placeholderVersion={placeholderVersion}
+          />
+        </HeaderContent>
+        {/* <SearchBarWrapper> */}
+        <SearchBar
+          condition={!inHomePage}
+          placeholderVersion={placeholderVersion}
+        />
+        {/* </SearchBarWrapper> */}
         <Navigation
           Location={{
             inHomePage,
@@ -248,15 +279,11 @@ const Header = () => {
             activeStyle={activeLinkStyle}
             partiallyActive={true}
           >
-            {" "}
-            Archive{" "}
+            Archive
           </NavLink>
           <NavLink to="/recruitment" activeStyle={activeLinkStyle}>
             Recruitment
           </NavLink>
-          {/* <NavLink to="/resume" activeStyle={activeLinkStyle}>
-          Resume
-        </NavLink> */}
         </Navigation>
       </Container>
     </>

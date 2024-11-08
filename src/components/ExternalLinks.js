@@ -49,6 +49,10 @@ const LinksWrapper = styled.div`
     background: #f1f1f1;
     border-radius: 4px;
   }
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const LinkCard = styled.a`
