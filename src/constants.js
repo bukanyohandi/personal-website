@@ -10,7 +10,7 @@
 // Pastel Christmas Theme
 export const THEME = {
   PRIMARY: "#d9f9d9", // Soft pastel red
-  SECONDARY: "#ffb3b3", // Soft pastel green
+  SECONDARY: "#d9f9d9", // Soft pastel green
   TERTIARY: "#ffb3b3", // White for a clean and snowy background
 };
 
