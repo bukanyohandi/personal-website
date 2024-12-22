@@ -36,10 +36,12 @@ const Container = styled.div`
   margin: 0 auto;
   background-color: ${THEME.SECONDARY};
   padding: 0 20px;
+  margin-top: 25px;
 
   @media (max-width: 800px) {
     width: 95%;
     padding: 0 10px;
+    margin-top: 25px;
   }
 `;
 
