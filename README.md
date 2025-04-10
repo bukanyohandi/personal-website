@@ -1,4 +1,4 @@
-A repository for my personal website [yohandi.me](yohandi.me). Built this using Gatsby, React, and JavaScript.
+A repository for my personal website [yohandi.me](https://www.yohandi.me). Built this using Gatsby, React, and JavaScript.
 
 ## License 📄
 
