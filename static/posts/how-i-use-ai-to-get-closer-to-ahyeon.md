@@ -217,7 +217,7 @@ aligned_new = cv2.warpPerspective(new_frame, H, (old_frame.shape[1], old_frame.s
 
 . Now, the only complication that needs to be cared about is the zooming out action after some zooming in(s) were done, which is a difficult part. Let's assume the first frame to be the most zoomed out version of all frames (or any most zoomed out as an anchor from somewhere in the midway through video). Then, every other frames should be translated / mapped back to its position according to the first frame. With that, I can make a tree where:
 1. The first frame (or anchor frame) is the root.
-2. For a $j$-th frame where it is fully contained inside the $i$-th frame, node $j$ should be one of the descendants of node $i$. Illustrated as follows.
+2. For a $j$-th frame where it is fully contained inside the $i$-th frame, node $j$ should have node $i$ as one of its ancestors. Illustrated as follows.
 
 ![](/posts/figures/how-i-use-ai-to-get-closer-to-ahyeon/frame-on-frame-illustration.jpg)
 
