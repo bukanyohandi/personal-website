@@ -256,7 +256,6 @@ April 11 is Ahyeon's birthday.
 ### References
 
 1. **babymonsterinjakarta.com**, "Baby Monster in Jakarta." https://www.babymonsterinjakarta.com  
-2. **JN's Kpop Fancams**, "250302 - FULL CONCERT - BABYMONSTER Hello Monsters in LA (4K HD FANCAM)," *YouTube*. https://www.youtube.
+2. **JN's Kpop Fancams**, "250302 - FULL CONCERT - BABYMONSTER Hello Monsters in LA (4K HD FANCAM)," *YouTube*. https://www.youtube.com/watch?v=q-CLm3lgk3U  
 3. **nwojke**, "deep_sort," *GitHub Repository*. https://github.com/nwojke/deep_sort  
 4. **Ultralytics**, "YOLOv8 Documentation," *Ultralytics Docs*. https://docs.ultralytics.com/models/yolov8/  
-com/watch?v=q-CLm3lgk3U  
