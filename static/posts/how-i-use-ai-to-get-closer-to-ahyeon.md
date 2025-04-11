@@ -2,7 +2,7 @@
 title: "How I Use AI to Get Closer to Ahyeon"
 date: "2025-04-11"
 author: "Yohandi"
-tags: [ahyeon]
+tags: [algorithm, image-processing, machine-learning, project, tutorial]
 ---
 
 I've always wanted to watch BABYMONSTER live, and finally, they'll be performing in Jakarta on June '25. Last month was the ticket war, and I found myself kind of contemplating on choosing whether to have my free-standing areas on VIP category 1A or 1B. Since Ahyeon is my bias, knowing her usual stage positions significantly influence my choice. Thanks to **JN's Kpop Fancams**'s two-hour *BABYMONSTER Hello Monsters in LA* concert video on YouTube, I can predict Ahyeon's typical positions.
