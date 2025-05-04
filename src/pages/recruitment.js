@@ -259,7 +259,7 @@ const Job = ({ job }) => {
   );
 };
 
-export default RecruitmentPage;
+// export default RecruitmentPage;
 
 export const pageQuery = graphql`
   {
