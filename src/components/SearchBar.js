@@ -65,7 +65,7 @@ const ClearButton = styled.button`
 
 const SearchBarContainer = styled.div`
   min-width: 300px;
-  max-width: 500px;
+  max-width: 440px;
   width: 100%;
   display: flex;
   flex-direction: column;

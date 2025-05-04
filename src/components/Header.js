@@ -258,7 +258,7 @@ const Header = () => {
             inBlogPage,
             inProjectsPage,
             inArchivePage,
-            inRecruitmentPage,
+            // inRecruitmentPage,
           }}
         >
           <NavLink to="/" activeStyle={activeLinkStyle}>
@@ -281,9 +281,9 @@ const Header = () => {
           >
             Archive
           </NavLink>
-          <NavLink to="/recruitment" activeStyle={activeLinkStyle}>
+          {/* <NavLink to="/recruitment" activeStyle={activeLinkStyle}>
             Recruitment
-          </NavLink>
+          </NavLink> */}
         </Navigation>
       </Container>
     </>
