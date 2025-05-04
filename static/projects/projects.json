@@ -18,7 +18,7 @@
         "title": "Genetic Algorithm on Party Together Problem",
         "img": "/projects/genetic-algorithm-party-together.png",
         "url": "https://yohandi.me/archive/The-Chinese-University-of-Hong-Kong-Shenzhen/2024-Spring/CSC4120-Design-and-Analysis-of-Algorithms/party-together/",
-        "desc": "A <span>heuristic approach</span> of finding pick-up locations that optimizes the transportation plan for the Party Together problem, which is an <span>NP-Hard</span> problem, using a <span>genetic algorithm</span>.",
+        "desc": "A <span>heuristic approach</span> optimizes the transportation plan for the Party Together problem using a <span>genetic algorithm</span>.",
         "year": "2024"
     },
 
