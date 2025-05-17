@@ -9,7 +9,7 @@ I've always wanted to watch BABYMONSTER live, and finally, they'll be performing
 
 But let's be honest, manually tracking movements over two hours is way exhausting. So, I decided to spend eight hours automating the process instead—haha. Object detection AI was relatively new for me, so I will rely much on using `YOLOv8m` and `DeepSORT`. The AI credit goes to them.
 
-The main objective will be to create a heatmap pinpointing where Ahyeon spends most of her time on stage. Note that this approach isn't limited to Ahyeon; you can apply it to your bias as well. Another objective will be to aggregate all members' movements with bias weighting. Yes, I also like Rami. Being on my second bias, I considered generating heatmap for her too—but perhaps with less intensity than Ahyeon when those data being aggregated.
+The main objective will be to create a heatmap pinpointing where Ahyeon spends most of her time on stage. Note that this approach isn't limited to Ahyeon; you can apply it to your bias as well. Another objective will be to aggregate all members' movements with bias weighting. Yes, I also like Pharita and Rami. Being on my second bias, I considered generating heatmap for her too—but perhaps with less intensity than Ahyeon when those data being aggregated.
 
 ### Stage Layout
 
