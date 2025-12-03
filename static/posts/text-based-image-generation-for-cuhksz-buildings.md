@@ -1,7 +1,7 @@
 ---
 title: "Text-Based Image Generation for CUHK-Shenzhen Buildings"
 date: "2024-05-25"
-author: "B. D. T. Sibarani, Yohandi, D. D. Halim, N. L. Tandaju"
+author: "Yohandi, B. D. T. Sibarani, D. D. Halim, N. L. Tandaju"
 tags: [machine-learning, project]
 ---
 
